@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3: Types of AI Used in Healthcare | AI Essentials for Healthcare Professionals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #0F4C5C;
+            --color-primary-light: #1A6B7F;
+            --color-secondary: #E8F4F8;
+            --color-accent: #2E8B8B;
+            --color-accent-warm: #D4A574;
+            --color-text: #2D3748;
+            --color-text-light: #4A5568;
+            --color-text-muted: #718096;
+            --color-bg: #FAFCFD;
+            --color-white: #FFFFFF;
+            --color-border: #E2E8F0;
+            --color-success: #38A169;
+            --color-error: #E53E3E;
+            --color-ml: #6366F1;
+            --color-dl: #8B5CF6;
+            --color-nlp: #EC4899;
+            --color-cv: #10B981;
+            --color-rule: #F59E0B;
+            --font-heading: 'Source Serif 4', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.75; color: var(--color-text); background: var(--color-bg); -webkit-font-smoothing: antialiased; }
+        .lms-container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+        .lms-header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); padding: 48px 40px; border-radius: var(--radius-lg); margin-bottom: 48px; position: relative; overflow: hidden; }
+        .lms-header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); border-radius: 50%; }
+        .logo-placeholder { margin-bottom: 32px; position: relative; z-index: 1; }
+        .logo-placeholder img { height: 44px; width: auto; filter: brightness(0) invert(1); opacity: 0.95; }
+        .lms-header-content { position: relative; z-index: 1; }
+        .course-label { display: inline-block; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.8); margin-bottom: 12px; }
+        .module-title { font-family: var(--font-heading); font-size: 38px; font-weight: 700; color: var(--color-white); line-height: 1.2; margin-bottom: 8px; }
+        .course-title { font-size: 18px; color: rgba(255,255,255,0.85); font-weight: 400; }
+        .unit-header { background: var(--color-secondary); padding: 28px 32px; border-radius: var(--radius-md); margin-bottom: 40px; border-left: 4px solid var(--color-accent); }
+        .unit-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: var(--color-accent); margin-bottom: 8px; }
+        .unit-title { font-family: var(--font-heading); font-size: 26px; font-weight: 600; color: var(--color-primary); margin-bottom: 16px; }
+        .unit-intro { font-size: 15px; color: var(--color-text-light); margin-bottom: 20px; }
+        .time-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--color-white); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500; color: var(--color-text); }
+        .section-nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 48px; }
+        .nav-item { display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: var(--color-white); border-radius: var(--radius-md); border: 1px solid var(--color-border); text-decoration: none; color: var(--color-text); font-size: 14px; font-weight: 500; transition: all 0.2s ease; }
+        .nav-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .nav-item.ml { border-left: 3px solid var(--color-ml); }
+        .nav-item.dl { border-left: 3px solid var(--color-dl); }
+        .nav-item.nlp { border-left: 3px solid var(--color-nlp); }
+        .nav-item.cv { border-left: 3px solid var(--color-cv); }
+        .nav-item.rule { border-left: 3px solid var(--color-rule); }
+        .nav-time { font-size: 12px; color: var(--color-text-muted); }
+        .ai-section { margin-bottom: 64px; padding-bottom: 48px; border-bottom: 2px solid var(--color-border); }
+        .ai-section:last-of-type { border-bottom: none; }
+        .section-header { padding: 32px; border-radius: var(--radius-lg); margin-bottom: 32px; position: relative; overflow: hidden; }
+        .section-header.ml { background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%); border-left: 5px solid var(--color-ml); }
+        .section-header.dl { background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%); border-left: 5px solid var(--color-dl); }
+        .section-header.nlp { background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%); border-left: 5px solid var(--color-nlp); }
+        .section-header.cv { background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%); border-left: 5px solid var(--color-cv); }
+        .section-header.rule { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border-left: 5px solid var(--color-rule); }
+        .section-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 16px; }
+        .section-badge.ml { background: var(--color-ml); color: white; }
+        .section-badge.dl { background: var(--color-dl); color: white; }
+        .section-badge.nlp { background: var(--color-nlp); color: white; }
+        .section-badge.cv { background: var(--color-cv); color: white; }
+        .section-badge.rule { background: var(--color-rule); color: white; }
+        .section-title { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px; }
+        .section-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; color: var(--color-text-light); }
+        .meta-item { display: flex; align-items: center; gap: 6px; }
+        .learning-objectives { background: var(--color-white); border-radius: var(--radius-md); padding: 24px 28px; margin-bottom: 32px; border: 1px solid var(--color-border); }
+        .lo-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .lo-icon { width: 36px; height: 36px; background: var(--color-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .lo-icon svg { width: 18px; height: 18px; color: var(--color-primary); }
+        .lo-title { font-size: 16px; font-weight: 600; color: var(--color-primary); }
+        .lo-list { list-style: none; padding: 0; margin: 0; }
+        .lo-list li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--color-border); font-size: 15px; }
+        .lo-list li:last-child { border-bottom: none; padding-bottom: 0; }
+        .lo-check { width: 20px; height: 20px; background: var(--color-success); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+        .lo-check svg { width: 12px; height: 12px; color: white; }
+        .content-block { margin-bottom: 32px; }
+        .content-title { font-family: var(--font-heading); font-size: 22px; font-weight: 600; color: var(--color-primary); margin-bottom: 16px; }
+        .content-subtitle { font-family: var(--font-heading); font-size: 18px; font-weight: 600; color: var(--color-text); margin-top: 28px; margin-bottom: 14px; }
+        p { margin-bottom: 16px; color: var(--color-text); }
+        ul, ol { margin-bottom: 20px; padding-left: 24px; }
+        li { margin-bottom: 8px; padding-left: 8px; }
+        li::marker { color: var(--color-accent); }
+        .key-principle { background: linear-gradient(135deg, var(--color-secondary) 0%, #F0F8FA 100%); padding: 20px 24px; border-radius: var(--radius-md); margin: 24px 0; border-left: 4px solid var(--color-accent); }
+        .key-principle-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-accent); margin-bottom: 8px; }
+        .key-principle p { margin-bottom: 0; font-weight: 500; color: var(--color-primary); }
+        .ml-types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 28px 0; }
+        .ml-type-card { background: var(--color-white); border-radius: var(--radius-md); padding: 24px; border: 1px solid var(--color-border); text-align: center; }
+        .ml-type-number { font-size: 24px; margin-bottom: 12px; }
+        .ml-type-title { font-weight: 600; color: var(--color-primary); margin-bottom: 4px; }
+        .ml-type-subtitle { font-size: 13px; color: var(--color-accent); font-weight: 500; margin-bottom: 12px; }
+        .ml-type-desc { font-size: 14px; color: var(--color-text-light); margin-bottom: 12px; }
+        .ml-type-examples { font-size: 13px; color: var(--color-text-muted); font-style: italic; }
+        .memory-aid { background: #FFFAF0; padding: 16px 20px; border-radius: var(--radius-md); margin: 24px 0; border: 1px solid #F6E05E; display: flex; align-items: center; gap: 12px; }
+        .memory-aid-icon { font-size: 20px; }
+        .memory-aid-text { font-size: 15px; font-weight: 500; color: var(--color-text); }
+        .memory-aid-text strong { color: var(--color-primary); }
+        .clinical-case { background: var(--color-white); border-radius: var(--radius-lg); margin: 32px 0; overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--color-border); }
+        .case-header { padding: 20px 28px; display: flex; align-items: center; gap: 14px; }
+        .case-header.ml { background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%); }
+        .case-header.dl { background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%); }
+        .case-header.nlp { background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%); }
+        .case-header.cv { background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%); }
+        .case-header.rule { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); }
+        .case-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .case-icon.ml { background: var(--color-ml); }
+        .case-icon.dl { background: var(--color-dl); }
+        .case-icon.nlp { background: var(--color-nlp); }
+        .case-icon.cv { background: var(--color-cv); }
+        .case-icon.rule { background: var(--color-rule); }
+        .case-icon svg { width: 24px; height: 24px; color: white; }
+        .case-title { font-family: var(--font-heading); font-size: 18px; font-weight: 600; color: var(--color-primary); }
+        .case-body { padding: 28px; }
+        .case-section { margin-bottom: 24px; }
+        .case-section:last-child { margin-bottom: 0; }
+        .case-section-title { font-weight: 600; color: var(--color-text); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .case-section-title::before { content: ''; width: 6px; height: 6px; background: var(--color-accent); border-radius: 50%; }
+        .system-output { background: #1a1a2e; border-radius: var(--radius-md); padding: 20px 24px; margin: 20px 0; color: #E2E8F0; font-family: 'Monaco', 'Menlo', monospace; font-size: 14px; }
+        .output-label { color: var(--color-accent); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-family: var(--font-body); font-weight: 600; }
+        .output-highlight { color: #F6E05E; font-weight: 600; }
+        .output-value { color: #68D391; }
+        .interpretation-box { background: #FFF5F5; padding: 20px 24px; border-radius: var(--radius-md); margin: 24px 0; border: 1px solid #FED7D7; }
+        .interpretation-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-error); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .reflect-box { background: linear-gradient(135deg, #FAF5FF 0%, #F3E8FF 100%); padding: 24px 28px; border-radius: var(--radius-md); margin: 28px 0; border: 1px solid #E9D8FD; }
+        .reflect-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .reflect-icon { font-size: 24px; }
+        .reflect-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #805AD5; }
+        .key-summary { background: var(--color-secondary); border-radius: var(--radius-md); padding: 24px 28px; margin: 32px 0; }
+        .key-summary-title { font-weight: 600; color: var(--color-primary); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+        .key-summary ul { margin: 0; padding-left: 20px; }
+        .key-summary li { margin-bottom: 8px; }
+        .video-placeholder { background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%); border-radius: var(--radius-md); padding: 48px 32px; text-align: center; margin: 28px 0; position: relative; overflow: hidden; }
+        .video-placeholder::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 250px; height: 250px; background: radial-gradient(circle, rgba(46,139,139,0.15) 0%, transparent 70%); border-radius: 50%; }
+        .video-play-btn { width: 70px; height: 70px; background: var(--color-accent); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px; position: relative; z-index: 1; box-shadow: 0 4px 20px rgba(46,139,139,0.4); cursor: pointer; transition: transform 0.2s ease; }
+        .video-play-btn:hover { transform: scale(1.05); }
+        .video-play-btn svg { width: 28px; height: 28px; fill: var(--color-white); margin-left: 4px; }
+        .video-label { font-size: 14px; color: rgba(255,255,255,0.7); position: relative; z-index: 1; }
+        .knowledge-check { background: var(--color-white); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; box-shadow: var(--shadow-md); border: 1px solid var(--color-border); }
+        .kc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border); }
+        .kc-icon { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .kc-icon.ml { background: var(--color-ml); }
+        .kc-icon.dl { background: var(--color-dl); }
+        .kc-icon.nlp { background: var(--color-nlp); }
+        .kc-icon.cv { background: var(--color-cv); }
+        .kc-icon.rule { background: var(--color-rule); }
+        .kc-icon svg { width: 22px; height: 22px; color: white; }
+        .kc-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-primary); }
+        .mcq-form fieldset { border: none; margin-bottom: 28px; padding: 0; }
+        .question-block { background: var(--color-bg); border-radius: var(--radius-md); padding: 24px; border: 1px solid var(--color-border); }
+        .question-number { display: inline-block; background: var(--color-primary); color: white; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; margin-bottom: 12px; }
+        .question-text { font-family: var(--font-heading); font-size: 17px; font-weight: 600; color: var(--color-text); margin-bottom: 18px; line-height: 1.5; }
+        .options-list { display: flex; flex-direction: column; gap: 10px; }
+        .option-item { position: relative; }
+        .option-item input[type="radio"] { position: absolute; opacity: 0; }
+        .option-label { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; background: var(--color-white); border: 2px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.15s ease; }
+        .option-label:hover { border-color: var(--color-accent); background: var(--color-secondary); }
+        .option-item input[type="radio"]:checked + .option-label { border-color: var(--color-primary); background: var(--color-secondary); }
+        .option-letter { width: 26px; height: 26px; background: var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; color: var(--color-text-light); flex-shrink: 0; }
+        .option-item input[type="radio"]:checked + .option-label .option-letter { background: var(--color-primary); color: white; }
+        .option-text { padding-top: 2px; font-size: 15px; }
+        .question-feedback { margin-top: 14px; padding: 12px 16px; border-radius: var(--radius-sm); font-weight: 500; font-size: 14px; display: none; }
+        .question-feedback.correct { background: #C6F6D5; color: #276749; display: block; }
+        .question-feedback.incorrect { background: #FED7D7; color: #C53030; display: block; }
+        .submit-container { text-align: center; margin-top: 24px; }
+        .submit-btn { background: var(--color-primary); color: white; font-family: var(--font-body); font-size: 15px; font-weight: 600; padding: 14px 36px; border: none; border-radius: 50px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 14px rgba(15,76,92,0.3); }
+        .submit-btn:hover { background: var(--color-primary-light); transform: translateY(-2px); }
+        .soap-note { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); margin: 20px 0; overflow: hidden; }
+        .soap-row { display: grid; grid-template-columns: 60px 1fr; border-bottom: 1px solid var(--color-border); }
+        .soap-row:last-child { border-bottom: none; }
+        .soap-label { background: var(--color-secondary); padding: 14px; font-weight: 600; color: var(--color-primary); display: flex; align-items: center; justify-content: center; }
+        .soap-content { padding: 14px 16px; font-size: 14px; }
+        .use-cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0; }
+        .use-case-card { background: var(--color-white); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--color-border); }
+        .use-case-title { font-weight: 600; color: var(--color-primary); margin-bottom: 8px; font-size: 15px; }
+        .use-case-desc { font-size: 14px; color: var(--color-text-light); margin-bottom: 8px; }
+        .use-case-question { font-size: 13px; color: var(--color-accent); font-style: italic; }
+        .bl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+        .bl-card { border-radius: var(--radius-md); padding: 24px; }
+        .bl-card.benefits { background: #F0FFF4; border: 1px solid #9AE6B4; }
+        .bl-card.limitations { background: #FFF5F5; border: 1px solid #FEB2B2; }
+        .bl-title { font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+        .bl-card.benefits .bl-title { color: #276749; }
+        .bl-card.limitations .bl-title { color: #C53030; }
+        .bl-card ul { margin: 0; padding-left: 20px; }
+        .bl-card li { font-size: 14px; margin-bottom: 6px; }
+        .alert-box { background: linear-gradient(135deg, #FFF5F5 0%, #FED7D7 100%); border-radius: var(--radius-md); padding: 24px; margin: 24px 0; border: 2px solid var(--color-error); }
+        .alert-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .alert-icon { font-size: 24px; }
+        .alert-title { font-weight: 700; color: var(--color-error); font-size: 16px; }
+        .alert-content { font-size: 14px; }
+        .alert-item { margin-bottom: 8px; }
+        .alert-item strong { color: var(--color-error); }
+        @media (max-width: 768px) {
+            .lms-container { padding: 24px 16px 60px; }
+            .lms-header { padding: 32px 24px; }
+            .module-title { font-size: 28px; }
+            .section-nav { grid-template-columns: 1fr; }
+            .ml-types-grid { grid-template-columns: 1fr; }
+            .use-cases-grid { grid-template-columns: 1fr; }
+            .bl-grid { grid-template-columns: 1fr; }
+            .soap-row { grid-template-columns: 50px 1fr; }
+            .section-header { padding: 24px; }
+            .section-title { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <article class="lms-container">
+        <header class="lms-header">
+            <div class="logo-placeholder">
+                <img src="" alt="madashealth.ai logo">
+            </div>
+            <div class="lms-header-content">
+                <span class="course-label">Module 1</span>
+                <h1 class="module-title">AI Foundations for Healthcare</h1>
+                <p class="course-title">AI Essentials for Healthcare Professionals</p>
+            </div>
+        </header>
+
+        <section class="unit-header">
+            <span class="unit-label">Unit 3</span>
+            <h2 class="unit-title">Types of AI Used in Healthcare</h2>
+            <p class="unit-intro">Each type of AI is presented with a clinical case study and a plain-language interpretation to emphasise practical application.</p>
+            <span class="time-badge">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Estimated Learning Time: 60 minutes total
+            </span>
+        </section>
+
+        <nav class="section-nav">
+            <a href="#ml-section" class="nav-item ml"><span>A. Machine Learning</span><span class="nav-time">15 min</span></a>
+            <a href="#dl-section" class="nav-item dl"><span>B. Deep Learning</span><span class="nav-time">15 min</span></a>
+            <a href="#nlp-section" class="nav-item nlp"><span>C. NLP</span><span class="nav-time">15 min</span></a>
+            <a href="#cv-section" class="nav-item cv"><span>D. Computer Vision</span><span class="nav-time">10 min</span></a>
+            <a href="#rule-section" class="nav-item rule"><span>E. Rule-Based</span><span class="nav-time">5 min</span></a>
+        </nav>
+        <!-- Section A: Machine Learning -->
+        <section id="ml-section" class="ai-section">
+            <header class="section-header ml">
+                <span class="section-badge ml">Section A</span>
+                <h2 class="section-title">Machine Learning (ML) in Healthcare</h2>
+                <div class="section-meta">
+                    <span class="meta-item"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Duration: 15 minutes</span>
+                    <span class="meta-item"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>Self-paced reading and 2-minute explainer video</span>
+                </div>
+            </header>
+            <div class="learning-objectives">
+                <div class="lo-header"><div class="lo-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="lo-title">Learning Objectives</span></div>
+                <ul class="lo-list">
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Define Machine Learning within healthcare</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Identify the three main types of ML used in clinical systems</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Safely interpret ML-generated risk scores</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Apply ML outputs in clinical decision-making without automation bias</span></li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <h3 class="content-title">What Is Machine Learning in Healthcare?</h3>
+                <p>Machine Learning enables computers to learn from historical data and identify patterns without explicit programming for each decision. In healthcare, ML is commonly used for:</p>
+                <ul>
+                    <li>Risk estimation (e.g., deterioration, readmission, complications)</li>
+                    <li>Supporting early identification of patients in need of closer attention</li>
+                    <li>Prioritising resources (not for diagnosis or treatment decisions)</li>
+                </ul>
+                <div class="key-principle"><span class="key-principle-label">Key Principle</span><p>ML answers "How likely is this outcome?" while clinicians determine "What should we do about it?"</p></div>
+            </div>
+            <div class="content-block">
+                <h3 class="content-title">The Three Main Types of Machine Learning</h3>
+                <div class="ml-types-grid">
+                    <div class="ml-type-card">
+                        <div class="ml-type-number">1️⃣</div>
+                        <div class="ml-type-title">Supervised Learning</div>
+                        <div class="ml-type-subtitle">Prediction</div>
+                        <p class="ml-type-desc">Learned from labelled examples where outcomes are known. Finds relationships between input variables and outcomes.</p>
+                        <p class="ml-type-examples">Examples: Readmission prediction, sepsis risk, diabetes classification</p>
+                    </div>
+                    <div class="ml-type-card">
+                        <div class="ml-type-number">2️⃣</div>
+                        <div class="ml-type-title">Unsupervised Learning</div>
+                        <div class="ml-type-subtitle">Discovery</div>
+                        <p class="ml-type-desc">Discovers patterns without predefined labels.</p>
+                        <p class="ml-type-examples">Examples: Symptom cluster subgrouping, disease pattern identification, population risk segmentation</p>
+                    </div>
+                    <div class="ml-type-card">
+                        <div class="ml-type-number">3️⃣</div>
+                        <div class="ml-type-title">Reinforcement Learning</div>
+                        <div class="ml-type-subtitle">Optimisation</div>
+                        <p class="ml-type-desc">Learns through trial, error, and feedback over time.</p>
+                        <p class="ml-type-examples">Examples: ICU ventilation strategies, AI-guided rehabilitation, treatment pathway optimisation</p>
+                    </div>
+                </div>
+                <p><strong>Note:</strong> Still emerging and requires strict safety boundaries.</p>
+                <div class="memory-aid"><span class="memory-aid-icon">💡</span><span class="memory-aid-text"><strong>Memory Aid:</strong> Supervised = Prediction; Unsupervised = Discovery; Reinforcement = Optimisation</span></div>
+            </div>
+            <div class="clinical-case">
+                <div class="case-header ml"><div class="case-icon ml"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div><span class="case-title">Clinical Case: Predicting Hospital Readmission</span></div>
+                <div class="case-body">
+                    <div class="case-section"><div class="case-section-title">Patient Presentation</div><ul><li>72-year-old male with COPD and Type 2 Diabetes</li><li>Two admissions in the past 6 months; lives alone with limited support</li><li>On 8 regular medications</li></ul></div>
+                    <div class="case-section"><div class="case-section-title">What the ML System Analyses</div><ul><li>Demographics, comorbidities, medication burden</li><li>Admission history, social determinants</li><li>Vital signs and laboratory results</li></ul><p><em>Each factor contributes partially, not independently.</em></p></div>
+                    <div class="system-output"><div class="output-label">System Output</div><span class="output-highlight">"Predicted 30-day readmission risk: </span><span class="output-value">38%</span><span class="output-highlight">"</span></div>
+                    <div class="case-section"><ul><li>This figure represents probability, not diagnosis</li><li>Based on large historical comparisons</li><li>Intended to inform care planning</li></ul></div>
+                    <div class="case-section"><div class="case-section-title">What the AI Is Actually Doing</div><ul><li>Learning patterns from historical datasets</li><li>Comparing the current patient to similar cases</li><li>Quantifying risk as likelihood, not certainty</li></ul><p><strong>ML recognises patterns, not causation.</strong></p></div>
+                    <div class="case-section"><div class="case-section-title">Interpreting the 38% Risk Score</div><ul><li>Does not mean the patient will definitely be readmitted</li><li>Indicates a higher risk compared to baseline</li><li>Typical bands: &lt;15% Low; 15–30% Moderate; &gt;30% High</li></ul><p><em>Prioritise attention rather than labelling patients.</em></p></div>
+                    <div class="interpretation-box"><div class="interpretation-label"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>Why Clinicians Must Remain in Control</div><ul><li>ML cannot assess motivation, literacy, family dynamics, cultural nuance, or bedside intuition</li><li>Limited by data quality, under-representation, and embedded bias</li><li><strong>Automation Bias:</strong> Over-reliance on AI, undervaluing clinical judgement</li></ul></div>
+                    <div class="case-section"><div class="case-section-title">Clinical Application</div><p>Steps such as earlier follow-up, community nursing, simplifying medication regimens, patient education, and multidisciplinary care can be considered.</p><p><strong>ML supports decisions without making them.</strong></p></div>
+                </div>
+            </div>
+            <div class="reflect-box"><div class="reflect-header"><span class="reflect-icon">🧠</span><span class="reflect-label">Mini Reflection</span></div><p>If strong family support and daily home visits were present, would your management change? This highlights the ongoing need for human judgement.</p></div>
+            <div class="key-summary"><div class="key-summary-title"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Key Learning Summary</div><ul><li>ML provides risk estimates, not outcome predictions</li><li>Supervised ML is the most common type</li><li>Risk scores guide attention rather than dictate decisions</li><li>Clinicians remain accountable for the final decision</li></ul></div>
+            <div class="video-placeholder"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="video-label">2-minute explainer video</p></div>
+            <div class="knowledge-check">
+                <div class="kc-header"><div class="kc-icon ml"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="kc-title">Knowledge Check — ML</span></div>
+                <form class="mcq-form" id="mlForm">
+                    <fieldset><div class="question-block"><span class="question-number">MCQ 1</span><p class="question-text">38% readmission risk: what does it mean?</p><div class="options-list"><div class="option-item"><input type="radio" id="ml1a" name="ml1" value="A" data-correct="false"><label for="ml1a" class="option-label"><span class="option-letter">A</span><span class="option-text">Will definitely be readmitted</span></label></div><div class="option-item"><input type="radio" id="ml1b" name="ml1" value="B" data-correct="false"><label for="ml1b" class="option-label"><span class="option-letter">B</span><span class="option-text">AI decided admission is needed</span></label></div><div class="option-item"><input type="radio" id="ml1c" name="ml1" value="C" data-correct="true"><label for="ml1c" class="option-label"><span class="option-letter">C</span><span class="option-text">Higher-risk group compared to similar patients</span></label></div><div class="option-item"><input type="radio" id="ml1d" name="ml1" value="D" data-correct="false"><label for="ml1d" class="option-label"><span class="option-letter">D</span><span class="option-text">Clinician must follow AI to avoid liability</span></label></div></div><div class="question-feedback" id="feedback-ml1"></div></div></fieldset>
+                    <fieldset><div class="question-block"><span class="question-number">MCQ 2</span><p class="question-text">Most common ML type for readmission/sepsis risk?</p><div class="options-list"><div class="option-item"><input type="radio" id="ml2a" name="ml2" value="A" data-correct="false"><label for="ml2a" class="option-label"><span class="option-letter">A</span><span class="option-text">Unsupervised</span></label></div><div class="option-item"><input type="radio" id="ml2b" name="ml2" value="B" data-correct="false"><label for="ml2b" class="option-label"><span class="option-letter">B</span><span class="option-text">Reinforcement</span></label></div><div class="option-item"><input type="radio" id="ml2c" name="ml2" value="C" data-correct="true"><label for="ml2c" class="option-label"><span class="option-letter">C</span><span class="option-text">Supervised</span></label></div><div class="option-item"><input type="radio" id="ml2d" name="ml2" value="D" data-correct="false"><label for="ml2d" class="option-label"><span class="option-letter">D</span><span class="option-text">Rule-based automation</span></label></div></div><div class="question-feedback" id="feedback-ml2"></div></div></fieldset>
+                    <div class="submit-container"><button type="submit" class="submit-btn">Check Answers</button></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Section B: Deep Learning -->
+        <section id="dl-section" class="ai-section">
+            <header class="section-header dl">
+                <span class="section-badge dl">Section B</span>
+                <h2 class="section-title">Deep Learning (DL) in Healthcare</h2>
+                <div class="section-meta"><span class="meta-item">Duration: 15 minutes</span><span class="meta-item">Self-paced reading and 2-minute explainer video</span></div>
+            </header>
+            <div class="learning-objectives">
+                <div class="lo-header"><div class="lo-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="lo-title">Learning Objectives</span></div>
+                <ul class="lo-list">
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Define Deep Learning and distinguish it from ML</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Recognise DL's strengths in imaging and signal analysis</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Interpret DL outputs safely (confidence scores, highlighted regions)</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Apply DL insights judiciously, avoiding over-reliance</span></li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <h3 class="content-title">What Is Deep Learning in Healthcare?</h3>
+                <p>Deep Learning employs multi-layered neural networks to analyse complex data, such as:</p>
+                <ul><li>Images: X-rays, CT, MRI</li><li>Signals: ECG, EEG</li><li>Audio: heart and lung sounds</li><li>Video: endoscopy, surgical procedures, gait analysis</li></ul>
+                <p>Unlike traditional ML, DL learns directly from raw data, does not rely on hand-crafted features, and excels at recognising complex visual and spatial patterns.</p>
+                <div class="key-principle"><span class="key-principle-label">Key Principle</span><p>DL can identify features missed by the human eye, but clinicians determine their significance.</p></div>
+            </div>
+            <div class="content-block">
+                <h3 class="content-title">Where DL Is Used Today</h3>
+                <ul><li>Chest X-ray interpretation</li><li>CT/MRI abnormality detection</li><li>Mammography screening</li><li>Diabetic retinopathy detection</li><li>ECG rhythm analysis</li><li>Stroke and intracranial bleed detection (decision support only)</li></ul>
+            </div>
+            <div class="clinical-case">
+                <div class="case-header dl"><div class="case-icon dl"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></div><span class="case-title">Clinical Case: Pneumonia on Chest X-Ray</span></div>
+                <div class="case-body">
+                    <div class="case-section"><div class="case-section-title">Presentation</div><p>45-year-old patient with fever (38.9°C), productive cough, exertional dyspnoea; chest X-ray performed</p></div>
+                    <div class="case-section"><div class="case-section-title">DL Analyses</div><p>Assesses symmetry, tissue density, air bronchograms, lobar/segmental opacities, compares with normal anatomy, and evaluates spatial relationships. Analyses thousands of features simultaneously.</p></div>
+                    <div class="system-output"><div class="output-label">System Output</div><span class="output-highlight">"High probability of lower lobe pneumonia"</span><br>Confidence level: <span class="output-value">87%</span> | Region highlighted</div>
+                    <div class="case-section"><div class="case-section-title">Interpreting 87% Confidence</div><ul><li>This figure is not a confirmed diagnosis</li><li>Prompts further review by the clinician</li><li>Confidence does not equal certainty</li></ul></div>
+                    <div class="interpretation-box"><div class="interpretation-label">Why Clinicians Must Remain Central</div><ul><li>AI cannot correlate findings with patient history, may be affected by image quality/bias</li><li><strong>Automation Bias:</strong> Over-trusting AI-generated heatmaps or scores</li><li><strong>Guideline:</strong> Verify AI findings; do not accept them blindly</li></ul></div>
+                </div>
+            </div>
+            <div class="reflect-box"><div class="reflect-header"><span class="reflect-icon">🧠</span><span class="reflect-label">Mini Reflection</span></div><p>If image quality is poor or presentation is atypical, should you rely more or less on AI? This reinforces the need for clinical oversight.</p></div>
+            <div class="key-summary"><div class="key-summary-title">Key Learning Summary</div><ul><li>DL excels with images and complex data</li><li>Provides outputs as confidence scores and visual cues</li><li>Clinicians remain responsible for decisions</li></ul></div>
+            <div class="video-placeholder"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="video-label">2-minute explainer video</p></div>
+            <div class="knowledge-check">
+                <div class="kc-header"><div class="kc-icon dl"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="kc-title">Knowledge Check — DL</span></div>
+                <form class="mcq-form" id="dlForm">
+                    <fieldset><div class="question-block"><span class="question-number">Q1</span><p class="question-text">Which task is best suited to DL?</p><div class="options-list"><div class="option-item"><input type="radio" id="dl1a" name="dl1" value="A" data-correct="false"><label for="dl1a" class="option-label"><span class="option-letter">A</span><span class="option-text">Dose calculation via fixed formulas</span></label></div><div class="option-item"><input type="radio" id="dl1b" name="dl1" value="B" data-correct="true"><label for="dl1b" class="option-label"><span class="option-letter">B</span><span class="option-text">Interpreting complex medical images (CXR)</span></label></div><div class="option-item"><input type="radio" id="dl1c" name="dl1" value="C" data-correct="false"><label for="dl1c" class="option-label"><span class="option-letter">C</span><span class="option-text">Applying guidelines step-by-step</span></label></div><div class="option-item"><input type="radio" id="dl1d" name="dl1" value="D" data-correct="false"><label for="dl1d" class="option-label"><span class="option-letter">D</span><span class="option-text">Scheduling appointments</span></label></div></div><div class="question-feedback" id="feedback-dl1"></div></div></fieldset>
+                    <fieldset><div class="question-block"><span class="question-number">Q2</span><p class="question-text">DL highlights 87% confidence for pneumonia. What is the best response?</p><div class="options-list"><div class="option-item"><input type="radio" id="dl2a" name="dl2" value="A" data-correct="false"><label for="dl2a" class="option-label"><span class="option-letter">A</span><span class="option-text">Start treatment immediately</span></label></div><div class="option-item"><input type="radio" id="dl2b" name="dl2" value="B" data-correct="false"><label for="dl2b" class="option-label"><span class="option-letter">B</span><span class="option-text">Ignore AI; rely only on human reading</span></label></div><div class="option-item"><input type="radio" id="dl2c" name="dl2" value="C" data-correct="true"><label for="dl2c" class="option-label"><span class="option-letter">C</span><span class="option-text">Review highlighted area; integrate clinical context</span></label></div><div class="option-item"><input type="radio" id="dl2d" name="dl2" value="D" data-correct="false"><label for="dl2d" class="option-label"><span class="option-letter">D</span><span class="option-text">Assume AI is more accurate than humans</span></label></div></div><div class="question-feedback" id="feedback-dl2"></div></div></fieldset>
+                    <div class="submit-container"><button type="submit" class="submit-btn">Check Answers</button></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Section C: NLP -->
+        <section id="nlp-section" class="ai-section">
+            <header class="section-header nlp">
+                <span class="section-badge nlp">Section C</span>
+                <h2 class="section-title">Natural Language Processing (NLP) in Healthcare</h2>
+                <div class="section-meta"><span class="meta-item">Duration: 15 minutes</span><span class="meta-item">Self-paced reading, interactive case examples, and a video</span></div>
+            </header>
+            <div class="learning-objectives">
+                <div class="lo-header"><div class="lo-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="lo-title">Learning Objectives</span></div>
+                <ul class="lo-list">
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Define NLP and its application in healthcare</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Understand how NLP supports documentation and communication</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Identify safe and unsafe practices using NLP</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Apply NLP outputs responsibly, retaining clinical accountability</span></li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <h3 class="content-title">What Is NLP in Healthcare?</h3>
+                <p>NLP enables computers to understand, interpret, and generate human language in meaningful ways. In healthcare, NLP is focused on:</p>
+                <ul><li>Clinical conversations</li><li>Free-text notes and referrals</li><li>Discharge summaries and letters</li><li>Patient messages and questionnaires</li></ul>
+                <p>Unlike general speech-to-text systems, clinical NLP is designed to understand medical language, context, and intent.</p>
+                <div class="key-principle"><span class="key-principle-label">Key Principle</span><p>NLP comprehends clinical meaning, not just words.</p></div>
+            </div>
+            <div class="clinical-case">
+                <div class="case-header nlp"><div class="case-icon nlp"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg></div><span class="case-title">Clinical Case: Automated Clinical Documentation (GP Example)</span></div>
+                <div class="case-body">
+                    <div class="case-section"><div class="case-section-title">Scenario</div><p>15-minute GP consultation for lower back pain, with NLP assisting real-time documentation.</p></div>
+                    <div class="case-section"><div class="case-section-title">NLP Processes</div><ul><li>Converts speech to text in real time</li><li>Extracts key concepts (symptoms, duration, severity)</li><li>Interprets terminology and abbreviations in context</li><li>Understands relationships between symptoms, findings, diagnosis, and treatment plans</li><li>Structures dialogue into documentation</li></ul></div>
+                    <div class="system-output"><div class="output-label">System Output (Draft SOAP Note)</div></div>
+                    <div class="soap-note">
+                        <div class="soap-row"><div class="soap-label">S</div><div class="soap-content">52-year-old presents with lower back pain, onset 3 days ago after lifting heavy boxes. Sharp pain radiating to right leg. Worse with movement, relieved by rest.</div></div>
+                        <div class="soap-row"><div class="soap-label">O</div><div class="soap-content">Vitals stable. Reduced lumbar flexion. Positive straight leg raise on right. No neurological deficits.</div></div>
+                        <div class="soap-row"><div class="soap-label">A</div><div class="soap-content">Acute mechanical lower back pain; possible sciatica.</div></div>
+                        <div class="soap-row"><div class="soap-label">P</div><div class="soap-content">Ibuprofen 400 mg TDS prescribed. Physiotherapy referral. Safety-net advice. Review in 2 weeks.</div></div>
+                    </div>
+                    <div class="case-section"><div class="case-section-title">Coded Problem List</div><ul><li>M54.5 – Low back pain</li><li>M54.4 – Lumbago with sciatica</li></ul></div>
+                    <div class="key-principle"><span class="key-principle-label">Key Point</span><p>NLP reduces the documentation burden, but clinicians remain responsible for accuracy, completeness, and judgement.</p></div>
+                </div>
+            </div>
+            <div class="content-block">
+                <h3 class="content-title">Interactive Use Cases (Top 6 Disciplines)</h3>
+                <div class="use-cases-grid">
+                    <div class="use-case-card"><div class="use-case-title">Medicine/GP</div><div class="use-case-desc">Notes, referrals, red-flag extraction</div><div class="use-case-question">Which parts must be carefully reviewed before sign-off?</div></div>
+                    <div class="use-case-card"><div class="use-case-title">Nursing</div><div class="use-case-desc">Handover notes, early deterioration language</div><div class="use-case-question">Risks if subtle concerns are poorly worded or missed?</div></div>
+                    <div class="use-case-card"><div class="use-case-title">Pharmacy</div><div class="use-case-desc">Medication review, history, adherence flags, counselling points</div><div class="use-case-question">Why double-check changes despite NLP assistance?</div></div>
+                    <div class="use-case-card"><div class="use-case-title">Dentistry</div><div class="use-case-desc">Exam and X-ray notes, patient summaries, coding</div><div class="use-case-question">Which terminology might NLP misinterpret?</div></div>
+                    <div class="use-case-card"><div class="use-case-title">Mental Health</div><div class="use-case-desc">Therapy session themes, progress notes</div><div class="use-case-question">Ethical considerations for notes?</div></div>
+                    <div class="use-case-card"><div class="use-case-title">Physio/Rehab</div><div class="use-case-desc">Gait, pain, function assessments, progress tracking</div><div class="use-case-question">How can NLP improve continuity across therapists?</div></div>
+                </div>
+            </div>
+            <div class="bl-grid">
+                <div class="bl-card benefits"><div class="bl-title"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Benefits</div><ul><li>Saves 5–7 minutes per consultation</li><li>Reduces fatigue</li><li>Improves consistency</li><li>Enhances continuity</li><li>Allows for increased patient-facing time</li></ul></div>
+                <div class="bl-card limitations"><div class="bl-title"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>Limitations/Safety</div><ul><li>Misinterpretation due to accents or unclear speech</li><li>Missed negations such as "no chest pain"</li><li>Reliance on clinician clarity</li><li>Requires human review and correction</li><li><strong>Automation Bias:</strong> Risk of signing notes without sufficient review</li></ul></div>
+            </div>
+            <div class="key-summary"><div class="key-summary-title">Key Learning Summary</div><ul><li>NLP understands clinical language and context</li><li>Converts conversation into structured documentation</li><li>Saves time but does not replace clinician responsibility</li><li>Review, editing, and sign-off are essential steps</li></ul></div>
+            <div class="video-placeholder"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="video-label">Video content placeholder</p></div>
+            <div class="reflect-box"><div class="reflect-header"><span class="reflect-icon">🧠</span><span class="reflect-label">Mini Reflection</span></div><p>If NLP drafted 90% of your notes, how would you ensure accuracy, maintain accountability, and protect safety/confidentiality?</p></div>
+            <div class="knowledge-check">
+                <div class="kc-header"><div class="kc-icon nlp"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="kc-title">Knowledge Check — NLP</span></div>
+                <form class="mcq-form" id="nlpForm">
+                    <fieldset><div class="question-block"><span class="question-number">MCQ 1</span><p class="question-text">What is the primary role of NLP in documentation?</p><div class="options-list"><div class="option-item"><input type="radio" id="nlp1a" name="nlp1" value="A" data-correct="false"><label for="nlp1a" class="option-label"><span class="option-letter">A</span><span class="option-text">Replace clinicians by finalising notes automatically</span></label></div><div class="option-item"><input type="radio" id="nlp1b" name="nlp1" value="B" data-correct="true"><label for="nlp1b" class="option-label"><span class="option-letter">B</span><span class="option-text">Convert clinical language into structured, usable documentation</span></label></div><div class="option-item"><input type="radio" id="nlp1c" name="nlp1" value="C" data-correct="false"><label for="nlp1c" class="option-label"><span class="option-letter">C</span><span class="option-text">Make diagnostic decisions</span></label></div><div class="option-item"><input type="radio" id="nlp1d" name="nlp1" value="D" data-correct="false"><label for="nlp1d" class="option-label"><span class="option-letter">D</span><span class="option-text">Remove the need for coding systems</span></label></div></div><div class="question-feedback" id="feedback-nlp1"></div></div></fieldset>
+                    <fieldset><div class="question-block"><span class="question-number">MCQ 2</span><p class="question-text">NLP generates a draft consult note. What is the appropriate action?</p><div class="options-list"><div class="option-item"><input type="radio" id="nlp2a" name="nlp2" value="A" data-correct="false"><label for="nlp2a" class="option-label"><span class="option-letter">A</span><span class="option-text">Accept as-is if it looks complete</span></label></div><div class="option-item"><input type="radio" id="nlp2b" name="nlp2" value="B" data-correct="false"><label for="nlp2b" class="option-label"><span class="option-letter">B</span><span class="option-text">Sign immediately to save time</span></label></div><div class="option-item"><input type="radio" id="nlp2c" name="nlp2" value="C" data-correct="true"><label for="nlp2c" class="option-label"><span class="option-letter">C</span><span class="option-text">Review for accuracy, context, omissions, then approve</span></label></div><div class="option-item"><input type="radio" id="nlp2d" name="nlp2" value="D" data-correct="false"><label for="nlp2d" class="option-label"><span class="option-letter">D</span><span class="option-text">Delete and write manually</span></label></div></div><div class="question-feedback" id="feedback-nlp2"></div></div></fieldset>
+                    <div class="submit-container"><button type="submit" class="submit-btn">Check Answers</button></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Section D: Computer Vision -->
+        <section id="cv-section" class="ai-section">
+            <header class="section-header cv">
+                <span class="section-badge cv">Section D</span>
+                <h2 class="section-title">Computer Vision (CV) in Healthcare</h2>
+                <div class="section-meta"><span class="meta-item">Duration: 10 minutes</span><span class="meta-item">Self-paced reading and interactive case elements</span></div>
+            </header>
+            <div class="learning-objectives">
+                <div class="lo-header"><div class="lo-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="lo-title">Learning Objectives</span></div>
+                <ul class="lo-list">
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Define Computer Vision within healthcare</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Identify why CV is effective for screening and triage</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Safely interpret CV outputs (referral recommendations)</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Apply CV insights appropriately, retaining accountability</span></li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <h3 class="content-title">What Is CV in Healthcare?</h3>
+                <p>Computer Vision enables computers to interpret and analyse visual information, such as images and videos. Common applications include:</p>
+                <ul><li>Retinal photographs</li><li>Radiology (X-ray, CT, MRI)</li><li>Dermatology images</li><li>Endoscopy and surgical videos</li></ul>
+                <p>Unlike human vision, CV systems analyse images at pixel-level resolution, can detect subtle patterns not easily visible, and apply consistent criteria across large volumes.</p>
+                <div class="key-principle"><span class="key-principle-label">Key Principle</span><p>CV identifies visual patterns; clinicians determine diagnosis and management.</p></div>
+            </div>
+            <div class="clinical-case">
+                <div class="case-header cv"><div class="case-icon cv"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg></div><span class="case-title">Clinical Case: Diabetic Retinopathy Screening</span></div>
+                <div class="case-body">
+                    <div class="case-section"><div class="case-section-title">Scenario</div><p>58-year-old patient with 12-year history of Type 2 Diabetes undergoes primary care screening using a non-mydriatic camera</p></div>
+                    <div class="case-section"><div class="case-section-title">CV Analyses</div><p>Evaluates vessel structure and branching, microaneurysms, haemorrhages, hard exudates, cotton-wool spots, neovascularisation, and macular oedema. Analyses millions of pixels, beyond manual capacity.</p></div>
+                    <div class="system-output"><div class="output-label">System Output</div><span class="output-highlight">"Refer to ophthalmology – suspected proliferative changes"</span><br><br>Findings: Bilateral microaneurysms, haemorrhages (superior temporal), possible early neovascularisation<br>Recommendation: <span class="output-value">Urgent ophthalmology review within two weeks</span></div>
+                    <div class="case-section"><div class="case-section-title">Interpreting Safely</div><p>A referral recommendation does not guarantee inevitable vision loss, a confirmed diagnosis, or the need for immediate treatment. It indicates the presence of higher-risk features that warrant specialist review. <strong>CV is a triage tool, not a diagnostic instrument.</strong></p></div>
+                    <div class="case-section"><div class="case-section-title">Clinical Application</div><ul><li>Expands screening access to primary and rural settings</li><li>Reduces specialist workload</li><li>Identifies high-risk patients earlier</li><li>Promotes equity in areas with limited specialist resources and large diabetic populations</li></ul></div>
+                </div>
+            </div>
+            <div class="reflect-box"><div class="reflect-header"><span class="reflect-icon">🧠</span><span class="reflect-label">Interactive Reflection</span></div><p>If image quality is poor, findings are borderline, or history is conflicting, should you repeat imaging, refer, or seek further input? This highlights the necessity of clinical oversight.</p></div>
+            <div class="bl-grid">
+                <div class="bl-card benefits"><div class="bl-title">Key Benefits</div><ul><li>Expands screening access</li><li>Consistent analysis at scale</li><li>Detects subtle changes</li><li>Supports early identification</li></ul></div>
+                <div class="bl-card limitations"><div class="bl-title">Limitations/Safety</div><ul><li>Performance depends on image quality</li><li>Can be affected by camera and lighting conditions</li><li>May underperform in rare or atypical cases</li><li>Requires human validation</li><li><strong>Automation Bias:</strong> Assuming referral decisions are definitive</li></ul></div>
+            </div>
+            <div class="key-summary"><div class="key-summary-title">Key Learning Summary</div><ul><li>CV excels at image-based screening</li><li>Detects subtle visual changes at scale</li><li>Outputs guide triage and prioritisation</li><li>Clinicians retain responsibility for diagnosis and management</li></ul></div>
+            <div class="knowledge-check">
+                <div class="kc-header"><div class="kc-icon cv"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="kc-title">Knowledge Check — CV</span></div>
+                <form class="mcq-form" id="cvForm">
+                    <fieldset><div class="question-block"><span class="question-number">Q1</span><p class="question-text">What is the primary role of CV in retinopathy screening?</p><div class="options-list"><div class="option-item"><input type="radio" id="cv1a" name="cv1" value="A" data-correct="false"><label for="cv1a" class="option-label"><span class="option-letter">A</span><span class="option-text">Make definitive diagnoses</span></label></div><div class="option-item"><input type="radio" id="cv1b" name="cv1" value="B" data-correct="false"><label for="cv1b" class="option-label"><span class="option-letter">B</span><span class="option-text">Replace ophthalmologists</span></label></div><div class="option-item"><input type="radio" id="cv1c" name="cv1" value="C" data-correct="true"><label for="cv1c" class="option-label"><span class="option-letter">C</span><span class="option-text">Identify and triage images needing specialist review</span></label></div><div class="option-item"><input type="radio" id="cv1d" name="cv1" value="D" data-correct="false"><label for="cv1d" class="option-label"><span class="option-letter">D</span><span class="option-text">Prescribe treatment</span></label></div></div><div class="question-feedback" id="feedback-cv1"></div></div></fieldset>
+                    <fieldset><div class="question-block"><span class="question-number">Q2</span><p class="question-text">How does CV analyse medical images?</p><div class="options-list"><div class="option-item"><input type="radio" id="cv2a" name="cv2" value="A" data-correct="false"><label for="cv2a" class="option-label"><span class="option-letter">A</span><span class="option-text">Relies only on visible abnormalities identified by clinicians</span></label></div><div class="option-item"><input type="radio" id="cv2b" name="cv2" value="B" data-correct="true"><label for="cv2b" class="option-label"><span class="option-letter">B</span><span class="option-text">Analyses pixels to detect subtle visual patterns</span></label></div><div class="option-item"><input type="radio" id="cv2c" name="cv2" value="C" data-correct="false"><label for="cv2c" class="option-label"><span class="option-letter">C</span><span class="option-text">Uses rule-based checklists</span></label></div><div class="option-item"><input type="radio" id="cv2d" name="cv2" value="D" data-correct="false"><label for="cv2d" class="option-label"><span class="option-letter">D</span><span class="option-text">Interprets symptoms alongside images</span></label></div></div><div class="question-feedback" id="feedback-cv2"></div></div></fieldset>
+                    <div class="submit-container"><button type="submit" class="submit-btn">Check Answers</button></div>
+                </form>
+            </div>
+            <div class="key-principle"><span class="key-principle-label">Key Reinforcement Message</span><p>CV extends access to screening, but clinicians remain responsible for final decisions.</p></div>
+        </section>
+
+        <!-- Section E: Rule-Based Systems -->
+        <section id="rule-section" class="ai-section">
+            <header class="section-header rule">
+                <span class="section-badge rule">Section E</span>
+                <h2 class="section-title">Rule-Based Clinical Systems</h2>
+                <div class="section-meta"><span class="meta-item">Duration: 5 minutes</span><span class="meta-item">Self-paced reading</span></div>
+            </header>
+            <div class="learning-objectives">
+                <div class="lo-header"><div class="lo-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="lo-title">Learning Objectives</span></div>
+                <ul class="lo-list">
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Explain how rule-based systems operate</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Identify strengths and limitations compared to AI systems</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Safely apply rule-based alerts</span></li>
+                    <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Recognise the value of combining rule-based systems with AI</span></li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <h3 class="content-title">What Are Rule-Based Clinical Systems?</h3>
+                <p>Rule-based systems are deterministic decision-support tools that use explicit, predefined rules created by experts.</p>
+                <p><strong>Logic structure:</strong></p>
+                <div class="system-output"><span class="output-highlight">IF</span> condition A <span class="output-highlight">AND</span> condition B <span class="output-highlight">THEN</span> perform action C</div>
+                <p>Common uses include:</p>
+                <ul><li>Drug–drug interaction checking</li><li>Allergy alerts</li><li>Contraindication warnings</li><li>Clinical guideline enforcement</li></ul>
+                <div class="key-principle"><span class="key-principle-label">Key Principle</span><p>Rule-based systems consistently enforce safety rules, but do not learn or adapt.</p></div>
+            </div>
+            <div class="clinical-case">
+                <div class="case-header rule"><div class="case-icon rule"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></div><span class="case-title">Clinical Case: Drug Interaction Alert</span></div>
+                <div class="case-body">
+                    <div class="case-section"><div class="case-section-title">Scenario</div><ul><li>Patient on warfarin (anticoagulant) presents with urinary tract infection</li><li>Clinician attempts to prescribe ciprofloxacin (antibiotic)</li></ul></div>
+                    <div class="alert-box"><div class="alert-header"><span class="alert-icon">⚠️</span><span class="alert-title">High-Severity Interaction Alert — Warfarin + Ciprofloxacin</span></div><div class="alert-content"><p class="alert-item"><strong>Potential interaction:</strong> Increased risk of bleeding</p><p class="alert-item"><strong>Mechanism:</strong> Ciprofloxacin may increase warfarin levels</p><p class="alert-item"><strong>Effect:</strong> Elevated INR and bleeding risk</p><p class="alert-item"><strong>Recommendations:</strong> Consider alternative antibiotic; if combination is necessary, monitor INR closely, consider dose adjustment, counsel on bleeding symptoms</p></div></div>
+                    <div class="case-section"><div class="case-section-title">What the System Is Doing</div><ul><li>Applies predefined IF–THEN logic</li><li>Does not learn or personalise</li><li>Provides deterministic output (same input yields same alert)</li></ul><p><em>Predictability is both a strength and a limitation.</em></p></div>
+                </div>
+            </div>
+            <div class="content-block">
+                <h3 class="content-title">How Rule-Based Differs from AI</h3>
+                <ul><li><strong>Rule-based:</strong> Enforces safety, is transparent and explainable, no probability or learning</li><li><strong>AI (ML/DL/NLP):</strong> Estimates risk, recognises patterns, adapts over time, and supports—rather than enforces—decisions</li></ul>
+                <div class="key-principle"><span class="key-principle-label">Key Distinction</span><p>Rule-based systems enforce safety, AI supports judgement.</p></div>
+            </div>
+            <div class="content-block">
+                <h3 class="content-title">Alert Fatigue</h3>
+                <p>Uniform rules can lead to frequent low-value alerts, workflow interruptions, and overrides, which risk reflex dismissal and missed warnings. This is a recognised safety issue.</p>
+                <h4 class="content-subtitle">Modern Hybrid Approach</h4>
+                <ul><li>Retain critical rule-based alerts</li><li>Use ML to add context</li><li>Suppress low-value alerts</li><li>Preserve high-severity warnings</li></ul>
+                <p><em>Improves usability without compromising safety.</em></p>
+            </div>
+            <div class="key-summary"><div class="key-summary-title">Key Learning Summary</div><ul><li>Fixed IF–THEN logic; predictable, transparent, and reliable</li><li>No learning or personalisation is involved</li><li>Best used in combination with AI to reduce alert fatigue</li><li>Clinicians retain accountability for decisions</li></ul></div>
+            <div class="knowledge-check">
+                <div class="kc-header"><div class="kc-icon rule"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="kc-title">Knowledge Check — Rule-Based</span></div>
+                <form class="mcq-form" id="ruleForm">
+                    <fieldset><div class="question-block"><span class="question-number">Question</span><p class="question-text">What is the key limitation of rule-based systems?</p><div class="options-list"><div class="option-item"><input type="radio" id="rule1a" name="rule1" value="A" data-correct="false"><label for="rule1a" class="option-label"><span class="option-letter">A</span><span class="option-text">Inconsistent alerts by clinician preference</span></label></div><div class="option-item"><input type="radio" id="rule1b" name="rule1" value="B" data-correct="false"><label for="rule1b" class="option-label"><span class="option-letter">B</span><span class="option-text">Ability to adapt and improve automatically over time</span></label></div><div class="option-item"><input type="radio" id="rule1c" name="rule1" value="C" data-correct="true"><label for="rule1c" class="option-label"><span class="option-letter">C</span><span class="option-text">Application of the same predefined rules regardless of patient context</span></label></div><div class="option-item"><input type="radio" id="rule1d" name="rule1" value="D" data-correct="false"><label for="rule1d" class="option-label"><span class="option-letter">D</span><span class="option-text">Inability to identify interactions</span></label></div></div><div class="question-feedback" id="feedback-rule1"></div></div></fieldset>
+                    <div class="submit-container"><button type="submit" class="submit-btn">Check Answer</button></div>
+                </form>
+            </div>
+            <div class="reflect-box"><div class="reflect-header"><span class="reflect-icon">🧠</span><span class="reflect-label">Reflective Practice — Modern CPD</span></div><p>Reflect on a past medication or safety alert. How did you decide whether to act, modify, or override it? Consider the role of clinical judgement and patient context.</p></div>
+        </section>
+    </article>
+
+    <script>
+        function validateForm(formId, questions) {
+            document.getElementById(formId).addEventListener('submit', function(e) {
+                e.preventDefault();
+                questions.forEach(function(qName) {
+                    var selected = document.querySelector('input[name="' + qName + '"]:checked');
+                    var feedbackEl = document.getElementById('feedback-' + qName);
+                    feedbackEl.classList.remove('correct', 'incorrect');
+                    if (selected) {
+                        var isCorrect = selected.getAttribute('data-correct') === 'true';
+                        if (isCorrect) { feedbackEl.textContent = 'Correct'; feedbackEl.classList.add('correct'); }
+                        else { feedbackEl.textContent = 'Incorrect'; feedbackEl.classList.add('incorrect'); }
+                    } else { feedbackEl.textContent = 'Please select an answer'; feedbackEl.classList.add('incorrect'); }
+                });
+            });
+        }
+        validateForm('mlForm', ['ml1', 'ml2']);
+        validateForm('dlForm', ['dl1', 'dl2']);
+        validateForm('nlpForm', ['nlp1', 'nlp2']);
+        validateForm('cvForm', ['cv1', 'cv2']);
+        validateForm('ruleForm', ['rule1']);
+    </script>
+</body>
+</html>

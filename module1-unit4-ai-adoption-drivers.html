@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 4: Why AI Adoption Is Accelerating Globally | AI Essentials for Healthcare Professionals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #0F4C5C;
+            --color-primary-light: #1A6B7F;
+            --color-secondary: #E8F4F8;
+            --color-accent: #2E8B8B;
+            --color-accent-warm: #D4A574;
+            --color-text: #2D3748;
+            --color-text-light: #4A5568;
+            --color-text-muted: #718096;
+            --color-bg: #FAFCFD;
+            --color-white: #FFFFFF;
+            --color-border: #E2E8F0;
+            --color-success: #38A169;
+            --color-error: #E53E3E;
+            --color-warning: #F6AD55;
+            --color-workforce: #E53E3E;
+            --color-data: #3182CE;
+            --color-admin: #805AD5;
+            --font-heading: 'Source Serif 4', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.75; color: var(--color-text); background: var(--color-bg); -webkit-font-smoothing: antialiased; }
+        .lms-container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+        
+        /* Header */
+        .lms-header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); padding: 48px 40px; border-radius: var(--radius-lg); margin-bottom: 48px; position: relative; overflow: hidden; }
+        .lms-header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); border-radius: 50%; }
+        .logo-placeholder { margin-bottom: 32px; position: relative; z-index: 1; }
+        .logo-placeholder img { height: 44px; width: auto; filter: brightness(0) invert(1); opacity: 0.95; }
+        .lms-header-content { position: relative; z-index: 1; }
+        .course-label { display: inline-block; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.8); margin-bottom: 12px; }
+        .module-title { font-family: var(--font-heading); font-size: 38px; font-weight: 700; color: var(--color-white); line-height: 1.2; margin-bottom: 8px; }
+        .course-title { font-size: 18px; color: rgba(255,255,255,0.85); font-weight: 400; }
+
+        /* Unit Header */
+        .unit-header { background: var(--color-secondary); padding: 28px 32px; border-radius: var(--radius-md); margin-bottom: 40px; border-left: 4px solid var(--color-accent); }
+        .unit-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: var(--color-accent); margin-bottom: 8px; }
+        .unit-title { font-family: var(--font-heading); font-size: 26px; font-weight: 600; color: var(--color-primary); margin-bottom: 16px; }
+        .time-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--color-white); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500; color: var(--color-text); }
+
+        /* Content */
+        .content-section { margin-bottom: 48px; }
+        .section-title { font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--color-primary); margin-bottom: 20px; }
+        p { margin-bottom: 16px; color: var(--color-text); }
+        ul, ol { margin-bottom: 20px; padding-left: 24px; }
+        li { margin-bottom: 10px; padding-left: 8px; }
+        li::marker { color: var(--color-accent); }
+
+        /* Key Drivers Grid */
+        .drivers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 28px 0; }
+        .driver-card { background: var(--color-white); border-radius: var(--radius-md); padding: 20px 24px; border: 1px solid var(--color-border); display: flex; align-items: flex-start; gap: 14px; transition: all 0.2s ease; }
+        .driver-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .driver-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; }
+        .driver-icon.workforce { background: rgba(229, 62, 62, 0.1); }
+        .driver-icon.data { background: rgba(49, 130, 206, 0.1); }
+        .driver-icon.computing { background: rgba(56, 161, 105, 0.1); }
+        .driver-icon.policy { background: rgba(128, 90, 213, 0.1); }
+        .driver-icon.admin { background: rgba(237, 137, 54, 0.1); }
+        .driver-text { font-size: 15px; font-weight: 500; color: var(--color-text); }
+
+        /* Healthcare Reality Box */
+        .reality-box { background: linear-gradient(135deg, #FFF5F5 0%, #FED7E2 100%); padding: 28px 32px; border-radius: var(--radius-md); margin: 32px 0; border-left: 5px solid var(--color-workforce); }
+        .reality-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-workforce); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .reality-box p { margin-bottom: 0; font-size: 16px; }
+
+        /* Scenario Cards */
+        .scenario-card { background: var(--color-white); border-radius: var(--radius-lg); margin: 40px 0; overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--color-border); }
+        .scenario-header { padding: 24px 28px; display: flex; align-items: center; gap: 16px; }
+        .scenario-header.workforce { background: linear-gradient(135deg, #FFF5F5 0%, #FED7D7 100%); }
+        .scenario-header.admin { background: linear-gradient(135deg, #FAF5FF 0%, #E9D8FD 100%); }
+        .scenario-header.data { background: linear-gradient(135deg, #EBF8FF 0%, #BEE3F8 100%); }
+        .scenario-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+        .scenario-header.workforce .scenario-icon { background: var(--color-workforce); color: white; }
+        .scenario-header.admin .scenario-icon { background: var(--color-admin); color: white; }
+        .scenario-header.data .scenario-icon { background: var(--color-data); color: white; }
+        .scenario-title-block { flex: 1; }
+        .scenario-number { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .scenario-header.workforce .scenario-number { color: var(--color-workforce); }
+        .scenario-header.admin .scenario-number { color: var(--color-admin); }
+        .scenario-header.data .scenario-number { color: var(--color-data); }
+        .scenario-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-primary); }
+        .scenario-time { font-size: 13px; color: var(--color-text-muted); background: rgba(255,255,255,0.7); padding: 6px 12px; border-radius: 20px; }
+        .scenario-body { padding: 28px; }
+
+        /* Problem Section */
+        .problem-section { background: #FEF2F2; border-radius: var(--radius-md); padding: 20px 24px; margin-bottom: 24px; border-left: 4px solid var(--color-error); }
+        .problem-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-error); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .problem-section ul { margin-bottom: 0; }
+        .problem-section li { margin-bottom: 8px; }
+        .problem-section li:last-child { margin-bottom: 0; }
+
+        /* AI Solution Section */
+        .ai-solution { background: linear-gradient(135deg, #F0FFF4 0%, #C6F6D5 100%); border-radius: var(--radius-md); padding: 20px 24px; margin-bottom: 24px; border-left: 4px solid var(--color-success); }
+        .ai-solution-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-success); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .ai-solution ul { margin-bottom: 0; }
+        .ai-solution li { margin-bottom: 8px; }
+        .ai-solution li:last-child { margin-bottom: 0; }
+
+        /* Flow Diagram */
+        .flow-diagram { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 28px 0; flex-wrap: wrap; }
+        .flow-box { padding: 16px 24px; border-radius: var(--radius-md); text-align: center; font-weight: 600; font-size: 14px; min-width: 140px; }
+        .flow-box.problem { background: #FED7D7; color: #C53030; }
+        .flow-box.ai { background: var(--color-secondary); color: var(--color-primary); }
+        .flow-box.outcome { background: #C6F6D5; color: #276749; }
+        .flow-arrow { color: var(--color-text-muted); font-size: 24px; }
+
+        /* Pause & Think */
+        .pause-think { background: linear-gradient(135deg, #FFFAF0 0%, #FEEBC8 100%); padding: 24px 28px; border-radius: var(--radius-md); margin: 24px 0; border: 1px solid #F6E05E; }
+        .pause-think-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .pause-think-icon { font-size: 24px; }
+        .pause-think-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #B7791F; }
+        .pause-think p { margin-bottom: 0; }
+        .pause-answer { margin-top: 12px; padding-top: 12px; border-top: 1px dashed #D69E2E; font-weight: 500; color: var(--color-primary); }
+
+        /* Reflection Box */
+        .reflect-box { background: linear-gradient(135deg, #FAF5FF 0%, #F3E8FF 100%); padding: 24px 28px; border-radius: var(--radius-md); margin: 24px 0; border: 1px solid #E9D8FD; }
+        .reflect-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .reflect-icon { font-size: 24px; }
+        .reflect-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #805AD5; }
+
+        /* Interactive Question */
+        .interactive-question { background: var(--color-white); border-radius: var(--radius-md); padding: 24px; margin: 24px 0; border: 2px solid var(--color-accent); }
+        .iq-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-accent); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .iq-answer { background: var(--color-secondary); padding: 14px 18px; border-radius: var(--radius-sm); margin-top: 12px; font-weight: 500; color: var(--color-primary); }
+
+        /* Safety Check */
+        .safety-check { background: #FFF5F5; padding: 20px 24px; border-radius: var(--radius-md); margin: 24px 0; border: 1px solid #FED7D7; display: flex; align-items: flex-start; gap: 14px; }
+        .safety-icon { font-size: 24px; flex-shrink: 0; }
+        .safety-content { flex: 1; }
+        .safety-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-error); margin-bottom: 6px; }
+        .safety-check p { margin-bottom: 0; }
+
+        /* Decision Point */
+        .decision-point { background: linear-gradient(135deg, #EBF8FF 0%, #BEE3F8 100%); padding: 24px 28px; border-radius: var(--radius-md); margin: 24px 0; border-left: 4px solid var(--color-data); }
+        .decision-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-data); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .decision-point p { margin-bottom: 0; font-weight: 500; }
+
+        /* Critical Thinking */
+        .critical-thinking { background: var(--color-white); border-radius: var(--radius-md); padding: 24px; margin: 24px 0; border: 2px dashed var(--color-border); }
+        .ct-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .ct-icon { font-size: 24px; }
+        .ct-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-light); }
+        .ct-question { font-style: italic; color: var(--color-text); margin-bottom: 0; }
+
+        /* Icon Legend */
+        .icon-legend { display: flex; justify-content: center; gap: 32px; margin: 40px 0; padding: 24px; background: var(--color-white); border-radius: var(--radius-md); border: 1px solid var(--color-border); flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 10px; }
+        .legend-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .legend-icon.workforce { background: rgba(229, 62, 62, 0.1); }
+        .legend-icon.data { background: rgba(49, 130, 206, 0.1); }
+        .legend-icon.admin { background: rgba(128, 90, 213, 0.1); }
+        .legend-text { font-size: 14px; font-weight: 500; color: var(--color-text); }
+
+        /* Key Summary */
+        .key-summary { background: var(--color-secondary); border-radius: var(--radius-md); padding: 24px 28px; margin: 32px 0; }
+        .key-summary-title { font-weight: 600; color: var(--color-primary); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+        .key-summary ul { margin: 0; padding-left: 20px; }
+        .key-summary li { margin-bottom: 8px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .lms-container { padding: 24px 16px 60px; }
+            .lms-header { padding: 32px 24px; }
+            .module-title { font-size: 28px; }
+            .drivers-grid { grid-template-columns: 1fr; }
+            .flow-diagram { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+            .scenario-header { flex-direction: column; text-align: center; gap: 12px; }
+            .icon-legend { flex-direction: column; align-items: center; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <article class="lms-container">
+        <header class="lms-header">
+            <div class="logo-placeholder">
+                <img src="" alt="madashealth.ai logo">
+            </div>
+            <div class="lms-header-content">
+                <span class="course-label">Module 1</span>
+                <h1 class="module-title">AI Foundations for Healthcare</h1>
+                <p class="course-title">AI Essentials for Healthcare Professionals</p>
+            </div>
+        </header>
+
+        <section class="unit-header">
+            <span class="unit-label">Unit 4</span>
+            <h2 class="unit-title">Why AI Adoption Is Accelerating Globally</h2>
+            <span class="time-badge">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Estimated Learning Time: 15 minutes
+            </span>
+        </section>
+
+        <section class="content-section">
+            <h3 class="section-title">Key Drivers of Adoption</h3>
+            
+            <div class="drivers-grid">
+                <div class="driver-card">
+                    <div class="driver-icon workforce">🔄</div>
+                    <span class="driver-text">Increasing healthcare demand and workforce shortages</span>
+                </div>
+                <div class="driver-card">
+                    <div class="driver-icon data">📊</div>
+                    <span class="driver-text">Rapid expansion of digital health data</span>
+                </div>
+                <div class="driver-card">
+                    <div class="driver-icon computing">⚡</div>
+                    <span class="driver-text">Advancements in computing power and cloud infrastructure</span>
+                </div>
+                <div class="driver-card">
+                    <div class="driver-icon policy">📋</div>
+                    <span class="driver-text">Supportive policy frameworks</span>
+                </div>
+                <div class="driver-card">
+                    <div class="driver-icon admin">🧾</div>
+                    <span class="driver-text">Necessity to reduce administrative burden</span>
+                </div>
+            </div>
+
+            <div class="reality-box">
+                <div class="reality-label">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Healthcare Reality
+                </div>
+                <p>The adoption of AI is motivated less by hype and more by the need to address operational challenges and inefficiencies. Many healthcare systems are under considerable strain, requiring new solutions for sustainability and quality patient care.</p>
+            </div>
+        </section>
+
+        <!-- Case Scenario 1 -->
+        <div class="scenario-card">
+            <div class="scenario-header workforce">
+                <div class="scenario-icon">🏥</div>
+                <div class="scenario-title-block">
+                    <div class="scenario-number">Case Scenario 1</div>
+                    <h4 class="scenario-title">Workforce Pressure & AI Adoption</h4>
+                </div>
+                <span class="scenario-time">~3 minutes</span>
+            </div>
+            <div class="scenario-body">
+                <h5 style="font-weight: 600; color: var(--color-primary); margin-bottom: 16px; font-size: 18px;">🏥 Overloaded Emergency Department</h5>
+                
+                <div class="problem-section">
+                    <div class="problem-label">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        The Problem
+                    </div>
+                    <ul>
+                        <li>Ongoing staff shortages</li>
+                        <li>Increasing numbers of elderly patients with complex conditions</li>
+                        <li>Extended waiting times and access blockages; even additional shifts do not solve delays</li>
+                    </ul>
+                </div>
+
+                <div class="ai-solution">
+                    <div class="ai-solution-label">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        AI-Supported Triage System
+                    </div>
+                    <ul>
+                        <li>Analyses symptoms, vital signs, and previous health records</li>
+                        <li>Flags high-risk patients earlier</li>
+                        <li>Assists nursing teams in prioritisation during peak demand</li>
+                    </ul>
+                </div>
+
+                <div class="flow-diagram">
+                    <div class="flow-box problem">Staff Shortage<br>+ Rising Demand</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box ai">AI Triage<br>Support</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box outcome">Faster<br>Prioritisation</div>
+                </div>
+
+                <div class="pause-think">
+                    <div class="pause-think-header">
+                        <span class="pause-think-icon">💭</span>
+                        <span class="pause-think-label">Pause & Think</span>
+                    </div>
+                    <p>Which driver is most relevant here?</p>
+                    <div class="pause-answer">Rising demand and workforce shortages.</div>
+                </div>
+
+                <div class="reflect-box">
+                    <div class="reflect-header">
+                        <span class="reflect-icon">🧠</span>
+                        <span class="reflect-label">Reflection</span>
+                    </div>
+                    <p>Consider where workforce pressures are most evident in your workplace and how AI might support decision-making, without replacing human judgement.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Scenario 2 -->
+        <div class="scenario-card">
+            <div class="scenario-header admin">
+                <div class="scenario-icon">🧾</div>
+                <div class="scenario-title-block">
+                    <div class="scenario-number">Case Scenario 2</div>
+                    <h4 class="scenario-title">Administrative Burden</h4>
+                </div>
+                <span class="scenario-time">~2–3 minutes</span>
+            </div>
+            <div class="scenario-body">
+                <h5 style="font-weight: 600; color: var(--color-primary); margin-bottom: 16px; font-size: 18px;">🧾 Documentation Burden in GP Clinic</h5>
+                
+                <div class="problem-section">
+                    <div class="problem-label">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        The Problem
+                    </div>
+                    <ul>
+                        <li>Doctors spend 40–45% of their day on administrative and documentation tasks</li>
+                        <li>Increasing burnout and shorter appointment times</li>
+                    </ul>
+                </div>
+
+                <div class="ai-solution">
+                    <div class="ai-solution-label">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        AI Documentation Tools
+                    </div>
+                    <ul>
+                        <li>Convert speech to structured notes</li>
+                        <li>Auto-suggest coding and summaries</li>
+                        <li>Require clinician review and sign-off</li>
+                    </ul>
+                </div>
+
+                <div class="flow-diagram">
+                    <div class="flow-box problem">40–45% Time<br>on Admin</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box ai">AI Documentation<br>Assistance</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box outcome">More Patient<br>Facing Time</div>
+                </div>
+
+                <div class="interactive-question">
+                    <div class="iq-label">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Interactive Question
+                    </div>
+                    <p>What does AI primarily address in this scenario?</p>
+                    <div class="iq-answer">AI primarily addresses administrative inefficiency.</div>
+                </div>
+
+                <div class="safety-check">
+                    <span class="safety-icon">⚠️</span>
+                    <div class="safety-content">
+                        <div class="safety-label">Safety Check</div>
+                        <p>The healthcare professional remains legally and professionally responsible for the clinical record.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Scenario 3 -->
+        <div class="scenario-card">
+            <div class="scenario-header data">
+                <div class="scenario-icon">🖥️</div>
+                <div class="scenario-title-block">
+                    <div class="scenario-number">Case Scenario 3</div>
+                    <h4 class="scenario-title">Data Explosion & AI Capability</h4>
+                </div>
+                <span class="scenario-time">~3–4 minutes</span>
+            </div>
+            <div class="scenario-body">
+                <h5 style="font-weight: 600; color: var(--color-primary); margin-bottom: 16px; font-size: 18px;">🖥️ Imaging at Scale in Radiology</h5>
+                
+                <div class="problem-section">
+                    <div class="problem-label">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        The Problem
+                    </div>
+                    <ul>
+                        <li>Thousands of CT and X-ray images processed daily</li>
+                        <li>Reporting delays and risk of missed subtle findings due to sheer volume</li>
+                    </ul>
+                </div>
+
+                <div class="ai-solution">
+                    <div class="ai-solution-label">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        AI Imaging System
+                    </div>
+                    <ul>
+                        <li>Performs background analysis</li>
+                        <li>Highlights potential areas of concern</li>
+                        <li>Prioritises urgent cases for review</li>
+                    </ul>
+                </div>
+
+                <div class="flow-diagram">
+                    <div class="flow-box problem">1000s of Images<br>Daily</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box ai">AI Background<br>Analysis</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box outcome">Prioritised<br>Urgent Cases</div>
+                </div>
+
+                <div class="decision-point">
+                    <div class="decision-label">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Decision Point
+                    </div>
+                    <p>AI's most accurate role is supporting pattern recognition at scale.</p>
+                </div>
+
+                <div class="critical-thinking">
+                    <div class="ct-header">
+                        <span class="ct-icon">🤔</span>
+                        <span class="ct-label">Critical Thinking</span>
+                    </div>
+                    <p class="ct-question">Why is this task better suited to AI than traditional rule-based software?</p>
+                    <p style="margin-top: 12px; margin-bottom: 0; font-size: 14px; color: var(--color-text-muted);">(Reflective activity for learners.)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Icon Legend -->
+        <div class="icon-legend">
+            <div class="legend-item">
+                <div class="legend-icon workforce">🔄</div>
+                <span class="legend-text">Workforce</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-icon data">📊</div>
+                <span class="legend-text">Data</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-icon admin">🧾</div>
+                <span class="legend-text">Admin</span>
+            </div>
+        </div>
+
+        <div class="key-summary">
+            <div class="key-summary-title">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Key Takeaways
+            </div>
+            <ul>
+                <li>AI adoption is driven by practical healthcare challenges, not hype</li>
+                <li>Workforce shortages, data volumes, and administrative burden are key drivers</li>
+                <li>AI supports clinicians but does not replace professional judgement</li>
+                <li>Clinicians retain accountability for all clinical decisions</li>
+            </ul>
+        </div>
+    </article>
+</body>
+</html>

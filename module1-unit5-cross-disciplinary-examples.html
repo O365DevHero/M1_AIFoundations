@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 5: Cross-Disciplinary Healthcare Examples | AI Essentials for Healthcare Professionals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #0F4C5C;
+            --color-primary-light: #1A6B7F;
+            --color-secondary: #E8F4F8;
+            --color-accent: #2E8B8B;
+            --color-accent-warm: #D4A574;
+            --color-text: #2D3748;
+            --color-text-light: #4A5568;
+            --color-text-muted: #718096;
+            --color-bg: #FAFCFD;
+            --color-white: #FFFFFF;
+            --color-border: #E2E8F0;
+            --color-success: #38A169;
+            --color-error: #E53E3E;
+            --color-warning: #F6AD55;
+            --color-medicine: #E53E3E;
+            --color-allied: #3182CE;
+            --color-mental: #805AD5;
+            --color-dental: #38A169;
+            --color-public: #DD6B20;
+            --font-heading: 'Source Serif 4', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.75; color: var(--color-text); background: var(--color-bg); -webkit-font-smoothing: antialiased; }
+        .lms-container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+        /* Header */
+        .lms-header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); padding: 48px 40px; border-radius: var(--radius-lg); margin-bottom: 48px; position: relative; overflow: hidden; }
+        .lms-header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); border-radius: 50%; }
+        .logo-placeholder { margin-bottom: 32px; position: relative; z-index: 1; }
+        .logo-placeholder img { height: 44px; width: auto; filter: brightness(0) invert(1); opacity: 0.95; }
+        .lms-header-content { position: relative; z-index: 1; }
+        .course-label { display: inline-block; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.8); margin-bottom: 12px; }
+        .module-title { font-family: var(--font-heading); font-size: 38px; font-weight: 700; color: var(--color-white); line-height: 1.2; margin-bottom: 8px; }
+        .course-title { font-size: 18px; color: rgba(255,255,255,0.85); font-weight: 400; }
+
+        /* Unit Header */
+        .unit-header { background: var(--color-secondary); padding: 28px 32px; border-radius: var(--radius-md); margin-bottom: 40px; border-left: 4px solid var(--color-accent); }
+        .unit-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: var(--color-accent); margin-bottom: 8px; }
+        .unit-title { font-family: var(--font-heading); font-size: 26px; font-weight: 600; color: var(--color-primary); margin-bottom: 16px; }
+        .time-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--color-white); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500; color: var(--color-text); }
+
+        /* Content */
+        .content-section { margin-bottom: 48px; }
+        .section-title { font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--color-primary); margin-bottom: 20px; }
+        .section-subtitle { font-family: var(--font-heading); font-size: 18px; font-weight: 600; color: var(--color-text); margin-top: 28px; margin-bottom: 14px; }
+        p { margin-bottom: 16px; color: var(--color-text); }
+        ul, ol { margin-bottom: 20px; padding-left: 24px; }
+        li { margin-bottom: 10px; padding-left: 8px; }
+        li::marker { color: var(--color-accent); }
+
+        /* Disciplines Grid */
+        .disciplines-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 28px 0; }
+        .discipline-card { background: var(--color-white); border-radius: var(--radius-md); padding: 20px; text-align: center; border: 1px solid var(--color-border); transition: all 0.2s ease; }
+        .discipline-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .discipline-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; }
+        .discipline-card.medicine .discipline-icon { background: rgba(229, 62, 62, 0.1); }
+        .discipline-card.allied .discipline-icon { background: rgba(49, 130, 206, 0.1); }
+        .discipline-card.mental .discipline-icon { background: rgba(128, 90, 213, 0.1); }
+        .discipline-card.dental .discipline-icon { background: rgba(56, 161, 105, 0.1); }
+        .discipline-card.public .discipline-icon { background: rgba(221, 107, 32, 0.1); }
+        .discipline-name { font-weight: 600; font-size: 14px; color: var(--color-text); }
+
+        /* Applications Grid */
+        .applications-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0; }
+        .application-card { background: var(--color-white); border-radius: var(--radius-md); padding: 20px 24px; border: 1px solid var(--color-border); display: flex; align-items: flex-start; gap: 14px; }
+        .app-icon { width: 40px; height: 40px; background: var(--color-secondary); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+        .app-text { font-size: 15px; color: var(--color-text); }
+
+        /* Learning Outcomes */
+        .learning-outcomes { background: var(--color-white); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; border: 1px solid var(--color-border); box-shadow: var(--shadow-sm); }
+        .lo-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border); }
+        .lo-icon { width: 48px; height: 48px; background: var(--color-accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .lo-icon svg { width: 24px; height: 24px; color: white; }
+        .lo-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-primary); }
+        .lo-list { list-style: none; padding: 0; margin: 0; }
+        .lo-list li { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px dashed var(--color-border); }
+        .lo-list li:last-child { border-bottom: none; padding-bottom: 0; }
+        .lo-check { width: 24px; height: 24px; background: var(--color-success); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+        .lo-check svg { width: 14px; height: 14px; color: white; }
+
+        /* Use Cases */
+        .use-cases-section { background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; }
+        .use-cases-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+        .use-cases-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-primary); }
+        .use-cases-badge { background: var(--color-accent); color: white; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 20px; }
+        .use-case-item { background: var(--color-white); border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 14px; border: 1px solid var(--color-border); }
+        .use-case-item:last-child { margin-bottom: 0; }
+        .use-case-number { width: 28px; height: 28px; background: var(--color-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--color-primary); flex-shrink: 0; }
+        .use-case-text { font-size: 15px; color: var(--color-text); }
+        .supplementary-note { font-size: 13px; color: var(--color-text-muted); font-style: italic; margin-top: 16px; text-align: center; }
+
+        /* Knowledge Check Info */
+        .kc-info { background: var(--color-white); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; border: 2px solid var(--color-accent); }
+        .kc-info-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+        .kc-info-icon { width: 52px; height: 52px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .kc-info-icon svg { width: 26px; height: 26px; color: white; }
+        .kc-info-title { font-family: var(--font-heading); font-size: 22px; font-weight: 600; color: var(--color-primary); }
+        .kc-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .kc-feature { display: flex; align-items: flex-start; gap: 10px; }
+        .kc-feature-icon { color: var(--color-accent); flex-shrink: 0; margin-top: 2px; }
+        .kc-feature-text { font-size: 14px; color: var(--color-text); }
+
+        /* Reflective Practice */
+        .reflect-section { background: linear-gradient(135deg, #FAF5FF 0%, #F3E8FF 100%); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; border: 1px solid #E9D8FD; }
+        .reflect-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+        .reflect-icon-wrap { width: 48px; height: 48px; background: #805AD5; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .reflect-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: #553C9A; }
+        .reflect-list { list-style: none; padding: 0; margin: 0 0 16px 0; }
+        .reflect-list li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px dashed rgba(128, 90, 213, 0.3); }
+        .reflect-list li:last-child { border-bottom: none; }
+        .reflect-bullet { width: 8px; height: 8px; background: #805AD5; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+        .reflect-note { font-size: 13px; color: #6B46C1; font-style: italic; }
+
+        /* Analytics Section */
+        .analytics-section { background: var(--color-white); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; border: 1px solid var(--color-border); }
+        .analytics-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+        .analytics-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #3182CE 0%, #2B6CB0 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .analytics-icon svg { width: 24px; height: 24px; color: white; }
+        .analytics-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-primary); }
+        .analytics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .analytics-col h4 { font-size: 14px; font-weight: 600; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+        .analytics-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px dashed var(--color-border); font-size: 14px; }
+        .analytics-item:last-child { border-bottom: none; }
+        .analytics-dot { width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; }
+
+        /* Transition Statement */
+        .transition-box { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); border-radius: var(--radius-lg); padding: 32px; margin: 40px 0; color: white; position: relative; overflow: hidden; }
+        .transition-box::before { content: ''; position: absolute; top: -30%; right: -10%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); border-radius: 50%; }
+        .transition-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+        .transition-box p { margin-bottom: 0; font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.95); position: relative; z-index: 1; }
+
+        /* Recommended Reading */
+        .reading-section { background: var(--color-white); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; border: 1px solid var(--color-border); }
+        .reading-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border); }
+        .reading-icon { width: 48px; height: 48px; background: var(--color-accent-warm); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .reading-icon svg { width: 24px; height: 24px; color: white; }
+        .reading-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-primary); }
+        .reading-item { padding: 16px 0; border-bottom: 1px solid var(--color-border); }
+        .reading-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .reading-item-title { font-weight: 600; color: var(--color-text); margin-bottom: 4px; font-size: 15px; }
+        .reading-item-desc { font-size: 13px; color: var(--color-text-light); margin-bottom: 8px; }
+        .reading-item-link { font-size: 13px; color: var(--color-accent); text-decoration: none; word-break: break-all; }
+        .reading-item-link:hover { text-decoration: underline; }
+
+        /* Module Summary */
+        .module-summary { background: var(--color-secondary); border-radius: var(--radius-lg); padding: 32px; margin: 40px 0; }
+        .summary-header { text-align: center; margin-bottom: 28px; }
+        .summary-title { font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px; }
+        .summary-subtitle { font-size: 15px; color: var(--color-text-light); }
+        .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px; }
+        .summary-stat { background: var(--color-white); border-radius: var(--radius-md); padding: 20px; text-align: center; }
+        .stat-value { font-size: 28px; font-weight: 700; color: var(--color-primary); margin-bottom: 4px; }
+        .stat-label { font-size: 13px; color: var(--color-text-muted); }
+        .summary-details { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .summary-detail { background: var(--color-white); border-radius: var(--radius-md); padding: 20px; }
+        .detail-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-muted); margin-bottom: 8px; }
+        .detail-text { font-size: 14px; color: var(--color-text); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .lms-container { padding: 24px 16px 60px; }
+            .lms-header { padding: 32px 24px; }
+            .module-title { font-size: 28px; }
+            .disciplines-grid { grid-template-columns: repeat(2, 1fr); }
+            .applications-grid { grid-template-columns: 1fr; }
+            .kc-features { grid-template-columns: 1fr; }
+            .analytics-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .summary-details { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <article class="lms-container">
+        <header class="lms-header">
+            <div class="logo-placeholder">
+                <img src="" alt="madashealth.ai logo">
+            </div>
+            <div class="lms-header-content">
+                <span class="course-label">Module 1</span>
+                <h1 class="module-title">AI Foundations for Healthcare</h1>
+                <p class="course-title">AI Essentials for Healthcare Professionals</p>
+            </div>
+        </header>
+
+        <section class="unit-header">
+            <span class="unit-label">Unit 5</span>
+            <h2 class="unit-title">Cross-Disciplinary Healthcare Examples</h2>
+            <span class="time-badge">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Estimated Learning Time: 10 minutes
+            </span>
+        </section>
+
+        <section class="content-section">
+            <h3 class="section-title">AI Across Disciplines</h3>
+            
+            <div class="disciplines-grid">
+                <div class="discipline-card medicine">
+                    <div class="discipline-icon">🏥</div>
+                    <span class="discipline-name">Medicine and Nursing</span>
+                </div>
+                <div class="discipline-card allied">
+                    <div class="discipline-icon">🦿</div>
+                    <span class="discipline-name">Allied Health and Rehabilitation</span>
+                </div>
+                <div class="discipline-card mental">
+                    <div class="discipline-icon">🧠</div>
+                    <span class="discipline-name">Mental Health Services</span>
+                </div>
+                <div class="discipline-card dental">
+                    <div class="discipline-icon">🦷</div>
+                    <span class="discipline-name">Dentistry and Pharmacy</span>
+                </div>
+                <div class="discipline-card public">
+                    <div class="discipline-icon">📊</div>
+                    <span class="discipline-name">Public Health and Administration</span>
+                </div>
+            </div>
+
+            <h4 class="section-subtitle">Example Applications</h4>
+            
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="app-icon">🚨</div>
+                    <span class="app-text">AI-assisted triage in emergency departments</span>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">👥</div>
+                    <span class="app-text">Predictive staffing models for workforce management</span>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">⚙️</div>
+                    <span class="app-text">Automation of clinical workflows</span>
+                </div>
+                <div class="application-card">
+                    <div class="app-icon">💬</div>
+                    <span class="app-text">Patient engagement tools to improve communication and adherence</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="learning-outcomes">
+            <div class="lo-header">
+                <div class="lo-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                </div>
+                <span class="lo-title">Learning Outcomes</span>
+            </div>
+            <p style="margin-bottom: 20px; color: var(--color-text-light);">Upon completing this module, participants will be able to:</p>
+            <ul class="lo-list">
+                <li>
+                    <span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                    <span>Develop a shared vocabulary of AI concepts across different roles</span>
+                </li>
+                <li>
+                    <span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                    <span>Distinguish between AI and traditional software systems</span>
+                </li>
+                <li>
+                    <span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                    <span>Identify where AI provides value and where it may not be beneficial</span>
+                </li>
+                <li>
+                    <span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                    <span>Understand practical capabilities and limitations of AI tools</span>
+                </li>
+                <li>
+                    <span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                    <span>Interpret AI-generated outputs critically within clinical context</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="use-cases-section">
+            <div class="use-cases-header">
+                <span class="use-cases-title">Real-World Use Cases (Additional Reading)</span>
+                <span class="use-cases-badge">5 Resources</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-text-light); margin-bottom: 16px;">Links available in LMS; reviewed periodically</p>
+            
+            <div class="use-case-item">
+                <span class="use-case-number">1</span>
+                <span class="use-case-text">AI triage tools in emergency care</span>
+            </div>
+            <div class="use-case-item">
+                <span class="use-case-number">2</span>
+                <span class="use-case-text">AI pathology interpretation platforms</span>
+            </div>
+            <div class="use-case-item">
+                <span class="use-case-number">3</span>
+                <span class="use-case-text">Clinical documentation automation tools</span>
+            </div>
+            <div class="use-case-item">
+                <span class="use-case-number">4</span>
+                <span class="use-case-text">AI imaging analysis in radiology</span>
+            </div>
+            <div class="use-case-item">
+                <span class="use-case-number">5</span>
+                <span class="use-case-text">AI-assisted population health analytics</span>
+            </div>
+            
+            <p class="supplementary-note">Supplementary readings; not required for module completion.</p>
+        </div>
+
+        <div class="kc-info">
+            <div class="kc-info-header">
+                <div class="kc-info-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <span class="kc-info-title">Knowledge Check</span>
+            </div>
+            <div class="kc-features">
+                <div class="kc-feature">
+                    <svg class="kc-feature-icon" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    <span class="kc-feature-text">10 Multiple-Choice Questions (MCQs)</span>
+                </div>
+                <div class="kc-feature">
+                    <svg class="kc-feature-icon" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    <span class="kc-feature-text">Scenario-based questions</span>
+                </div>
+                <div class="kc-feature">
+                    <svg class="kc-feature-icon" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span class="kc-feature-text">One best answer per question</span>
+                </div>
+                <div class="kc-feature">
+                    <svg class="kc-feature-icon" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="kc-feature-text">Answers include explanations for correct and incorrect options</span>
+                </div>
+                <div class="kc-feature">
+                    <svg class="kc-feature-icon" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    <span class="kc-feature-text">Assesses conceptual understanding of AI</span>
+                </div>
+                <div class="kc-feature">
+                    <svg class="kc-feature-icon" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <span class="kc-feature-text">Focuses on clinical interpretation of AI outputs</span>
+                </div>
+                <div class="kc-feature">
+                    <svg class="kc-feature-icon" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <span class="kc-feature-text">Evaluates safety awareness in AI application</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="reflect-section">
+            <div class="reflect-header">
+                <div class="reflect-icon-wrap">🧠</div>
+                <span class="reflect-title">Reflective Practice (Modern CPD)</span>
+            </div>
+            <ul class="reflect-list">
+                <li>
+                    <span class="reflect-bullet"></span>
+                    <span>Consider how AI could support your role without compromising safety or accountability</span>
+                </li>
+                <li>
+                    <span class="reflect-bullet"></span>
+                    <span>Reflect on the risks that could arise if AI outputs are accepted without sufficient human oversight</span>
+                </li>
+            </ul>
+            <p class="reflect-note">Reflections can be saved or exported for CPD audits.</p>
+        </div>
+
+        <div class="analytics-section">
+            <div class="analytics-header">
+                <div class="analytics-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <span class="analytics-title">Learner Analytics</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-text-light); margin-bottom: 20px;">Learner engagement is automatically tracked within the LMS:</p>
+            <div class="analytics-grid">
+                <div class="analytics-col">
+                    <h4>Tracked Metrics</h4>
+                    <div class="analytics-item"><span class="analytics-dot"></span><span>Time spent on content</span></div>
+                    <div class="analytics-item"><span class="analytics-dot"></span><span>Quiz accuracy by topic</span></div>
+                    <div class="analytics-item"><span class="analytics-dot"></span><span>Self-assessed confidence before and after completion</span></div>
+                </div>
+                <div class="analytics-col">
+                    <h4>Informs</h4>
+                    <div class="analytics-item"><span class="analytics-dot"></span><span>Learner self-awareness and insight</span></div>
+                    <div class="analytics-item"><span class="analytics-dot"></span><span>Organisational reporting</span></div>
+                    <div class="analytics-item"><span class="analytics-dot"></span><span>CPD audit preparedness</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="transition-box">
+            <div class="transition-label">What's Next</div>
+            <p>Understanding foundational AI concepts is only effective when paired with a knowledge of the data underpinning these technologies. The next module will introduce healthcare data, digital literacy, and explore how data quality is essential to AI safety and effectiveness.</p>
+        </div>
+
+        <div class="reading-section">
+            <div class="reading-header">
+                <div class="reading-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                </div>
+                <span class="reading-title">Recommended Reading</span>
+            </div>
+            <p style="font-size: 14px; color: var(--color-text-light); margin-bottom: 20px;">Learners can use these for deeper study and assignment work:</p>
+            
+            <div class="reading-item">
+                <div class="reading-item-title">Narrative review on benefits and risks of AI in healthcare</div>
+                <div class="reading-item-desc">Neri S, et al. Benefits and Risks of AI in Health Care: Narrative Review. JMIR Med Inform. 2024.</div>
+                <a href="https://www.i-jmr.org/2024/1/e53616" class="reading-item-link" target="_blank">https://www.i-jmr.org/2024/1/e53616</a>
+            </div>
+            
+            <div class="reading-item">
+                <div class="reading-item-title">Comprehensive review of AI's impact on diagnostics, treatment, and operations</div>
+                <div class="reading-item-desc">Al‑Fuqaha A, et al. The Impact of Artificial Intelligence on Healthcare. 2025.</div>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11702416/" class="reading-item-link" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC11702416/</a>
+            </div>
+            
+            <div class="reading-item">
+                <div class="reading-item-title">General review of AI applications in healthcare</div>
+                <div class="reading-item-desc">Jiang F, et al. Artificial intelligence in healthcare: transforming the practice of medicine. 2020.</div>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8285156/" class="reading-item-link" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC8285156/</a>
+            </div>
+            
+            <div class="reading-item">
+                <div class="reading-item-title">Overview of AI applications in multiple healthcare domains</div>
+                <div class="reading-item-desc">Rajpurkar P, et al. A Review of the Role of Artificial Intelligence in Healthcare. 2023.</div>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10301994/" class="reading-item-link" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC10301994/</a>
+            </div>
+            
+            <div class="reading-item">
+                <div class="reading-item-title">AI in healthcare: past, present and future; machine learning and NLP focus</div>
+                <div class="reading-item-desc">Jiang F, et al. Stroke & Vascular Neurology. 2017.</div>
+                <a href="https://svn.bmj.com/content/2/4/230" class="reading-item-link" target="_blank">https://svn.bmj.com/content/2/4/230</a>
+            </div>
+            
+            <div class="reading-item">
+                <div class="reading-item-title">High‑level review of AI in healthcare, including types of AI</div>
+                <div class="reading-item-desc">De Simone S, et al. Artificial intelligence in healthcare (Review). 2024.</div>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11582508/" class="reading-item-link" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC11582508/</a>
+            </div>
+            
+            <div class="reading-item">
+                <div class="reading-item-title">Types of AI in healthcare (rule‑based, ML, NLP, RPA)</div>
+                <div class="reading-item-desc">Xsolis. Types of AI in Healthcare. 2025.</div>
+                <a href="https://www.xsolis.com/blog/types-of-ai-in-healthcare/" class="reading-item-link" target="_blank">https://www.xsolis.com/blog/types-of-ai-in-healthcare/</a>
+            </div>
+            
+            <div class="reading-item">
+                <div class="reading-item-title">Categories of AI technology in healthcare (ML/DL, NLP, robotics/computer vision)</div>
+                <div class="reading-item-desc">TechGenies. Three AI Technology Categories in Healthcare. 2025.</div>
+                <a href="https://techgenies.com/ai-technology-categories-in-healthcare/" class="reading-item-link" target="_blank">https://techgenies.com/ai-technology-categories-in-healthcare/</a>
+            </div>
+            
+            <div class="reading-item">
+                <div class="reading-item-title">Global AI in healthcare statistics and adoption trends</div>
+                <div class="reading-item-desc">AIPRM. AI in Healthcare Statistics 2024. 2024.</div>
+                <a href="https://www.aiprm.com/ai-in-healthcare-statistics/" class="reading-item-link" target="_blank">https://www.aiprm.com/ai-in-healthcare-statistics/</a>
+            </div>
+            
+            <div class="reading-item">
+                <div class="reading-item-title">Enterprise/state of AI in healthcare adoption</div>
+                <div class="reading-item-desc">Menlo Ventures. 2025: The State of AI in Healthcare. 2025.</div>
+                <a href="https://menlovc.com/perspective/2025-the-state-of-ai-in-healthcare/" class="reading-item-link" target="_blank">https://menlovc.com/perspective/2025-the-state-of-ai-in-healthcare/</a>
+            </div>
+            
+            <div class="reading-item">
+                <div class="reading-item-title">AI in clinical medicine and global sustainability</div>
+                <div class="reading-item-desc">Hashimoto DA, et al. Artificial intelligence in clinical medicine: catalysing a sustainable global healthcare paradigm. Frontiers in Artificial Intelligence. 2023.</div>
+                <a href="https://www.frontiersin.org/articles/10.3389/frai.2023.1227091/full" class="reading-item-link" target="_blank">https://www.frontiersin.org/articles/10.3389/frai.2023.1227091/full</a>
+            </div>
+        </div>
+
+        <div class="module-summary">
+            <div class="summary-header">
+                <h3 class="summary-title">Module 1 Summary</h3>
+                <p class="summary-subtitle">AI Foundations for Healthcare</p>
+            </div>
+            
+            <div class="summary-grid">
+                <div class="summary-stat">
+                    <div class="stat-value">110</div>
+                    <div class="stat-label">Minutes Total Duration</div>
+                </div>
+                <div class="summary-stat">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Learning Units</div>
+                </div>
+                <div class="summary-stat">
+                    <div class="stat-value">10</div>
+                    <div class="stat-label">MCQ Assessment</div>
+                </div>
+            </div>
+            
+            <div class="summary-details">
+                <div class="summary-detail">
+                    <div class="detail-label">Assessment</div>
+                    <div class="detail-text">Multiple-choice questions, scenario-based tasks, and reflective practice activities to demonstrate understanding and safe application of AI in healthcare.</div>
+                </div>
+                <div class="summary-detail">
+                    <div class="detail-label">Intended Audience</div>
+                    <div class="detail-text">All healthcare professionals and students</div>
+                </div>
+                <div class="summary-detail">
+                    <div class="detail-label">CPD Value</div>
+                    <div class="detail-text">Provides foundational knowledge of AI for healthcare, emphasising safe, ethical, and effective use in clinical settings. Supports professional development and readiness for digital transformation.</div>
+                </div>
+            </div>
+        </div>
+    </article>
+</body>
+</html>

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Essentials for Healthcare Professionals | madashealth.ai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #0F4C5C;
+            --color-primary-light: #1A6B7F;
+            --color-primary-dark: #0A3540;
+            --color-secondary: #E8F4F8;
+            --color-accent: #2E8B8B;
+            --color-accent-warm: #D4A574;
+            --color-text: #2D3748;
+            --color-text-light: #4A5568;
+            --color-text-muted: #718096;
+            --color-bg: #FAFCFD;
+            --color-white: #FFFFFF;
+            --color-border: #E2E8F0;
+            --color-success: #38A169;
+            --color-progress-bg: #E2E8F0;
+            --color-progress-fill: #2E8B8B;
+            --font-heading: 'Source Serif 4', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-xl: 0 20px 50px rgba(0,0,0,0.15);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 17px;
+            line-height: 1.75;
+            color: var(--color-text);
+            background: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-accent) 100%);
+            padding: 60px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-section {
+            margin-bottom: 40px;
+        }
+
+        .logo-placeholder {
+            display: inline-block;
+        }
+
+        .logo-placeholder img {
+            height: 52px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-white);
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #68D391;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-white);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--color-white);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+
+        /* Overall Progress */
+        .overall-progress {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            margin-bottom: 48px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-border);
+        }
+
+        .progress-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .progress-title {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .progress-percentage {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .progress-bar-container {
+            background: var(--color-progress-bg);
+            border-radius: 10px;
+            height: 16px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary-light) 100%);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--color-text-muted);
+        }
+
+        /* Section Title */
+        .section-header {
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--color-text-light);
+        }
+
+        /* Modules Grid */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        /* Module Card */
+        .module-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .module-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .module-card.locked {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .module-header {
+            padding: 24px 24px 20px;
+            position: relative;
+        }
+
+        .module-header.module-1 {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+        }
+
+        .module-header.module-2 {
+            background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
+        }
+
+        .module-header.module-3 {
+            background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+        }
+
+        .module-header.module-4 {
+            background: linear-gradient(135deg, #EC4899 0%, #F472B6 100%);
+        }
+
+        .module-header.module-5 {
+            background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+        }
+
+        .module-header.module-6 {
+            background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+        }
+
+        .module-number {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 8px;
+        }
+
+        .module-title {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-white);
+            line-height: 1.3;
+        }
+
+        .module-status-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .module-status-badge.completed {
+            background: rgba(56, 161, 105, 0.9);
+            color: white;
+        }
+
+        .module-status-badge.in-progress {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--color-primary);
+        }
+
+        .module-status-badge.locked {
+            background: rgba(0, 0, 0, 0.3);
+            color: rgba(255,255,255,0.9);
+        }
+
+        .module-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .module-description {
+            font-size: 14px;
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .module-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--color-text-muted);
+        }
+
+        .meta-icon {
+            width: 16px;
+            height: 16px;
+            color: var(--color-accent);
+        }
+
+        .module-progress {
+            margin-top: auto;
+        }
+
+        .module-progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .module-progress-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .module-progress-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .module-progress-bar {
+            background: var(--color-progress-bg);
+            border-radius: 6px;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .module-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary-light) 100%);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+
+        .module-progress-fill.completed {
+            background: linear-gradient(90deg, var(--color-success) 0%, #68D391 100%);
+        }
+
+        /* Units List */
+        .module-units {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px dashed var(--color-border);
+        }
+
+        .units-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-accent);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .units-toggle:hover {
+            color: var(--color-primary);
+        }
+
+        .units-toggle svg {
+            transition: transform 0.2s ease;
+        }
+
+        .units-toggle.expanded svg {
+            transform: rotate(180deg);
+        }
+
+        .units-list {
+            list-style: none;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .units-list.visible {
+            display: block;
+        }
+
+        .unit-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 13px;
+            color: var(--color-text-light);
+            border-bottom: 1px dashed var(--color-border);
+        }
+
+        .unit-item:last-child {
+            border-bottom: none;
+        }
+
+        .unit-status {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .unit-status.completed {
+            background: var(--color-success);
+            color: white;
+        }
+
+        .unit-status.pending {
+            background: var(--color-border);
+            color: var(--color-text-muted);
+        }
+
+        .unit-status svg {
+            width: 10px;
+            height: 10px;
+        }
+
+        .unit-link {
+            color: var(--color-text-light);
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .unit-link:hover {
+            color: var(--color-primary);
+        }
+
+        .unit-duration {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* Coming Soon Card */
+        .coming-soon-card {
+            background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+            border: 2px dashed var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .coming-soon-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--color-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 28px;
+        }
+
+        .coming-soon-title {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 8px;
+        }
+
+        .coming-soon-text {
+            font-size: 14px;
+            color: var(--color-text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-primary-dark);
+            padding: 40px 24px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-brand {
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--color-white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px 60px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 17px;
+            }
+
+            .hero-stats {
+                gap: 24px;
+            }
+
+            .stat-value {
+                font-size: 28px;
+            }
+
+            .main-content {
+                padding: 40px 20px 60px;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .overall-progress {
+                padding: 20px 24px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-container">
+            <div class="logo-section">
+                <div class="logo-placeholder">
+                    <img src="" alt="madashealth.ai logo">
+                    <span class="logo-text">madashealth.ai</span>
+                </div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Learning Platform
+                </div>
+                <h1 class="hero-title">AI Essentials for Healthcare Professionals</h1>
+                <p class="hero-subtitle">Develop foundational knowledge of AI for healthcare, emphasising safe, ethical, and effective use in clinical settings. Designed for all healthcare professionals and students.</p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="stat-value">6</div>
+                        <div class="stat-label">Modules</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-value">12+</div>
+                        <div class="stat-label">Hours Content</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-value">CPD</div>
+                        <div class="stat-label">Accredited</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="overall-progress">
+            <div class="progress-header">
+                <span class="progress-title">Your Overall Progress</span>
+                <span class="progress-percentage" id="overallPercentage">17%</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="overallProgressBar" style="width: 17%;"></div>
+            </div>
+            <div class="progress-meta">
+                <span>1 of 6 modules completed</span>
+                <span>~10 hours remaining</span>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2 class="section-title">Course Modules</h2>
+            <p class="section-subtitle">Complete each module in order to unlock the next</p>
+        </div>
+
+        <div class="modules-grid">
+            <!-- Module 1 -->
+            <a href="module1-ai-foundations-healthcare.html" class="module-card" id="module1">
+                <div class="module-header module-1">
+                    <span class="module-number">Module 1</span>
+                    <h3 class="module-title">AI Foundations for Healthcare</h3>
+                    <span class="module-status-badge completed">Completed</span>
+                </div>
+                <div class="module-body">
+                    <p class="module-description">Understand what AI is (and is not) in healthcare, explore different types of AI systems, and learn why AI adoption is accelerating globally.</p>
+                    <div class="module-meta">
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            110 minutes
+                        </span>
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                            5 Units
+                        </span>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-progress-header">
+                            <span class="module-progress-label">Progress</span>
+                            <span class="module-progress-value">100%</span>
+                        </div>
+                        <div class="module-progress-bar">
+                            <div class="module-progress-fill completed" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="module-units" onclick="event.preventDefault(); event.stopPropagation();">
+                        <button class="units-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleUnits(this)">
+                            <span>View Units</span>
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <ul class="units-list">
+                            <li class="unit-item">
+                                <span class="unit-status completed"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                                <a href="module1-ai-foundations-healthcare.html" class="unit-link">Unit 1: What AI Is (and Is Not) in Healthcare</a>
+                                <span class="unit-duration">20 min</span>
+                            </li>
+                            <li class="unit-item">
+                                <span class="unit-status completed"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                                <a href="module1-unit2-ai-vs-traditional-software.html" class="unit-link">Unit 2: AI vs Traditional Software</a>
+                                <span class="unit-duration">15 min</span>
+                            </li>
+                            <li class="unit-item">
+                                <span class="unit-status completed"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                                <a href="module1-unit3-types-of-ai.html" class="unit-link">Unit 3: Types of AI Used in Healthcare</a>
+                                <span class="unit-duration">60 min</span>
+                            </li>
+                            <li class="unit-item">
+                                <span class="unit-status completed"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                                <a href="module1-unit4-ai-adoption-drivers.html" class="unit-link">Unit 4: Why AI Adoption Is Accelerating</a>
+                                <span class="unit-duration">15 min</span>
+                            </li>
+                            <li class="unit-item">
+                                <span class="unit-status completed"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+                                <a href="module1-unit5-cross-disciplinary-examples.html" class="unit-link">Unit 5: Cross-Disciplinary Examples</a>
+                                <span class="unit-duration">10 min</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Module 2 -->
+            <a href="module1-unit2-ai-vs-traditional-software.html" class="module-card" id="module2">
+                <div class="module-header module-2">
+                    <span class="module-number">Module 2</span>
+                    <h3 class="module-title">Healthcare Data & Digital Literacy</h3>
+                    <span class="module-status-badge in-progress">In Progress</span>
+                </div>
+                <div class="module-body">
+                    <p class="module-description">Explore healthcare data fundamentals, understand data quality requirements, and learn how data underpins AI safety and effectiveness.</p>
+                    <div class="module-meta">
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            120 minutes
+                        </span>
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                            6 Units
+                        </span>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-progress-header">
+                            <span class="module-progress-label">Progress</span>
+                            <span class="module-progress-value">0%</span>
+                        </div>
+                        <div class="module-progress-bar">
+                            <div class="module-progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Module 3 -->
+            <a href="module1-unit3-types-of-ai.html" class="module-card" id="module3">
+                <div class="module-header module-3">
+                    <span class="module-number">Module 3</span>
+                    <h3 class="module-title">AI Ethics & Governance</h3>
+                    <span class="module-status-badge locked">🔒 Locked</span>
+                </div>
+                <div class="module-body">
+                    <p class="module-description">Navigate ethical considerations, governance frameworks, bias mitigation, and responsible AI implementation in healthcare settings.</p>
+                    <div class="module-meta">
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            90 minutes
+                        </span>
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                            5 Units
+                        </span>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-progress-header">
+                            <span class="module-progress-label">Progress</span>
+                            <span class="module-progress-value">0%</span>
+                        </div>
+                        <div class="module-progress-bar">
+                            <div class="module-progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Module 4 -->
+            <a href="module1-unit4-clinical-ai-applications.html" class="module-card" id="module4">
+                <div class="module-header module-4">
+                    <span class="module-number">Module 4</span>
+                    <h3 class="module-title">Clinical AI Applications</h3>
+                    <span class="module-status-badge locked">🔒 Locked</span>
+                </div>
+                <div class="module-body">
+                    <p class="module-description">Deep dive into practical AI applications across clinical specialties, including diagnostics, treatment planning, and patient monitoring.</p>
+                    <div class="module-meta">
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            150 minutes
+                        </span>
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                            8 Units
+                        </span>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-progress-header">
+                            <span class="module-progress-label">Progress</span>
+                            <span class="module-progress-value">0%</span>
+                        </div>
+                        <div class="module-progress-bar">
+                            <div class="module-progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Module 5 -->
+            <a href="module1-unit5-ai-safety-risk-management.html" class="module-card" id="module5">
+                <div class="module-header module-5">
+                    <span class="module-number">Module 5</span>
+                    <h3 class="module-title">AI Safety & Risk Management</h3>
+                    <span class="module-status-badge locked">🔒 Locked</span>
+                </div>
+                <div class="module-body">
+                    <p class="module-description">Learn to identify AI risks, implement safety protocols, manage automation bias, and ensure patient safety in AI-assisted care.</p>
+                    <div class="module-meta">
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            100 minutes
+                        </span>
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                            5 Units
+                        </span>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-progress-header">
+                            <span class="module-progress-label">Progress</span>
+                            <span class="module-progress-value">0%</span>
+                        </div>
+                        <div class="module-progress-bar">
+                            <div class="module-progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Module 6 -->
+            <a href="module6-future-of-ai-healthcare.html" class="module-card" id="module6">
+                <div class="module-header module-6">
+                    <span class="module-number">Module 6</span>
+                    <h3 class="module-title">Future of AI in Healthcare</h3>
+                    <span class="module-status-badge locked">🔒 Locked</span>
+                </div>
+                <div class="module-body">
+                    <p class="module-description">Explore emerging AI technologies, future trends, and prepare for the evolving landscape of AI-enabled healthcare delivery.</p>
+                    <div class="module-meta">
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            80 minutes
+                        </span>
+                        <span class="meta-item">
+                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                            4 Units
+                        </span>
+                    </div>
+                    <div class="module-progress">
+                        <div class="module-progress-header">
+                            <span class="module-progress-label">Progress</span>
+                            <span class="module-progress-value">0%</span>
+                        </div>
+                        <div class="module-progress-bar">
+                            <div class="module-progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                © 2025 madashealth.ai — AI Essentials for Healthcare Professionals
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Use</a>
+                <a href="#" class="footer-link">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleUnits(button) {
+            const unitsList = button.nextElementSibling;
+            button.classList.toggle('expanded');
+            unitsList.classList.toggle('visible');
+            
+            const buttonText = button.querySelector('span');
+            if (unitsList.classList.contains('visible')) {
+                buttonText.textContent = 'Hide Units';
+            } else {
+                buttonText.textContent = 'View Units';
+            }
+        }
+
+        // Simple progress tracking with localStorage
+        function updateProgress() {
+            // This would typically pull from an LMS or backend
+            // For demo purposes, we're using static values
+            const completedModules = 1;
+            const totalModules = 6;
+            const percentage = Math.round((completedModules / totalModules) * 100);
+            
+            document.getElementById('overallPercentage').textContent = percentage + '%';
+            document.getElementById('overallProgressBar').style.width = percentage + '%';
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+        });
+    </script>
+</body>
+</html>
