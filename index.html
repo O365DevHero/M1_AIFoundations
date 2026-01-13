@@ -290,7 +290,7 @@
         /* Modules Grid */
         .modules-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 24px;
             margin-bottom: 48px;
         }
@@ -307,6 +307,7 @@
             color: inherit;
             display: flex;
             flex-direction: column;
+            min-width: 0;
         }
 
         .module-card:hover {
@@ -322,6 +323,7 @@
         .module-header {
             padding: 24px 24px 20px;
             position: relative;
+            flex-shrink: 0;
         }
 
         .module-header.module-1 {
@@ -397,6 +399,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            min-height: 0;
         }
 
         .module-description {
@@ -469,136 +472,6 @@
 
         .module-progress-fill.completed {
             background: linear-gradient(90deg, var(--color-success) 0%, #68D391 100%);
-        }
-
-        /* Units List */
-        .module-units {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px dashed var(--color-border);
-        }
-
-        .units-toggle {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--color-accent);
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0;
-        }
-
-        .units-toggle:hover {
-            color: var(--color-primary);
-        }
-
-        .units-toggle svg {
-            transition: transform 0.2s ease;
-        }
-
-        .units-toggle.expanded svg {
-            transform: rotate(180deg);
-        }
-
-        .units-list {
-            list-style: none;
-            margin-top: 12px;
-            display: none;
-        }
-
-        .units-list.visible {
-            display: block;
-        }
-
-        .unit-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 0;
-            font-size: 13px;
-            color: var(--color-text-light);
-            border-bottom: 1px dashed var(--color-border);
-        }
-
-        .unit-item:last-child {
-            border-bottom: none;
-        }
-
-        .unit-status {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .unit-status.completed {
-            background: var(--color-success);
-            color: white;
-        }
-
-        .unit-status.pending {
-            background: var(--color-border);
-            color: var(--color-text-muted);
-        }
-
-        .unit-status svg {
-            width: 10px;
-            height: 10px;
-        }
-
-        .unit-link {
-            color: var(--color-text-light);
-            text-decoration: none;
-            flex: 1;
-        }
-
-        .unit-link:hover {
-            color: var(--color-primary);
-        }
-
-        .unit-duration {
-            font-size: 12px;
-            color: var(--color-text-muted);
-        }
-
-        /* Coming Soon Card */
-        .coming-soon-card {
-            background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
-            border: 2px dashed var(--color-border);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            text-align: center;
-        }
-
-        .coming-soon-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--color-secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 28px;
-        }
-
-        .coming-soon-title {
-            font-family: var(--font-heading);
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--color-text);
-            margin-bottom: 8px;
-        }
-
-        .coming-soon-text {
-            font-size: 14px;
-            color: var(--color-text-muted);
         }
 
         /* Footer */
@@ -696,18 +569,18 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="hero-badge-dot"></span>
-                    Learning Platform
+                    Module 1
                 </div>
-                <h1 class="hero-title">AI Essentials for Healthcare Professionals</h1>
-                <p class="hero-subtitle">Develop foundational knowledge of AI for healthcare, emphasising safe, ethical, and effective use in clinical settings. Designed for all healthcare professionals and students.</p>
+                <h1 class="hero-title">AI Foundations for Healthcare</h1>
+                <p class="hero-subtitle">Develop foundational knowledge of AI for healthcare, emphasising safe, ethical, and effective use in clinical settings. Understand what AI is, explore different types, and learn why adoption is accelerating.</p>
                 <div class="hero-stats">
                     <div class="hero-stat">
-                        <div class="stat-value">6</div>
-                        <div class="stat-label">Modules</div>
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Units</div>
                     </div>
                     <div class="hero-stat">
-                        <div class="stat-value">12+</div>
-                        <div class="stat-label">Hours Content</div>
+                        <div class="stat-value">110</div>
+                        <div class="stat-label">Minutes</div>
                     </div>
                     <div class="hero-stat">
                         <div class="stat-value">CPD</div>
@@ -721,41 +594,37 @@
     <main class="main-content">
         <div class="overall-progress">
             <div class="progress-header">
-                <span class="progress-title">Your Overall Progress</span>
-                <span class="progress-percentage" id="overallPercentage">17%</span>
+                <span class="progress-title">Module 1 Progress</span>
+                <span class="progress-percentage" id="overallPercentage">100%</span>
             </div>
             <div class="progress-bar-container">
-                <div class="progress-bar-fill" id="overallProgressBar" style="width: 17%;"></div>
+                <div class="progress-bar-fill" id="overallProgressBar" style="width: 100%;"></div>
             </div>
             <div class="progress-meta">
-                <span>1 of 6 modules completed</span>
-                <span>~10 hours remaining</span>
+                <span>5 of 5 units completed</span>
+                <span>110 minutes total</span>
             </div>
         </div>
 
         <div class="section-header">
-            <h2 class="section-title">Course Modules</h2>
-            <p class="section-subtitle">Complete each module in order to unlock the next</p>
+            <h2 class="section-title">Module 1: AI Foundations for Healthcare</h2>
+            <p class="section-subtitle">Complete each unit to build your foundational understanding of AI in healthcare</p>
         </div>
 
         <div class="modules-grid">
-            <!-- Module 1 -->
-            <a href="module1-ai-foundations-healthcare.html" class="module-card" id="module1">
+            <!-- Unit 1 -->
+            <div class="module-card" id="unit1" onclick="window.location.href='module1-ai-foundations-healthcare.html';" style="cursor: pointer;">
                 <div class="module-header module-1">
-                    <span class="module-number">Module 1</span>
-                    <h3 class="module-title">AI Foundations for Healthcare</h3>
+                    <span class="module-number">Unit 1</span>
+                    <h3 class="module-title">What AI Is (and Is Not) in Healthcare</h3>
                     <span class="module-status-badge completed">Completed</span>
                 </div>
                 <div class="module-body">
-                    <p class="module-description">Understand what AI is (and is not) in healthcare, explore different types of AI systems, and learn why AI adoption is accelerating globally.</p>
+                    <p class="module-description">Understand the fundamental concepts of AI, distinguish between AI hype and reality, and learn what AI can and cannot do in clinical settings.</p>
                     <div class="module-meta">
                         <span class="meta-item">
                             <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            110 minutes
-                        </span>
-                        <span class="meta-item">
-                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-                            5 Units
+                            20 minutes
                         </span>
                     </div>
                     <div class="module-progress">
@@ -767,196 +636,116 @@
                             <div class="module-progress-fill completed" style="width: 100%;"></div>
                         </div>
                     </div>
-                    <div class="module-units" onclick="event.preventDefault(); event.stopPropagation();">
-                        <button class="units-toggle" onclick="event.preventDefault(); event.stopPropagation(); toggleUnits(this)">
-                            <span>View Units</span>
-                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <ul class="units-list">
-                            <li class="unit-item">
-                                <span class="unit-status completed"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
-                                <a href="module1-ai-foundations-healthcare.html" class="unit-link">Unit 1: What AI Is (and Is Not) in Healthcare</a>
-                                <span class="unit-duration">20 min</span>
-                            </li>
-                            <li class="unit-item">
-                                <span class="unit-status completed"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
-                                <a href="module1-unit2-ai-vs-traditional-software.html" class="unit-link">Unit 2: AI vs Traditional Software</a>
-                                <span class="unit-duration">15 min</span>
-                            </li>
-                            <li class="unit-item">
-                                <span class="unit-status completed"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
-                                <a href="module1-unit3-types-of-ai.html" class="unit-link">Unit 3: Types of AI Used in Healthcare</a>
-                                <span class="unit-duration">60 min</span>
-                            </li>
-                            <li class="unit-item">
-                                <span class="unit-status completed"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
-                                <a href="module1-unit4-ai-adoption-drivers.html" class="unit-link">Unit 4: Why AI Adoption Is Accelerating</a>
-                                <span class="unit-duration">15 min</span>
-                            </li>
-                            <li class="unit-item">
-                                <span class="unit-status completed"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
-                                <a href="module1-unit5-cross-disciplinary-examples.html" class="unit-link">Unit 5: Cross-Disciplinary Examples</a>
-                                <span class="unit-duration">10 min</span>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-            </a>
+            </div>
 
-            <!-- Module 2 -->
-            <a href="module1-unit2-ai-vs-traditional-software.html" class="module-card" id="module2">
+            <!-- Unit 2 -->
+            <div class="module-card" id="unit2" onclick="window.location.href='module1-unit2-ai-vs-traditional-software.html';" style="cursor: pointer;">
                 <div class="module-header module-2">
-                    <span class="module-number">Module 2</span>
-                    <h3 class="module-title">Healthcare Data & Digital Literacy</h3>
-                    <span class="module-status-badge in-progress">In Progress</span>
+                    <span class="module-number">Unit 2</span>
+                    <h3 class="module-title">AI vs Traditional Software</h3>
+                    <span class="module-status-badge completed">Completed</span>
                 </div>
                 <div class="module-body">
-                    <p class="module-description">Explore healthcare data fundamentals, understand data quality requirements, and learn how data underpins AI safety and effectiveness.</p>
+                    <p class="module-description">Learn the key differences between AI systems and traditional rule-based software, and understand when each approach is most appropriate.</p>
                     <div class="module-meta">
                         <span class="meta-item">
                             <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            120 minutes
-                        </span>
-                        <span class="meta-item">
-                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-                            6 Units
+                            15 minutes
                         </span>
                     </div>
                     <div class="module-progress">
                         <div class="module-progress-header">
                             <span class="module-progress-label">Progress</span>
-                            <span class="module-progress-value">0%</span>
+                            <span class="module-progress-value">100%</span>
                         </div>
                         <div class="module-progress-bar">
-                            <div class="module-progress-fill" style="width: 0%;"></div>
+                            <div class="module-progress-fill completed" style="width: 100%;"></div>
                         </div>
                     </div>
                 </div>
-            </a>
+            </div>
 
-            <!-- Module 3 -->
-            <a href="module1-unit3-types-of-ai.html" class="module-card" id="module3">
+            <!-- Unit 3 -->
+            <div class="module-card" id="unit3" onclick="window.location.href='module1-unit3-types-of-ai.html';" style="cursor: pointer;">
                 <div class="module-header module-3">
-                    <span class="module-number">Module 3</span>
-                    <h3 class="module-title">AI Ethics & Governance</h3>
-                    <span class="module-status-badge locked">🔒 Locked</span>
+                    <span class="module-number">Unit 3</span>
+                    <h3 class="module-title">Types of AI Used in Healthcare</h3>
+                    <span class="module-status-badge completed">Completed</span>
                 </div>
                 <div class="module-body">
-                    <p class="module-description">Navigate ethical considerations, governance frameworks, bias mitigation, and responsible AI implementation in healthcare settings.</p>
+                    <p class="module-description">Explore Machine Learning, Deep Learning, Natural Language Processing, Computer Vision, and Rule-Based Systems with clinical case studies.</p>
                     <div class="module-meta">
                         <span class="meta-item">
                             <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            90 minutes
-                        </span>
-                        <span class="meta-item">
-                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-                            5 Units
+                            60 minutes
                         </span>
                     </div>
                     <div class="module-progress">
                         <div class="module-progress-header">
                             <span class="module-progress-label">Progress</span>
-                            <span class="module-progress-value">0%</span>
+                            <span class="module-progress-value">100%</span>
                         </div>
                         <div class="module-progress-bar">
-                            <div class="module-progress-fill" style="width: 0%;"></div>
+                            <div class="module-progress-fill completed" style="width: 100%;"></div>
                         </div>
                     </div>
                 </div>
-            </a>
+            </div>
 
-            <!-- Module 4 -->
-            <a href="module1-unit4-clinical-ai-applications.html" class="module-card" id="module4">
+            <!-- Unit 4 -->
+            <div class="module-card" id="unit4" onclick="window.location.href='module1-unit4-ai-adoption-drivers.html';" style="cursor: pointer;">
                 <div class="module-header module-4">
-                    <span class="module-number">Module 4</span>
-                    <h3 class="module-title">Clinical AI Applications</h3>
-                    <span class="module-status-badge locked">🔒 Locked</span>
+                    <span class="module-number">Unit 4</span>
+                    <h3 class="module-title">Why AI Adoption Is Accelerating</h3>
+                    <span class="module-status-badge completed">Completed</span>
                 </div>
                 <div class="module-body">
-                    <p class="module-description">Deep dive into practical AI applications across clinical specialties, including diagnostics, treatment planning, and patient monitoring.</p>
+                    <p class="module-description">Understand the key drivers of AI adoption including workforce pressures, administrative burden, and data explosion through real-world scenarios.</p>
                     <div class="module-meta">
                         <span class="meta-item">
                             <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            150 minutes
-                        </span>
-                        <span class="meta-item">
-                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-                            8 Units
+                            15 minutes
                         </span>
                     </div>
                     <div class="module-progress">
                         <div class="module-progress-header">
                             <span class="module-progress-label">Progress</span>
-                            <span class="module-progress-value">0%</span>
+                            <span class="module-progress-value">100%</span>
                         </div>
                         <div class="module-progress-bar">
-                            <div class="module-progress-fill" style="width: 0%;"></div>
+                            <div class="module-progress-fill completed" style="width: 100%;"></div>
                         </div>
                     </div>
                 </div>
-            </a>
+            </div>
 
-            <!-- Module 5 -->
-            <a href="module1-unit5-ai-safety-risk-management.html" class="module-card" id="module5">
+            <!-- Unit 5 -->
+            <div class="module-card" id="unit5" onclick="window.location.href='module1-unit5-cross-disciplinary-examples.html';" style="cursor: pointer;">
                 <div class="module-header module-5">
-                    <span class="module-number">Module 5</span>
-                    <h3 class="module-title">AI Safety & Risk Management</h3>
-                    <span class="module-status-badge locked">🔒 Locked</span>
+                    <span class="module-number">Unit 5</span>
+                    <h3 class="module-title">Cross-Disciplinary Healthcare Examples</h3>
+                    <span class="module-status-badge completed">Completed</span>
                 </div>
                 <div class="module-body">
-                    <p class="module-description">Learn to identify AI risks, implement safety protocols, manage automation bias, and ensure patient safety in AI-assisted care.</p>
+                    <p class="module-description">See how AI applies across medicine, nursing, allied health, mental health, dentistry, pharmacy, and public health with real-world use cases.</p>
                     <div class="module-meta">
                         <span class="meta-item">
                             <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            100 minutes
-                        </span>
-                        <span class="meta-item">
-                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-                            5 Units
+                            10 minutes
                         </span>
                     </div>
                     <div class="module-progress">
                         <div class="module-progress-header">
                             <span class="module-progress-label">Progress</span>
-                            <span class="module-progress-value">0%</span>
+                            <span class="module-progress-value">100%</span>
                         </div>
                         <div class="module-progress-bar">
-                            <div class="module-progress-fill" style="width: 0%;"></div>
+                            <div class="module-progress-fill completed" style="width: 100%;"></div>
                         </div>
                     </div>
                 </div>
-            </a>
-
-            <!-- Module 6 -->
-            <a href="module6-future-of-ai-healthcare.html" class="module-card" id="module6">
-                <div class="module-header module-6">
-                    <span class="module-number">Module 6</span>
-                    <h3 class="module-title">Future of AI in Healthcare</h3>
-                    <span class="module-status-badge locked">🔒 Locked</span>
-                </div>
-                <div class="module-body">
-                    <p class="module-description">Explore emerging AI technologies, future trends, and prepare for the evolving landscape of AI-enabled healthcare delivery.</p>
-                    <div class="module-meta">
-                        <span class="meta-item">
-                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            80 minutes
-                        </span>
-                        <span class="meta-item">
-                            <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-                            4 Units
-                        </span>
-                    </div>
-                    <div class="module-progress">
-                        <div class="module-progress-header">
-                            <span class="module-progress-label">Progress</span>
-                            <span class="module-progress-value">0%</span>
-                        </div>
-                        <div class="module-progress-bar">
-                            <div class="module-progress-fill" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            </div>
         </div>
     </main>
 
@@ -974,32 +763,16 @@
     </footer>
 
     <script>
-        function toggleUnits(button) {
-            const unitsList = button.nextElementSibling;
-            button.classList.toggle('expanded');
-            unitsList.classList.toggle('visible');
-            
-            const buttonText = button.querySelector('span');
-            if (unitsList.classList.contains('visible')) {
-                buttonText.textContent = 'Hide Units';
-            } else {
-                buttonText.textContent = 'View Units';
-            }
-        }
-
-        // Simple progress tracking with localStorage
+        // Progress tracking
         function updateProgress() {
-            // This would typically pull from an LMS or backend
-            // For demo purposes, we're using static values
-            const completedModules = 1;
-            const totalModules = 6;
-            const percentage = Math.round((completedModules / totalModules) * 100);
+            const completedUnits = 5;
+            const totalUnits = 5;
+            const percentage = Math.round((completedUnits / totalUnits) * 100);
             
             document.getElementById('overallPercentage').textContent = percentage + '%';
             document.getElementById('overallProgressBar').style.width = percentage + '%';
         }
 
-        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             updateProgress();
         });
