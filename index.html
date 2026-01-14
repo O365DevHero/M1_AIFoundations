@@ -55,6 +55,126 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Top Header */
+        .top-header {
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .top-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .top-header-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-header-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .top-header-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: -0.3px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--color-white);
+            color: var(--color-primary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            border: 1px solid var(--color-border);
+            margin-bottom: 24px;
+        }
+
+        .back-btn:hover {
+            background: var(--color-secondary);
+            border-color: var(--color-primary);
+            transform: translateX(-4px);
+        }
+
+        .back-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 50px;
+            height: 50px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .top-header-title {
+                position: static;
+                transform: none;
+                font-size: 16px;
+                margin: 0 auto;
+            }
+
+            .back-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
         }
 
         /* Hero Section */
@@ -105,7 +225,6 @@
         .logo-placeholder img {
             height: 52px;
             width: auto;
-            filter: brightness(0) invert(1);
             opacity: 0.95;
         }
 
@@ -474,6 +593,55 @@
             background: linear-gradient(90deg, var(--color-success) 0%, #68D391 100%);
         }
 
+        /* Course Introduction */
+        .course-intro {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 48px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-border);
+        }
+
+        .course-intro-header {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .course-intro-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .intro-video-container {
+            background: #000;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         /* Footer */
         .footer {
             background: var(--color-primary-dark);
@@ -546,6 +714,14 @@
                 padding: 20px 24px;
             }
 
+            .course-intro {
+                padding: 24px 20px;
+            }
+
+            .course-intro-title {
+                font-size: 20px;
+            }
+
             .section-title {
                 font-size: 24px;
             }
@@ -558,12 +734,22 @@
     </style>
 </head>
 <body>
+    <header class="top-header">
+        <div class="top-header-container">
+            <div class="top-header-logo">
+                <img src="images/madas-logo.jpg" alt="MadasHealthAI logo">
+            </div>
+            <h1 class="top-header-title">MadasHealthAI</h1>
+            <div style="width: 100px;"></div>
+        </div>
+    </header>
+
     <header class="hero">
         <div class="hero-container">
             <div class="logo-section">
                 <div class="logo-placeholder">
-                    <img src="" alt="madashealth.ai logo">
-                    <span class="logo-text">madashealth.ai</span>
+                    <!-- <img src="images/madas-logo.jpg" alt="madashealth.ai logo"> -->
+                    <!-- <span class="logo-text">madashealth.ai</span> -->
                 </div>
             </div>
             <div class="hero-content">
@@ -603,6 +789,20 @@
             <div class="progress-meta">
                 <span>5 of 5 units completed</span>
                 <span>110 minutes total</span>
+            </div>
+        </div>
+
+        <div class="course-intro">
+            <div class="course-intro-header">
+                <h2 class="course-intro-title">Module Introduction</h2>
+            </div>
+            <div class="intro-video-container">
+                <div class="video-wrapper">
+                    <video controls controlsList="nodownload">
+                        <source src="https://lmscontainer.blob.core.windows.net/madashealthai/module-1/IntroVideo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
         </div>
 
@@ -775,7 +975,31 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             updateProgress();
+
+            // Back to Top functionality
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 100) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
 </body>
 </html>

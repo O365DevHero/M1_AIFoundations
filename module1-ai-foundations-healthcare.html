@@ -51,10 +51,11 @@
             background: var(--color-bg);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
         .lms-container {
-            max-width: 900px;
+            max-width: 75%;
             margin: 0 auto;
             padding: 40px 24px 80px;
         }
@@ -100,7 +101,6 @@
         .logo-placeholder img {
             height: 44px;
             width: auto;
-            filter: brightness(0) invert(1);
             opacity: 0.95;
         }
 
@@ -428,60 +428,86 @@
 
         /* Video Placeholder */
         .video-placeholder {
-            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+            background: #000;
             border-radius: var(--radius-md);
-            padding: 60px 40px;
-            text-align: center;
-            margin: 32px 0;
-            position: relative;
+            margin: 32px auto;
+            max-width: 75%;
             overflow: hidden;
+            box-shadow: var(--shadow-md);
         }
 
-        .video-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(46,139,139,0.15) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .video-play-btn {
-            width: 80px;
-            height: 80px;
-            background: var(--color-accent);
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
+        .video-container {
             position: relative;
-            z-index: 1;
-            box-shadow: 0 4px 20px rgba(46,139,139,0.4);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
             cursor: pointer;
         }
 
-        .video-play-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 28px rgba(46,139,139,0.5);
+        /* Unit Navigation */
+        .unit-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 48px auto 0;
+            padding: 24px 32px;
+            gap: 20px;
         }
 
-        .video-play-btn svg {
-            width: 32px;
-            height: 32px;
-            fill: var(--color-white);
-            margin-left: 4px;
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 28px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
         }
 
-        .video-label {
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            position: relative;
-            z-index: 1;
+        .nav-btn:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-btn.next {
+            margin-left: auto;
+        }
+
+        @media (max-width: 768px) {
+            .unit-navigation {
+                flex-direction: column;
+                padding: 20px 16px;
+            }
+
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-btn.next {
+                margin-left: 0;
+            }
         }
 
         /* Tables */
@@ -911,6 +937,149 @@
             color: var(--color-primary);
         }
 
+        /* Top Header */
+        .top-header {
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .top-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .top-header-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-header-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .top-header-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: -0.3px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--color-white);
+            color: var(--color-primary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            border: 1px solid var(--color-border);
+            margin-bottom: 24px;
+        }
+
+        .back-btn:hover {
+            background: var(--color-secondary);
+            border-color: var(--color-primary);
+            transform: translateX(-4px);
+        }
+
+        .back-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 50px;
+            height: 50px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-primary);
+            padding: 40px 24px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-brand {
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--color-white);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .lms-container {
@@ -985,11 +1154,24 @@
     </style>
 </head>
 <body>
-    <article class="lms-container">
-        <header class="lms-header">
-            <div class="logo-placeholder">
-                <img src="" alt="madashealth.ai logo">
+    <header class="top-header">
+        <div class="top-header-container">
+            <div class="top-header-logo">
+                <img src="images/madas-logo.jpg" alt="MadasHealthAI logo">
             </div>
+            <h1 class="top-header-title">MadasHealthAI</h1>
+        </div>
+    </header>
+
+    <article class="lms-container">
+        <a href="index.html" class="back-btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <span>Back to Module Overview</span>
+        </a>
+        <header class="lms-header">
+            <!-- <div class="logo-placeholder">
+                <img src="images/madas-logo.jpg" alt="madashealth.ai logo">
+            </div> -->
             <div class="lms-header-content">
                 <span class="course-label">Module 1</span>
                 <h1 class="module-title">AI Foundations for Healthcare</h1>
@@ -1030,6 +1212,14 @@
                 </div>
             </div>
         </section>
+        <div class="video-placeholder">
+            <div class="video-container">
+                <video controls>
+                    <source src="https://lmscontainer.blob.core.windows.net/madashealthai/module-1/Unit1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
 
         <section class="content-section">
             <span class="section-number">1</span>
@@ -1143,12 +1333,7 @@
             </div>
         </section>
 
-        <div class="video-placeholder">
-            <div class="video-play-btn">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <p class="video-label">Video content placeholder</p>
-        </div>
+       
 
         <section class="content-section">
             <span class="section-number">5</span>
@@ -1309,12 +1494,7 @@
             </div>
         </section>
 
-        <div class="video-placeholder">
-            <div class="video-play-btn">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <p class="video-label">Video content placeholder</p>
-        </div>
+       
 
         <section class="content-section">
             <span class="section-number">9</span>
@@ -1337,6 +1517,7 @@
                 </div>
             </div>
         </section>
+         
 
         <section class="content-section">
             <span class="section-number">10</span>
@@ -1498,6 +1679,13 @@
                 </div>
             </form>
         </section>
+
+        <nav class="unit-navigation">
+            <a href="module1-unit2-ai-vs-traditional-software.html" class="nav-btn next">
+                <span>Next</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+        </nav>
     </article>
 
     <script>
@@ -1536,6 +1724,48 @@
             
             resultsSummary.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
+
+        // Back to Top will be initialized after button is in DOM
     </script>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        // Back to Top functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 100) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                © 2025 madashealth.ai — AI Essentials for Healthcare Professionals
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Use</a>
+                <a href="#" class="footer-link">Support</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
