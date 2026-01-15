@@ -121,17 +121,30 @@
         li { margin-bottom: 10px; padding-left: 8px; }
         li::marker { color: var(--color-accent); }
 
-        /* Key Drivers Grid */
-        .drivers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 28px 0; }
-        .driver-card { background: var(--color-white); border-radius: var(--radius-md); padding: 20px 24px; border: 1px solid var(--color-border); display: flex; align-items: flex-start; gap: 14px; transition: all 0.2s ease; }
-        .driver-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .driver-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; }
+        /* Key Drivers Grid - Flip Cards */
+        .drivers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 28px 0; perspective: 1000px; }
+
+        .flip-card { height: 180px; perspective: 1000px; cursor: pointer; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s ease; transform-style: preserve-3d; }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 24px; text-align: center; box-shadow: var(--shadow-sm); border: 1px solid var(--color-border); }
+
+        .flip-card-front { background: var(--color-white); }
+        .flip-card-back { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); color: var(--color-white); transform: rotateY(180deg); }
+
+        .driver-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; margin-bottom: 12px; }
         .driver-icon.workforce { background: rgba(229, 62, 62, 0.1); }
         .driver-icon.data { background: rgba(49, 130, 206, 0.1); }
         .driver-icon.computing { background: rgba(56, 161, 105, 0.1); }
         .driver-icon.policy { background: rgba(128, 90, 213, 0.1); }
         .driver-icon.admin { background: rgba(237, 137, 54, 0.1); }
-        .driver-text { font-size: 15px; font-weight: 500; color: var(--color-text); }
+
+        .driver-title { font-size: 15px; font-weight: 600; color: var(--color-primary); line-height: 1.4; }
+        .driver-description { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.95); }
+
+        .flip-hint { font-size: 11px; color: var(--color-text-muted); margin-top: 10px; display: flex; align-items: center; gap: 4px; }
+        .flip-hint svg { width: 14px; height: 14px; }
 
         /* Healthcare Reality Box */
         .reality-box { background: linear-gradient(135deg, #FFF5F5 0%, #FED7E2 100%); padding: 28px 32px; border-radius: var(--radius-md); margin: 32px 0; border-left: 5px solid var(--color-workforce); }
@@ -293,25 +306,80 @@
             <h3 class="section-title">Key Drivers of Adoption</h3>
             
             <div class="drivers-grid">
-                <div class="driver-card">
-                    <div class="driver-icon workforce">🔄</div>
-                    <span class="driver-text">Increasing healthcare demand and workforce shortages</span>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="driver-icon workforce">🔄</div>
+                            <span class="driver-title">Healthcare Demand & Workforce Shortages</span>
+                            <span class="flip-hint">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                                Hover to learn more
+                            </span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="driver-description">Aging populations and staff shortages create unsustainable pressure on healthcare systems, making AI-assisted tools essential for maintaining care quality and efficiency.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="driver-card">
-                    <div class="driver-icon data">📊</div>
-                    <span class="driver-text">Rapid expansion of digital health data</span>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="driver-icon data">📊</div>
+                            <span class="driver-title">Rapid Expansion of Digital Health Data</span>
+                            <span class="flip-hint">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                                Hover to learn more
+                            </span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="driver-description">EHRs, imaging, genomics, and wearables generate massive data volumes that exceed human processing capacity, requiring AI to extract meaningful insights efficiently.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="driver-card">
-                    <div class="driver-icon computing">⚡</div>
-                    <span class="driver-text">Advancements in computing power and cloud infrastructure</span>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="driver-icon computing">⚡</div>
+                            <span class="driver-title">Computing Power & Cloud Infrastructure</span>
+                            <span class="flip-hint">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                                Hover to learn more
+                            </span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="driver-description">Advanced GPUs and scalable cloud platforms now make sophisticated AI models accessible and affordable for healthcare organizations of all sizes.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="driver-card">
-                    <div class="driver-icon policy">📋</div>
-                    <span class="driver-text">Supportive policy frameworks</span>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="driver-icon policy">📋</div>
+                            <span class="driver-title">Supportive Policy Frameworks</span>
+                            <span class="flip-hint">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                                Hover to learn more
+                            </span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="driver-description">Regulatory bodies are developing clearer guidelines for AI in healthcare, enabling safe adoption while protecting patient privacy and ensuring clinical accountability.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="driver-card">
-                    <div class="driver-icon admin">🧾</div>
-                    <span class="driver-text">Necessity to reduce administrative burden</span>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="driver-icon admin">🧾</div>
+                            <span class="driver-title">Reducing Administrative Burden</span>
+                            <span class="flip-hint">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                                Hover to learn more
+                            </span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="driver-description">Clinicians spend up to 45% of their time on documentation. AI automation can reclaim this time for direct patient care and reduce burnout.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
