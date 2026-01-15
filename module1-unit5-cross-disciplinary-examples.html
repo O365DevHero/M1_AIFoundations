@@ -170,6 +170,32 @@
         .kc-feature-icon { color: var(--color-accent); flex-shrink: 0; margin-top: 2px; }
         .kc-feature-text { font-size: 14px; color: var(--color-text); }
 
+        /* Knowledge Check / Quiz Styles */
+        .knowledge-check { background: var(--color-white); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; box-shadow: var(--shadow-md); border: 1px solid var(--color-border); }
+        .kc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border); }
+        .kc-icon { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .kc-icon svg { width: 22px; height: 22px; color: white; }
+        .kc-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-primary); }
+        .mcq-form fieldset { border: none; margin-bottom: 28px; padding: 0; }
+        .question-block { background: var(--color-bg); border-radius: var(--radius-md); padding: 24px; border: 1px solid var(--color-border); }
+        .question-number { display: inline-block; background: var(--color-primary); color: white; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; margin-bottom: 12px; }
+        .question-text { font-family: var(--font-heading); font-size: 17px; font-weight: 600; color: var(--color-text); margin-bottom: 18px; line-height: 1.5; }
+        .options-list { display: flex; flex-direction: column; gap: 10px; }
+        .option-item { position: relative; }
+        .option-item input[type="radio"] { position: absolute; opacity: 0; }
+        .option-label { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; background: var(--color-white); border: 2px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.15s ease; }
+        .option-label:hover { border-color: var(--color-accent); background: var(--color-secondary); }
+        .option-item input[type="radio"]:checked + .option-label { border-color: var(--color-primary); background: var(--color-secondary); }
+        .option-letter { width: 26px; height: 26px; background: var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; color: var(--color-text-light); flex-shrink: 0; }
+        .option-item input[type="radio"]:checked + .option-label .option-letter { background: var(--color-primary); color: white; }
+        .option-text { padding-top: 2px; font-size: 15px; }
+        .question-feedback { margin-top: 14px; padding: 12px 16px; border-radius: var(--radius-sm); font-weight: 500; font-size: 14px; display: none; }
+        .question-feedback.correct { background: #C6F6D5; color: #276749; display: block; }
+        .question-feedback.incorrect { background: #FED7D7; color: #C53030; display: block; }
+        .submit-container { text-align: center; margin-top: 24px; }
+        .submit-btn { background: var(--color-primary); color: white; font-family: var(--font-body); font-size: 15px; font-weight: 600; padding: 14px 36px; border: none; border-radius: 50px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 14px rgba(16,47,70,0.3); }
+        .submit-btn:hover { background: var(--color-primary-light); transform: translateY(-2px); }
+
         /* Reflective Practice */
         .reflect-section { background: linear-gradient(135deg, #FAF5FF 0%, #F3E8FF 100%); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; border: 1px solid #E9D8FD; }
         .reflect-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
@@ -225,6 +251,8 @@
         .summary-detail { background: var(--color-white); border-radius: var(--radius-md); padding: 20px; }
         .detail-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-muted); margin-bottom: 8px; }
         .detail-text { font-size: 14px; color: var(--color-text); }
+
+        
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -285,15 +313,7 @@
             </span>
         </section>
 
-        <div class="video-placeholder">
-            <div class="video-container">
-                <video controls controlsList="nodownload">
-                    <source src="https://lmscontainer.blob.core.windows.net/madashealthai/module-1/Nurse.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-
+       
         <h3 class="video-title">Patient Journey</h3>
         <div class="video-placeholder">
             <div class="video-container">
@@ -452,12 +472,20 @@
                     <span class="kc-feature-text">Evaluates safety awareness in AI application</span>
                 </div>
             </div>
+            <div class="knowledge-check">
+                <div class="kc-header"><div class="kc-icon ml"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="kc-title">Knowledge Check — ML</span></div>
+                <form class="mcq-form" id="mlForm">
+                    <fieldset><div class="question-block"><span class="question-number">MCQ 1</span><p class="question-text">38% readmission risk: what does it mean?</p><div class="options-list"><div class="option-item"><input type="radio" id="ml1a" name="ml1" value="A" data-correct="false" data-explanation="Incorrect. ML outputs are probabilities, not certainties. A 38% risk indicates elevated likelihood but does not guarantee readmission."><label for="ml1a" class="option-label"><span class="option-letter">A</span><span class="option-text">Will definitely be readmitted</span></label></div><div class="option-item"><input type="radio" id="ml1b" name="ml1" value="B" data-correct="false" data-explanation="Incorrect. AI provides decision support, not clinical decisions. The clinician interprets risk scores within the full clinical context."><label for="ml1b" class="option-label"><span class="option-letter">B</span><span class="option-text">AI decided admission is needed</span></label></div><div class="option-item"><input type="radio" id="ml1c" name="ml1" value="C" data-correct="true" data-explanation="Correct. The 38% indicates this patient belongs to a higher-risk group based on historical patterns, helping clinicians prioritize care and preventive interventions."><label for="ml1c" class="option-label"><span class="option-letter">C</span><span class="option-text">Higher-risk group compared to similar patients</span></label></div><div class="option-item"><input type="radio" id="ml1d" name="ml1" value="D" data-correct="false" data-explanation="Incorrect. Clinicians retain professional judgment and accountability. AI outputs inform but do not dictate clinical decisions or determine liability."><label for="ml1d" class="option-label"><span class="option-letter">D</span><span class="option-text">Clinician must follow AI to avoid liability</span></label></div></div><div class="question-feedback" id="feedback-ml1"></div></div></fieldset>
+                    <fieldset><div class="question-block"><span class="question-number">MCQ 2</span><p class="question-text">Most common ML type for readmission/sepsis risk?</p><div class="options-list"><div class="option-item"><input type="radio" id="ml2a" name="ml2" value="A" data-correct="false" data-explanation="Incorrect. Unsupervised learning finds patterns without labeled outcomes. Predicting specific outcomes like readmission requires labeled training data."><label for="ml2a" class="option-label"><span class="option-letter">A</span><span class="option-text">Unsupervised</span></label></div><div class="option-item"><input type="radio" id="ml2b" name="ml2" value="B" data-correct="false" data-explanation="Incorrect. Reinforcement learning optimizes sequential decisions through trial and error. Risk prediction uses historical labeled data, not iterative learning from actions."><label for="ml2b" class="option-label"><span class="option-letter">B</span><span class="option-text">Reinforcement</span></label></div><div class="option-item"><input type="radio" id="ml2c" name="ml2" value="C" data-correct="true" data-explanation="Correct. Supervised learning trains on labeled historical data (patients with known outcomes) to predict future risks. This is the standard approach for readmission and sepsis prediction models."><label for="ml2c" class="option-label"><span class="option-letter">C</span><span class="option-text">Supervised</span></label></div><div class="option-item"><input type="radio" id="ml2d" name="ml2" value="D" data-correct="false" data-explanation="Incorrect. Rule-based systems follow explicit logic, not machine learning. ML models learn patterns from data rather than following programmed rules."><label for="ml2d" class="option-label"><span class="option-letter">D</span><span class="option-text">Rule-based automation</span></label></div></div><div class="question-feedback" id="feedback-ml2"></div></div></fieldset>
+                    <div class="submit-container"><button type="submit" class="submit-btn">Check Answers</button></div>
+                </form>
+            </div>
         </div>
 
         <div class="reflect-section">
             <div class="reflect-header">
                 <div class="reflect-icon-wrap">🧠</div>
-                <span class="reflect-title">Reflective Practice (Modern CPD)</span>
+                <span class="reflect-title">Reflective Practice</span>
             </div>
             <ul class="reflect-list">
                 <li>
@@ -472,29 +500,7 @@
             <p class="reflect-note">Reflections can be saved or exported for CPD audits.</p>
         </div>
 
-        <div class="analytics-section">
-            <div class="analytics-header">
-                <div class="analytics-icon">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                </div>
-                <span class="analytics-title">Learner Analytics</span>
-            </div>
-            <p style="font-size: 14px; color: var(--color-text-light); margin-bottom: 20px;">Learner engagement is automatically tracked within the LMS:</p>
-            <div class="analytics-grid">
-                <div class="analytics-col">
-                    <h4>Tracked Metrics</h4>
-                    <div class="analytics-item"><span class="analytics-dot"></span><span>Time spent on content</span></div>
-                    <div class="analytics-item"><span class="analytics-dot"></span><span>Quiz accuracy by topic</span></div>
-                    <div class="analytics-item"><span class="analytics-dot"></span><span>Self-assessed confidence before and after completion</span></div>
-                </div>
-                <div class="analytics-col">
-                    <h4>Informs</h4>
-                    <div class="analytics-item"><span class="analytics-dot"></span><span>Learner self-awareness and insight</span></div>
-                    <div class="analytics-item"><span class="analytics-dot"></span><span>Organisational reporting</span></div>
-                    <div class="analytics-item"><span class="analytics-dot"></span><span>CPD audit preparedness</span></div>
-                </div>
-            </div>
-        </div>
+       
 
         <div class="transition-box">
             <div class="transition-label">What's Next</div>
@@ -628,6 +634,42 @@
         </nav>
 
     <script>
+        // Quiz validation functionality
+        function validateForm(formId, questions) {
+            document.getElementById(formId).addEventListener('submit', function(e) {
+                e.preventDefault();
+                questions.forEach(function(qName) {
+                    var selected = document.querySelector('input[name="' + qName + '"]:checked');
+                    var feedbackEl = document.getElementById('feedback-' + qName);
+                    feedbackEl.classList.remove('correct', 'incorrect');
+                    
+                    if (selected) {
+                        var isCorrect = selected.getAttribute('data-correct') === 'true';
+                        var explanation = selected.getAttribute('data-explanation');
+                        
+                        if (isCorrect) {
+                            feedbackEl.innerHTML = '<strong>✓ Correct!</strong><br>Explanation: ' + explanation;
+                            feedbackEl.classList.add('correct');
+                        } else {
+                            // Find the correct answer
+                            var correctOption = document.querySelector('input[name="' + qName + '"][data-correct="true"]');
+                            var correctValue = correctOption.value;
+                            var correctExplanation = correctOption.getAttribute('data-explanation');
+                            
+                            feedbackEl.innerHTML = '<strong>✗ Incorrect.</strong><br>' +
+                                'Correct answer: ' + correctValue + '<br>' +
+                                'Explanation: ' + correctExplanation;
+                            feedbackEl.classList.add('incorrect');
+                        }
+                    } else {
+                        feedbackEl.textContent = 'Please select an answer';
+                        feedbackEl.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+        validateForm('mlForm', ['ml1', 'ml2']);
+
         // Back to Top functionality
         document.addEventListener('DOMContentLoaded', function() {
             const backToTopBtn = document.getElementById('backToTop');
