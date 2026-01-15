@@ -35,941 +35,215 @@
             --radius-lg: 16px;
         }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-body);
-            font-size: 17px;
-            line-height: 1.75;
-            color: var(--color-text);
-            background: var(--color-bg);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-
-        .lms-container {
-            max-width: 75%;
-            margin: 0 auto;
-            padding: 40px 24px 80px;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.75; color: var(--color-text); background: var(--color-bg); -webkit-font-smoothing: antialiased; }
+        .lms-container { max-width: 75%; margin: 0 auto; padding: 40px 24px 80px; }
 
         /* Top Header */
-        .top-header {
-            background: var(--color-white);
-            border-bottom: 1px solid var(--color-border);
-            padding: 16px 24px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .top-header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .top-header-logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .top-header-logo img {
-            height: 40px;
-            width: auto;
-        }
-
-        .top-header-title {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: var(--font-heading);
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--color-primary);
-            letter-spacing: -0.3px;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--color-white);
-            color: var(--color-primary);
-            text-decoration: none;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.2s ease;
-            border: 1px solid var(--color-border);
-            margin-bottom: 24px;
-        }
-
-        .back-btn:hover {
-            background: var(--color-secondary);
-            border-color: var(--color-primary);
-            transform: translateX(-4px);
-        }
-
-        .back-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-                /* Video Container */
-         .video-placeholder {
-            background: #000;
-            border-radius: var(--radius-md);
-            margin: 32px auto;
-            max-width: 75%;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-        }
-
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            cursor: pointer;
-        }
-        .video-title { font-family: var(--font-heading); font-size: 18px; font-weight: 600; color: var(--color-primary); margin-bottom: 12px; margin-top: 32px; }
-
+        .top-header { background: var(--color-white); border-bottom: 1px solid var(--color-border); padding: 16px 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
+        .top-header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .top-header-logo { display: flex; align-items: center; }
+        .top-header-logo img { height: 40px; width: auto; }
+        .top-header-title { position: absolute; left: 50%; transform: translateX(-50%); font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-primary); letter-spacing: -0.3px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--color-white); color: var(--color-primary); text-decoration: none; border-radius: var(--radius-sm); font-weight: 600; font-size: 15px; transition: all 0.2s ease; border: 1px solid var(--color-border); margin-bottom: 24px; }
+        .back-btn:hover { background: var(--color-secondary); border-color: var(--color-primary); transform: translateX(-4px); }
+        .back-btn svg { width: 20px; height: 20px; }
+        @media (max-width: 768px) { .top-header-title { position: static; transform: none; font-size: 16px; margin: 0 auto; } .back-btn { padding: 6px 12px; font-size: 13px; } }
 
         /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            width: 50px;
-            height: 50px;
-            background: var(--color-primary);
-            color: var(--color-white);
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 1;
-            visibility: visible;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-md);
-            z-index: 99;
-        }
+        .back-to-top { position: fixed; bottom: 32px; right: 32px; width: 50px; height: 50px; background: var(--color-primary); color: var(--color-white); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 1; visibility: visible; transition: all 0.3s ease; box-shadow: var(--shadow-md); z-index: 99; }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--color-primary-light); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .back-to-top svg { width: 24px; height: 24px; }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
+        /* Unit Navigation */
+        .unit-navigation { display: flex; justify-content: space-between; align-items: center; max-width: 75%; margin: 48px auto 0; padding: 24px 32px; gap: 20px; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 12px; padding: 16px 28px; background: var(--color-primary); color: var(--color-white); text-decoration: none; border-radius: var(--radius-md); font-weight: 600; font-size: 15px; transition: all 0.3s ease; box-shadow: var(--shadow-sm); }
+        .nav-btn:hover { background: var(--color-primary-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .nav-btn svg { width: 20px; height: 20px; }
+        @media (max-width: 768px) { .unit-navigation { flex-direction: column; padding: 20px 16px; } .nav-btn { width: 100%; justify-content: center; } }
 
-        .back-to-top:hover {
-            background: var(--color-primary-light);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .back-to-top svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .top-header-title {
-                position: static;
-                transform: none;
-                font-size: 16px;
-                margin: 0 auto;
-            }
-
-            .back-btn {
-                padding: 6px 12px;
-                font-size: 13px;
-            }
-        }
-
-        /* Header Styles */
-        .lms-header {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            padding: 48px 40px;
-            border-radius: var(--radius-lg);
-            margin-bottom: 48px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .lms-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .lms-header::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .logo-placeholder {
-            margin-bottom: 32px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo-placeholder img {
-            height: 44px;
-            width: auto;
-            opacity: 0.95;
-        }
-
-        .lms-header-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .course-label {
-            display: inline-block;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 12px;
-        }
-
-        .module-title {
-            font-family: var(--font-heading);
-            font-size: 38px;
-            font-weight: 700;
-            color: var(--color-white);
-            line-height: 1.2;
-            margin-bottom: 8px;
-        }
-
-        .course-title {
-            font-size: 18px;
-            color: rgba(255,255,255,0.85);
-            font-weight: 400;
-        }
+        /* Header */
+        .lms-header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); padding: 48px 40px; border-radius: var(--radius-lg); margin-bottom: 48px; position: relative; overflow: hidden; }
+        .lms-header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); border-radius: 50%; }
+        .lms-header::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); border-radius: 50%; }
+        .lms-header-content { position: relative; z-index: 1; }
+        .course-label { display: inline-block; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.8); margin-bottom: 12px; }
+        .module-title { font-family: var(--font-heading); font-size: 38px; font-weight: 700; color: var(--color-white); line-height: 1.2; margin-bottom: 8px; }
+        .course-title { font-size: 18px; color: rgba(255,255,255,0.85); font-weight: 400; }
 
         /* Meta Info Bar */
-        .meta-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            padding: 20px 28px;
-            background: var(--color-white);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-border);
-            margin-bottom: 48px;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-            color: var(--color-text-light);
-        }
-
-        .meta-icon {
-            width: 20px;
-            height: 20px;
-            color: var(--color-accent);
-        }
-
-        .meta-label {
-            font-weight: 500;
-            color: var(--color-text);
-        }
+        .meta-bar { display: flex; flex-wrap: wrap; gap: 24px; padding: 20px 28px; background: var(--color-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--color-border); margin-bottom: 48px; }
+        .meta-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--color-text-light); }
+        .meta-icon { width: 20px; height: 20px; color: var(--color-accent); }
+        .meta-label { font-weight: 500; color: var(--color-text); }
 
         /* Unit Header */
-        .unit-header {
-            background: var(--color-secondary);
-            padding: 28px 32px;
-            border-radius: var(--radius-md);
-            margin-bottom: 40px;
-            border-left: 4px solid var(--color-accent);
-        }
-
-        .unit-label {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--color-accent);
-            margin-bottom: 8px;
-        }
-
-        .unit-title {
-            font-family: var(--font-heading);
-            font-size: 26px;
-            font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: 20px;
-        }
-
-        .time-estimates {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .time-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: var(--color-text-light);
-        }
-
-        .time-icon {
-            font-size: 16px;
-        }
+        .unit-header { background: var(--color-secondary); padding: 28px 32px; border-radius: var(--radius-md); margin-bottom: 40px; border-left: 4px solid var(--color-accent); }
+        .unit-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: var(--color-accent); margin-bottom: 8px; }
+        .unit-title { font-family: var(--font-heading); font-size: 26px; font-weight: 600; color: var(--color-primary); margin-bottom: 0; }
 
         /* Content Sections */
-        .content-section {
-            margin-bottom: 48px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid var(--color-border);
-        }
+        .content-section { margin-bottom: 48px; }
+        .section-title { font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--color-primary); margin-bottom: 20px; }
+        p { margin-bottom: 16px; color: var(--color-text); }
+        ul, ol { margin-bottom: 20px; padding-left: 24px; }
+        li { margin-bottom: 10px; padding-left: 8px; }
+        li::marker { color: var(--color-accent); }
 
-        .content-section:last-of-type {
-            border-bottom: none;
-        }
+        .highlight-text { font-size: 1.1em; font-weight: 500; color: var(--color-primary); }
 
-        .section-title {
-            font-family: var(--font-heading);
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: 24px;
-            line-height: 1.3;
-            text-align: center;
-        }
+        /* Key Message Box */
+        .key-message-box { background: linear-gradient(135deg, var(--color-secondary) 0%, #F0F8FA 100%); padding: 32px; border-radius: var(--radius-md); margin: 32px 0; border-left: 5px solid var(--color-accent); text-align: center; }
+        .key-message-box p { font-size: 1.2em; font-weight: 600; color: var(--color-primary); margin-bottom: 12px; }
+        .key-message-box p:last-child { margin-bottom: 0; }
 
-        p {
-            margin-bottom: 18px;
-            color: var(--color-text);
-        }
-
-        /* Comparison Container */
-        .comparison-container {
-            margin: 32px 0;
-        }
+        /* Clinician Prompt */
+        .clinician-prompt { background: #FFF8E7; padding: 24px 28px; border-radius: var(--radius-md); margin: 28px 0; border-left: 4px solid #F6AD55; }
+        .clinician-prompt-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-weight: 600; color: #B7791F; }
+        .clinician-prompt-header span { font-size: 1.2em; }
+        .clinician-prompt p { margin-bottom: 0; font-style: italic; color: var(--color-text); }
 
         /* Comparison Table */
-        .comparison-table-wrapper {
-            overflow-x: auto;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--color-border);
-            max-width: 100%;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--color-white);
-            font-size: 16px;
-        }
-
-        .comparison-table thead tr {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-        }
-
-        .comparison-table th {
-            padding: 20px 24px;
-            text-align: center;
-            font-weight: 600;
-            color: var(--color-white);
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-
-        .comparison-table th:first-child {
-            background: var(--color-traditional);
-            border-radius: 10px 0 0 0;
-        }
-
-        .comparison-table th:last-child {
-            background: var(--color-ai);
-            border-radius: 0 10px 0 0;
-        }
-
-        .comparison-table td {
-            padding: 18px 24px;
-            border-bottom: 1px solid var(--color-border);
-            vertical-align: middle;
-            text-align: center;
-        }
-
-        .comparison-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .comparison-table tbody tr:hover {
-            background: var(--color-secondary);
-        }
-
-        .comparison-table td:first-child {
-            background: rgba(107, 114, 128, 0.05);
-            border-right: 1px solid var(--color-border);
-        }
-
-        .comparison-table td:last-child {
-            background: rgba(15, 76, 92, 0.03);
-        }
-
-        /* Cell Icons */
-        .cell-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .cell-icon {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
-
-        .cell-icon.traditional {
-            color: var(--color-traditional);
-        }
-
-        .cell-icon.ai {
-            color: var(--color-accent);
-        }
-
-        /* Visual Comparison Cards */
-        .visual-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin: 40px 0;
-        }
-
-        .comparison-card {
-            background: var(--color-white);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--color-border);
-        }
-
-        .comparison-card.traditional {
-            border-top: 4px solid var(--color-traditional);
-        }
-
-        .comparison-card.ai {
-            border-top: 4px solid var(--color-accent);
-        }
-
-        .card-header {
-            padding: 20px 24px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .comparison-card.traditional .card-header {
-            background: rgba(107, 114, 128, 0.08);
-        }
-
-        .comparison-card.ai .card-header {
-            background: rgba(46, 139, 139, 0.08);
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .comparison-card.traditional .card-icon {
-            background: var(--color-traditional);
-        }
-
-        .comparison-card.ai .card-icon {
-            background: var(--color-accent);
-        }
-
-        .card-icon svg {
-            width: 24px;
-            height: 24px;
-            color: var(--color-white);
-        }
-
-        .card-title {
-            font-family: var(--font-heading);
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .comparison-card.traditional .card-title {
-            color: var(--color-traditional);
-        }
-
-        .comparison-card.ai .card-title {
-            color: var(--color-primary);
-        }
-
-        .card-body {
-            padding: 24px;
-        }
-
-        .card-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .card-body li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px dashed var(--color-border);
-        }
-
-        .card-body li:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .card-body li:first-child {
-            padding-top: 0;
-        }
-
-        .bullet-icon {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-            margin-top: 8px;
-        }
-
-        .comparison-card.traditional .bullet-icon {
-            background: var(--color-traditional);
-        }
-
-        .comparison-card.ai .bullet-icon {
-            background: var(--color-accent);
-        }
-
-        /* Clinical Implication Box */
-        .clinical-implication {
-            background: linear-gradient(135deg, var(--color-secondary) 0%, #F0F8FA 100%);
-            padding: 28px 32px;
-            border-radius: var(--radius-md);
-            margin: 40px 0;
-            position: relative;
-            border: 1px solid rgba(46, 139, 139, 0.2);
-        }
-
-        .clinical-implication::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 5px;
-            background: linear-gradient(180deg, var(--color-accent) 0%, var(--color-primary) 100%);
-            border-radius: 5px 0 0 5px;
-        }
-
-        .clinical-implication-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-
-        .clinical-implication-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--color-accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .clinical-implication-icon svg {
-            width: 20px;
-            height: 20px;
-            color: var(--color-white);
-        }
-
-        .clinical-implication-label {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--color-accent);
-        }
-
-        .clinical-implication p {
-            margin-bottom: 0;
-            font-size: 17px;
-            line-height: 1.7;
-            color: var(--color-text);
-        }
-
-        .clinical-implication strong {
-            color: var(--color-primary);
-        }
-
-        /* Infographic Section */
-        .infographic-section {
-            background: var(--color-white);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            margin: 40px 0;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--color-border);
-        }
-
-        .infographic-title {
-            font-family: var(--font-heading);
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .flow-comparison {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 24px;
-            align-items: center;
-        }
-
-        .flow-diagram {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .flow-label {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .flow-diagram.traditional .flow-label {
-            color: var(--color-traditional);
-        }
-
-        .flow-diagram.ai .flow-label {
-            color: var(--color-accent);
-        }
-
-        .flow-box {
-            width: 100%;
-            padding: 14px 20px;
-            border-radius: var(--radius-sm);
-            text-align: center;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .flow-diagram.traditional .flow-box {
-            background: rgba(107, 114, 128, 0.1);
-            color: var(--color-traditional);
-            border: 1px solid rgba(107, 114, 128, 0.2);
-        }
-
-        .flow-diagram.ai .flow-box {
-            background: rgba(46, 139, 139, 0.1);
-            color: var(--color-primary);
-            border: 1px solid rgba(46, 139, 139, 0.2);
-        }
-
-        .flow-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-text-muted);
-        }
-
-        .flow-arrow svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .vs-divider {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0 20px;
-        }
-
-        .vs-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-traditional) 0%, var(--color-accent) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-white);
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        /* Key Takeaway */
-        .key-takeaway {
-            background: #FFFAF0;
-            padding: 24px 28px;
-            border-radius: var(--radius-md);
-            margin: 32px 0;
-            border: 1px solid #F6E05E;
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-
-        .takeaway-icon {
-            width: 36px;
-            height: 36px;
-            background: #F6E05E;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .takeaway-icon svg {
-            width: 18px;
-            height: 18px;
-            color: #744210;
-        }
-
-        .takeaway-content {
-            flex: 1;
-        }
-
-        .takeaway-label {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #B7791F;
-            margin-bottom: 6px;
-        }
-
-        .takeaway-content p {
-            margin-bottom: 0;
-            color: var(--color-text);
-        }
+        .comparison-table-wrapper { overflow-x: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-md); border: 1px solid var(--color-border); margin: 32px 0; }
+        .comparison-table { width: 100%; border-collapse: collapse; background: var(--color-white); font-size: 15px; }
+        .comparison-table thead tr { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); }
+        .comparison-table th { padding: 18px 20px; text-align: left; font-weight: 600; color: var(--color-white); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .comparison-table td { padding: 16px 20px; border-bottom: 1px solid var(--color-border); vertical-align: middle; }
+        .comparison-table tbody tr:last-child td { border-bottom: none; }
+        .comparison-table tbody tr:hover { background: var(--color-secondary); }
+        .comparison-table td:first-child { font-weight: 600; color: var(--color-primary); background: rgba(15, 76, 92, 0.03); }
+
+        /* Clinical Example Section */
+        .clinical-example { background: var(--color-white); border-radius: var(--radius-md); padding: 32px; margin: 32px 0; box-shadow: var(--shadow-md); border: 1px solid var(--color-border); }
+        .clinical-example-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--color-secondary); }
+        .clinical-example-icon { width: 48px; height: 48px; background: var(--color-accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .clinical-example-icon svg { width: 24px; height: 24px; color: var(--color-white); }
+        .clinical-example-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-primary); }
+
+        .example-subsection { margin-bottom: 28px; padding: 24px; border-radius: var(--radius-sm); }
+        .example-subsection:last-child { margin-bottom: 0; }
+        .example-subsection.traditional { background: rgba(107, 114, 128, 0.08); border-left: 4px solid var(--color-traditional); }
+        .example-subsection.ai { background: rgba(46, 139, 139, 0.08); border-left: 4px solid var(--color-accent); }
+        .example-subsection h4 { font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+        .example-subsection.traditional h4 { color: var(--color-traditional); }
+        .example-subsection.ai h4 { color: var(--color-accent); }
+
+        .example-item { margin-bottom: 12px; }
+        .example-item:last-child { margin-bottom: 0; }
+        .example-label { font-weight: 600; color: var(--color-text); }
+        .strength-text { color: var(--color-success); font-weight: 500; }
+        .limitation-text { color: var(--color-error); font-weight: 500; }
+        .example-note { font-style: italic; color: var(--color-text-light); margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--color-border); }
+
+        /* Interactive Question */
+        .interactive-question { background: #E8F4F8; padding: 24px 28px; border-radius: var(--radius-md); margin: 24px 0; border-left: 4px solid var(--color-accent); }
+        .interactive-question-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-weight: 600; color: var(--color-primary); }
+        .interactive-question p { margin-bottom: 12px; font-style: italic; }
+        .correct-answer-box { background: var(--color-white); padding: 16px 20px; border-radius: var(--radius-sm); margin-top: 16px; border: 1px solid var(--color-success); }
+        .correct-answer-label { font-weight: 600; color: var(--color-success); margin-bottom: 4px; }
+        .correct-answer-text { margin-bottom: 0; color: var(--color-text); }
+
+        /* Checkmark List */
+        .checkmark-list { list-style: none; padding: 0; margin: 16px 0; }
+        .checkmark-list li { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; }
+        .checkmark-list li::before { content: "✔️"; flex-shrink: 0; }
+
+        /* Takeaway Box */
+        .takeaway-box { background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%); padding: 28px 32px; border-radius: var(--radius-md); margin: 32px 0; border-left: 5px solid var(--color-success); text-align: center; }
+        .takeaway-box p { font-size: 1.15em; font-weight: 600; color: var(--color-text); margin-bottom: 12px; }
+        .takeaway-box p:last-child { margin-bottom: 0; }
+
+        /* When to Use Section */
+        .when-to-use { background: var(--color-white); border-radius: var(--radius-md); padding: 28px 32px; margin: 32px 0; box-shadow: var(--shadow-sm); border: 1px solid var(--color-border); }
+        .when-to-use p { margin-bottom: 12px; }
+        .when-to-use ul { margin: 12px 0 12px 24px; }
+        .when-to-use li { margin-bottom: 8px; }
+        .example-highlight { background: var(--color-secondary); padding: 12px 16px; border-radius: var(--radius-sm); margin-top: 16px; }
+        .example-highlight strong { color: var(--color-primary); }
+
+        /* Safety Box */
+        .safety-box { background: #FFF5F5; padding: 28px 32px; border-radius: var(--radius-md); margin: 32px 0; border-left: 5px solid var(--color-error); }
+        .safety-box-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .safety-box-icon { width: 40px; height: 40px; background: var(--color-error); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .safety-box-icon svg { width: 20px; height: 20px; color: var(--color-white); }
+        .safety-box-title { font-family: var(--font-heading); font-size: 18px; font-weight: 600; color: var(--color-error); }
+        .safety-box p:first-of-type { font-weight: 600; color: var(--color-text); }
+        .safety-box ul { margin: 16px 0 0 24px; }
+        .safety-box li { margin-bottom: 8px; }
+
+        /* Final Message */
+        .final-message { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); padding: 40px; border-radius: var(--radius-lg); margin: 40px 0; text-align: center; color: var(--color-white); position: relative; overflow: hidden; }
+        .final-message::before { content: ''; position: absolute; top: -30%; right: -10%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); border-radius: 50%; }
+        .final-message p { font-size: 1.2em; color: var(--color-white); margin-bottom: 16px; position: relative; z-index: 1; }
+        .final-message p:last-child { margin-bottom: 0; font-weight: 600; font-size: 1.3em; }
+
+        /* Reflection Section */
+        .reflect-section { background: linear-gradient(135deg, #FAF5FF 0%, #F3E8FF 100%); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; border: 1px solid #E9D8FD; }
+        .reflect-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+        .reflect-icon-wrap { width: 48px; height: 48px; background: #805AD5; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .reflect-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: #553C9A; }
+        .reflect-question { font-weight: 500; color: var(--color-text); margin-bottom: 16px; }
+        .reflect-answer { background: var(--color-white); padding: 20px 24px; border-radius: var(--radius-sm); border: 1px solid #D6BCFA; }
+        .reflect-answer-label { font-weight: 600; color: #6B46C1; margin-bottom: 8px; }
+        .reflect-answer p { margin-bottom: 0; }
+
+        /* Cross-Disciplinary Section */
+        .cross-disciplinary { background: var(--color-secondary); padding: 28px 32px; border-radius: var(--radius-md); margin: 32px 0; }
+        .cross-disciplinary p { margin-bottom: 0; }
+
+        /* Knowledge Check / Quiz Styles */
+        .knowledge-check { background: var(--color-white); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; box-shadow: var(--shadow-md); border: 1px solid var(--color-border); }
+        .kc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border); }
+        .kc-icon { width: 44px; height: 44px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .kc-icon svg { width: 22px; height: 22px; color: white; }
+        .kc-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--color-primary); }
+        .mcq-form fieldset { border: none; margin-bottom: 28px; padding: 0; }
+        .question-block { background: var(--color-bg); border-radius: var(--radius-md); padding: 24px; border: 1px solid var(--color-border); }
+        .question-number { display: inline-block; background: var(--color-primary); color: white; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; margin-bottom: 12px; }
+        .question-text { font-family: var(--font-heading); font-size: 17px; font-weight: 600; color: var(--color-text); margin-bottom: 18px; line-height: 1.5; }
+        .options-list { display: flex; flex-direction: column; gap: 10px; }
+        .option-item { position: relative; }
+        .option-item input[type="radio"] { position: absolute; opacity: 0; }
+        .option-label { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; background: var(--color-white); border: 2px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.15s ease; }
+        .option-label:hover { border-color: var(--color-accent); background: var(--color-secondary); }
+        .option-item input[type="radio"]:checked + .option-label { border-color: var(--color-primary); background: var(--color-secondary); }
+        .option-letter { width: 26px; height: 26px; background: var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; color: var(--color-text-light); flex-shrink: 0; }
+        .option-item input[type="radio"]:checked + .option-label .option-letter { background: var(--color-primary); color: white; }
+        .option-text { padding-top: 2px; font-size: 15px; }
+        .question-feedback { margin-top: 14px; padding: 12px 16px; border-radius: var(--radius-sm); font-weight: 500; font-size: 14px; display: none; }
+        .question-feedback.correct { background: #C6F6D5; color: #276749; display: block; }
+        .question-feedback.incorrect { background: #FED7D7; color: #C53030; display: block; }
+        .submit-container { text-align: center; margin-top: 24px; }
+        .submit-btn { background: var(--color-primary); color: white; font-family: var(--font-body); font-size: 15px; font-weight: 600; padding: 14px 36px; border: none; border-radius: 50px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 14px rgba(16,47,70,0.3); }
+        .submit-btn:hover { background: var(--color-primary-light); transform: translateY(-2px); }
+
+        /* Footer */
+        .footer { background: var(--color-primary); padding: 40px 24px; margin-top: 40px; }
+        .footer-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-brand { color: rgba(255,255,255,0.9); font-size: 14px; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-link { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: color 0.2s ease; }
+        .footer-link:hover { color: var(--color-white); }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .lms-container {
-                padding: 24px 16px 60px;
-            }
-
-            .lms-header {
-                padding: 32px 24px;
-            }
-
-            .module-title {
-                font-size: 28px;
-            }
-
-            .meta-bar {
-                flex-direction: column;
-                gap: 16px;
-                padding: 20px;
-            }
-
-            .unit-header {
-                padding: 24px;
-            }
-
-            .unit-title {
-                font-size: 22px;
-            }
-
-            .section-title {
-                font-size: 20px;
-            }
-
-            .visual-comparison {
-                grid-template-columns: 1fr;
-            }
-
-            .flow-comparison {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .vs-divider {
-                padding: 16px 0;
-            }
-
-            .comparison-table th,
-            .comparison-table td {
-                padding: 14px 16px;
-                font-size: 14px;
-            }
-
-            .infographic-section {
-                padding: 24px;
-            }
-
-            .clinical-implication {
-                padding: 24px;
-            }
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--color-primary);
-            padding: 40px 24px;
-            margin-top: 40px;
-        }
-
-        .footer-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-brand {
-            color: rgba(255,255,255,0.9);
-            font-size: 14px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-link {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--color-white);
-        }
-
-        /* Unit Navigation */
-        .unit-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 48px auto 0;
-            padding: 24px 32px;
-            gap: 20px;
-        }
-
-        .nav-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 28px;
-            background: var(--color-primary);
-            color: var(--color-white);
-            text-decoration: none;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .nav-btn:hover {
-            background: var(--color-primary-light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .nav-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .unit-navigation {
-                flex-direction: column;
-                padding: 20px 16px;
-            }
-
-            .nav-btn {
-                width: 100%;
-                justify-content: center;
-            }
+            .lms-container { max-width: 100%; padding: 24px 16px 60px; }
+            .lms-header { padding: 32px 24px; }
+            .module-title { font-size: 28px; }
+            .meta-bar { flex-direction: column; gap: 16px; padding: 20px; }
+            .unit-header { padding: 24px; }
+            .unit-title { font-size: 22px; }
+            .section-title { font-size: 20px; }
+            .comparison-table th, .comparison-table td { padding: 12px 14px; font-size: 14px; }
+            .clinical-example { padding: 24px; }
+            .example-subsection { padding: 20px; }
         }
 
         /* Print Styles */
         @media print {
-            .lms-header {
-                background: var(--color-primary) !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .comparison-card.traditional {
-                border-top-color: var(--color-traditional) !important;
-            }
-
-            .comparison-card.ai {
-                border-top-color: var(--color-accent) !important;
-            }
+            .lms-header { background: var(--color-primary) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
@@ -977,7 +251,7 @@
     <header class="top-header">
         <div class="top-header-container">
             <div class="top-header-logo">
-                <img src="images/madas-logo.jpg" alt="MadasHealthAI logo">
+                <img src="images/madas-logo.jpg" alt="madashealth.ai logo">
             </div>
             <h1 class="top-header-title">MadasHealthAI</h1>
         </div>
@@ -988,10 +262,8 @@
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             <span>Back to Module Overview</span>
         </a>
+
         <header class="lms-header">
-            <!-- <div class="logo-placeholder">
-                <img src="images/madas-logo.jpg" alt="madashealth.ai logo">
-            </div> -->
             <div class="lms-header-content">
                 <span class="course-label">Module 1</span>
                 <h1 class="module-title">AI Foundations for Healthcare</h1>
@@ -1004,310 +276,387 @@
                 <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span><span class="meta-label">Estimated Learning Time:</span> 15 minutes</span>
+                <span><span class="meta-label">Duration:</span> ~10 minutes</span>
             </div>
         </section>
 
         <section class="unit-header">
             <span class="unit-label">Unit 2</span>
             <h2 class="unit-title">AI vs Traditional Software</h2>
-            <div class="time-estimates">
-                <div class="time-item">
-                    <span class="time-icon">📖</span>
-                    <span>Reading: 15 minutes</span>
+        </section>
+
+        <section class="content-section">
+            <h3 class="section-title">Understanding the Fundamental Difference</h3>
+            <p>Healthcare has relied on software for decades—electronic health records, appointment systems, billing platforms, and laboratory systems. These systems are familiar, predictable, and rule-driven.</p>
+            <p class="highlight-text">Artificial Intelligence is different.</p>
+            <p>It does not follow a fixed set of instructions. Instead, it identifies patterns in data and estimates the likelihood of future outcomes.</p>
+            <p>Understanding this distinction is critical for safe and effective clinical use.</p>
+        </section>
+
+        <section class="content-section">
+            <h3 class="section-title">Core Distinction (Key Message)</h3>
+            <div class="key-message-box">
+                <p>Traditional software follows rules.</p>
+                <p>AI estimates probabilities.</p>
+            </div>
+            <p>Traditional software executes instructions written by humans</p>
+            <p>AI systems learn from historical data and apply that learning to new situations</p>
+            <div class="clinician-prompt">
+                <div class="clinician-prompt-header">
+                    <span>👉</span>
+                    <span>Ask yourself as a clinician:</span>
+                </div>
+                <p>"Is this system telling me what must happen, or what is likely to happen?"</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3 class="section-title">Simple Comparison (Clinically Relevant)</h3>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Traditional Healthcare Software</th>
+                            <th>AI-Enabled Systems</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>How it works</td>
+                            <td>Predefined rules</td>
+                            <td>Learns patterns from data</td>
+                        </tr>
+                        <tr>
+                            <td>Logic</td>
+                            <td>"If X, then Y"</td>
+                            <td>Statistical relationships</td>
+                        </tr>
+                        <tr>
+                            <td>Output</td>
+                            <td>Yes / No / Fixed result</td>
+                            <td>Likelihood or risk estimate</td>
+                        </tr>
+                        <tr>
+                            <td>Consistency</td>
+                            <td>Same input → same output</td>
+                            <td>May change with updated data</td>
+                        </tr>
+                        <tr>
+                            <td>Updates</td>
+                            <td>Manual software updates</td>
+                            <td>Model retraining</td>
+                        </tr>
+                        <tr>
+                            <td>Transparency</td>
+                            <td>Fully explainable rules</td>
+                            <td>May be partially explainable</td>
+                        </tr>
+                        <tr>
+                            <td>Clinical role</td>
+                            <td>Enforces rules</td>
+                            <td>Supports decision-making</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3 class="section-title">Clinical Example 1: Vital Sign Alert</h3>
+            <div class="clinical-example">
+                <div class="clinical-example-header">
+                    <div class="clinical-example-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <span class="clinical-example-title">Vital Sign Alert</span>
+                </div>
+
+                <div class="example-subsection traditional">
+                    <h4>Traditional Software</h4>
+                    <p class="example-item"><span class="example-label">Scenario:</span> Blood pressure monitoring</p>
+                    <p class="example-item"><span class="example-label">Rule:</span> If systolic BP ≥ 180 mmHg → trigger alert</p>
+                    <p class="example-item"><span class="example-label">Output:</span> Alert or no alert</p>
+                    <p class="example-item"><span class="example-label">Strength:</span> <span class="strength-text">Predictable, safe, reliable</span></p>
+                    <p class="example-item"><span class="example-label">Limitation:</span> <span class="limitation-text">Does not consider trends, context, or patient history</span></p>
+                    <p class="example-note">This is ideal for safety thresholds.</p>
+                </div>
+
+                <div class="example-subsection ai">
+                    <h4>AI-Supported System</h4>
+                    <p class="example-item"><span class="example-label">Scenario:</span> Early deterioration risk</p>
+                    <p class="example-item"><span class="example-label">Inputs:</span> Vital signs over time, lab trends, oxygen needs</p>
+                    <p class="example-item"><span class="example-label">Output:</span> "Increased risk of clinical deterioration in next few hours"</p>
+                    <p class="example-item"><span class="example-label">Strength:</span> <span class="strength-text">Looks at patterns, not single values</span></p>
+                    <p class="example-item"><span class="example-label">Limitation:</span> <span class="limitation-text">Output is probabilistic, not definitive</span></p>
+
+                    <div class="interactive-question">
+                        <div class="interactive-question-header">
+                            <span>👉</span>
+                            <span>Interactive question for clinicians:</span>
+                        </div>
+                        <p>"Would you act on this alone, or use it to guide closer monitoring?"</p>
+                        <div class="correct-answer-box">
+                            <p class="correct-answer-label">Correct answer:</p>
+                            <p class="correct-answer-text">Use it to support—not replace—clinical judgment.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="content-section">
-            <div class="video-placeholder">
-                <div class="video-container">
-                <video controls>
-                    <source src="https://lmscontainer.blob.core.windows.net/madashealthai/module-1/Video1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                </div>
-            </div>
-            <h3 class="section-title">Traditional Healthcare Software vs AI-Enabled Systems</h3>
-
-            <div class="comparison-container">
-                <div class="comparison-table-wrapper">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Traditional Healthcare Software</th>
-                                <th>AI-Enabled Systems</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="cell-content">
-                                        <svg class="cell-icon traditional" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                                        </svg>
-                                        <span>Rule-based ("if X → do Y")</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="cell-content">
-                                        <svg class="cell-icon ai" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                                        </svg>
-                                        <span>Learns from data</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="cell-content">
-                                        <svg class="cell-icon traditional" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                                        </svg>
-                                        <span>Fixed logic</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="cell-content">
-                                        <svg class="cell-icon ai" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                                        </svg>
-                                        <span>Adaptive logic</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="cell-content">
-                                        <svg class="cell-icon traditional" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                        <span>Predictable outputs</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="cell-content">
-                                        <svg class="cell-icon ai" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
-                                        </svg>
-                                        <span>Probabilistic outputs</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="cell-content">
-                                        <svg class="cell-icon traditional" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
-                                        </svg>
-                                        <span>Same result every time</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="cell-content">
-                                        <svg class="cell-icon ai" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
-                                        </svg>
-                                        <span>Results may vary</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="cell-content">
-                                        <svg class="cell-icon traditional" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                        </svg>
-                                        <span>Manual updates</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="cell-content">
-                                        <svg class="cell-icon ai" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                                        </svg>
-                                        <span>Model retraining</span>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="visual-comparison">
-                <div class="comparison-card traditional">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
-                            </svg>
-                        </div>
-                        <span class="card-title">Traditional Healthcare Software</span>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>
-                                <span class="bullet-icon"></span>
-                                <span>Rule-based ("if X → do Y")</span>
-                            </li>
-                            <li>
-                                <span class="bullet-icon"></span>
-                                <span>Fixed logic</span>
-                            </li>
-                            <li>
-                                <span class="bullet-icon"></span>
-                                <span>Predictable outputs</span>
-                            </li>
-                            <li>
-                                <span class="bullet-icon"></span>
-                                <span>Same result every time</span>
-                            </li>
-                            <li>
-                                <span class="bullet-icon"></span>
-                                <span>Manual updates</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="comparison-card ai">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                            </svg>
-                        </div>
-                        <span class="card-title">AI-Enabled Systems</span>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>
-                                <span class="bullet-icon"></span>
-                                <span>Learns from data</span>
-                            </li>
-                            <li>
-                                <span class="bullet-icon"></span>
-                                <span>Adaptive logic</span>
-                            </li>
-                            <li>
-                                <span class="bullet-icon"></span>
-                                <span>Probabilistic outputs</span>
-                            </li>
-                            <li>
-                                <span class="bullet-icon"></span>
-                                <span>Results may vary</span>
-                            </li>
-                            <li>
-                                <span class="bullet-icon"></span>
-                                <span>Model retraining</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="infographic-section">
-                <h4 class="infographic-title">How Each System Processes Information</h4>
-                <div class="flow-comparison">
-                    <div class="flow-diagram traditional">
-                        <span class="flow-label">Traditional Software</span>
-                        <div class="flow-box">Input Data</div>
-                        <div class="flow-arrow">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                            </svg>
-                        </div>
-                        <div class="flow-box">Fixed Rules (if X → do Y)</div>
-                        <div class="flow-arrow">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                            </svg>
-                        </div>
-                        <div class="flow-box">Predictable Output</div>
-                    </div>
-
-                    <div class="vs-divider">
-                        <div class="vs-circle">VS</div>
-                    </div>
-
-                    <div class="flow-diagram ai">
-                        <span class="flow-label">AI-Enabled System</span>
-                        <div class="flow-box">Input Data</div>
-                        <div class="flow-arrow">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                            </svg>
-                        </div>
-                        <div class="flow-box">Learned Patterns from Data</div>
-                        <div class="flow-arrow">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                            </svg>
-                        </div>
-                        <div class="flow-box">Probabilistic Output</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="clinical-implication">
-                <div class="clinical-implication-header">
-                    <div class="clinical-implication-icon">
+            <h3 class="section-title">Clinical Example 2: Drug Interaction Alerts</h3>
+            <div class="clinical-example">
+                <div class="clinical-example-header">
+                    <div class="clinical-example-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
                         </svg>
                     </div>
-                    <span class="clinical-implication-label">Clinical Implication</span>
+                    <span class="clinical-example-title">Drug Interaction Alerts</span>
                 </div>
-                <p>Traditional software operates with set instructions, while AI estimates likelihoods and risks that <strong>clinicians must always interpret within context</strong>.</p>
-            </div>
 
-            <div class="key-takeaway">
-                <div class="takeaway-icon">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
+                <div class="example-subsection traditional">
+                    <h4>Traditional Rule-Based Alert</h4>
+                    <p class="example-item"><span class="example-label">Prescription:</span> Warfarin + ciprofloxacin</p>
+                    <p class="example-item"><span class="example-label">System response:</span> "Potential interaction – increased bleeding risk"</p>
+                    <p>Same alert for every patient</p>
+                    <p class="example-item"><span class="example-label">Strength:</span> <span class="strength-text">Reliable and conservative</span></p>
+                    <p class="example-item"><span class="example-label">Limitation:</span> <span class="limitation-text">No individualisation</span></p>
                 </div>
-                <div class="takeaway-content">
-                    <span class="takeaway-label">Key Takeaway</span>
-                    <p>Understanding the fundamental differences between traditional software and AI systems helps clinicians appropriately interpret and apply AI-generated outputs in clinical practice.</p>
+
+                <div class="example-subsection ai">
+                    <h4>AI-Enhanced Decision Support</h4>
+                    <p>Reviews INR stability, dose, renal function, concurrent drugs</p>
+                    <p class="example-item"><span class="example-label">Output:</span></p>
+                    <p>"Interaction risk present. Recommend closer INR monitoring."</p>
+                    <ul class="checkmark-list">
+                        <li>Does not override prescribing</li>
+                        <li>Does not make the decision</li>
+                        <li>Helps prioritise monitoring</li>
+                    </ul>
+                    <p class="example-note">This is decision support, not automation.</p>
                 </div>
             </div>
         </section>
 
-        <nav class="unit-navigation">
-            <a href="module1-ai-foundations-healthcare.html" class="nav-btn prev">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                <span>Previous</span>
-            </a>
-            <a href="module1-unit3-types-of-ai.html" class="nav-btn next">
-                <span>Next</span>
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </a>
-        </nav>
+        <section class="content-section">
+            <h3 class="section-title">Key Clinical Takeaway</h3>
+            <div class="takeaway-box">
+                <p>Traditional software tells you what to do.</p>
+                <p>AI helps you decide what to pay attention to.</p>
+                <p>They are complementary—not competing.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3 class="section-title">When Traditional Software Is Preferable</h3>
+            <div class="when-to-use">
+                <p>Use rule-based systems when you need:</p>
+                <ul>
+                    <li>Clear dosing calculations</li>
+                    <li>Safety-critical alerts</li>
+                    <li>Regulatory and compliance checks</li>
+                    <li>Tasks requiring 100% consistency</li>
+                </ul>
+                <div class="example-highlight">
+                    <strong>Example:</strong>
+                    <ul>
+                        <li>Insulin dose calculators</li>
+                        <li>Drug allergy alerts</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3 class="section-title">When AI Adds Value</h3>
+            <div class="when-to-use">
+                <p>AI is useful when:</p>
+                <ul>
+                    <li>Patterns are complex</li>
+                    <li>Multiple variables interact</li>
+                    <li>Trends matter more than single values</li>
+                    <li>Text, images, or signals must be analysed</li>
+                </ul>
+                <div class="example-highlight">
+                    <strong>Examples in healthcare:</strong>
+                    <ul>
+                        <li>Imaging support (X-ray, ECG pattern recognition)</li>
+                        <li>Clinical documentation summarisation</li>
+                        <li>Risk stratification for follow-up care</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3 class="section-title">Safety Perspective (Why This Matters)</h3>
+            <div class="safety-box">
+                <div class="safety-box-header">
+                    <div class="safety-box-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                    </div>
+                    <span class="safety-box-title">Safety Perspective (Why This Matters)</span>
+                </div>
+                <p>AI outputs are not facts.</p>
+                <p>They are estimates based on prior data.</p>
+                <p>Therefore:</p>
+                <ul>
+                    <li>AI recommendations must always be reviewed by clinicians</li>
+                    <li>AI systems require monitoring, validation, and governance</li>
+                    <li>Responsibility for care remains with the healthcare professional</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3 class="section-title">Final Message for Clinicians</h3>
+            <div class="final-message">
+                <p>AI does not replace clinical reasoning.</p>
+                <p>It changes how information is presented—from rules to risks.</p>
+                <p>Good clinical care = human judgment + appropriate tools.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="reflect-section">
+                <div class="reflect-header">
+                    <div class="reflect-icon-wrap">❓</div>
+                    <span class="reflect-title">Question 1</span>
+                </div>
+                <p class="reflect-question">How is an AI-generated recommendation different from a traditional rule-based alert in healthcare software?</p>
+                <div class="reflect-answer">
+                    <p class="reflect-answer-label">Answer:</p>
+                    <p>A traditional rule-based alert gives a fixed response based on predefined rules (for example, triggering an alert when a value crosses a threshold). An AI-generated recommendation estimates the likelihood or risk of an outcome based on patterns learned from data. AI outputs are probabilistic and must be interpreted in clinical context, whereas rule-based alerts are deterministic and predictable.</p>
+                </div>
+            </div>
+
+            <div class="reflect-section">
+                <div class="reflect-header">
+                    <div class="reflect-icon-wrap">❓</div>
+                    <span class="reflect-title">Question 2</span>
+                </div>
+                <p class="reflect-question">Why must clinicians always review and interpret AI outputs rather than act on them automatically?</p>
+                <div class="reflect-answer">
+                    <p class="reflect-answer-label">Answer:</p>
+                    <p>Because AI systems do not understand clinical meaning or patient intent—they only detect patterns in data. Their outputs reflect probabilities, not certainties. Clinical judgment is essential to assess relevance, safety, and applicability to the individual patient, ensuring that AI supports care rather than replacing professional responsibility.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="cross-disciplinary">
+                <p>Artificial Intelligence is not confined to a single specialty or professional group. It is increasingly integrated across all areas of healthcare, including medicine, nursing, allied health, mental health, dentistry, pharmacy, public health, and healthcare administration. Understanding how AI is applied across these disciplines enables health professionals to identify both opportunities and potential risks within their own scope of practice, supporting safe, effective, and responsible use of AI in healthcare.</p>
+            </div>
+        </section>
+
+        <div class="knowledge-check">
+            <div class="kc-header">
+                <div class="kc-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <span class="kc-title">Knowledge Check</span>
+            </div>
+            <form class="mcq-form" id="quizForm">
+                <fieldset>
+                    <div class="question-block">
+                        <span class="question-number">MCQ 1</span>
+                        <p class="question-text">Which statement best describes how Artificial Intelligence is used across healthcare disciplines?</p>
+                        <div class="options-list">
+                            <div class="option-item">
+                                <input type="radio" id="q1a" name="q1" value="A" data-correct="false" data-explanation="AI is used by many healthcare professionals, not just doctors and medical specialists.">
+                                <label for="q1a" class="option-label">
+                                    <span class="option-letter">A</span>
+                                    <span class="option-text">AI is primarily used by doctors and medical specialists</span>
+                                </label>
+                            </div>
+                            <div class="option-item">
+                                <input type="radio" id="q1b" name="q1" value="B" data-correct="false" data-explanation="AI is used for much more than administrative and billing tasks in healthcare.">
+                                <label for="q1b" class="option-label">
+                                    <span class="option-letter">B</span>
+                                    <span class="option-text">AI is limited to administrative and billing tasks</span>
+                                </label>
+                            </div>
+                            <div class="option-item">
+                                <input type="radio" id="q1c" name="q1" value="C" data-correct="true" data-explanation="AI is not restricted to one profession or task. It is used across medicine, nursing, allied health, mental health, pharmacy, dentistry, public health, and healthcare administration. In all these areas, AI functions as a support tool rather than a replacement for professional judgment.">
+                                <label for="q1c" class="option-label">
+                                    <span class="option-letter">C</span>
+                                    <span class="option-text">AI is applied across multiple healthcare professions and settings</span>
+                                </label>
+                            </div>
+                            <div class="option-item">
+                                <input type="radio" id="q1d" name="q1" value="D" data-correct="false" data-explanation="AI supports clinical decision-making but does not replace it in most disciplines.">
+                                <label for="q1d" class="option-label">
+                                    <span class="option-letter">D</span>
+                                    <span class="option-text">AI replaces clinical decision-making in most disciplines</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="question-feedback" id="feedback-q1"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="question-block">
+                        <span class="question-number">MCQ 2</span>
+                        <p class="question-text">Why is it important for healthcare professionals to understand how AI is used in their own discipline?</p>
+                        <div class="options-list">
+                            <div class="option-item">
+                                <input type="radio" id="q2a" name="q2" value="A" data-correct="false" data-explanation="Healthcare professionals do not need to independently develop AI systems to use them effectively.">
+                                <label for="q2a" class="option-label">
+                                    <span class="option-letter">A</span>
+                                    <span class="option-text">To independently develop AI systems</span>
+                                </label>
+                            </div>
+                            <div class="option-item">
+                                <input type="radio" id="q2b" name="q2" value="B" data-correct="false" data-explanation="AI tools complement clinical training but do not replace it.">
+                                <label for="q2b" class="option-label">
+                                    <span class="option-letter">B</span>
+                                    <span class="option-text">To replace clinical training with AI tools</span>
+                                </label>
+                            </div>
+                            <div class="option-item">
+                                <input type="radio" id="q2c" name="q2" value="C" data-correct="true" data-explanation="Understanding how AI operates within a specific practice area helps professionals use it safely and effectively. It allows clinicians to identify appropriate use cases, recognise limitations, and maintain responsibility for patient care, ensuring AI enhances rather than compromises clinical practice.">
+                                <label for="q2c" class="option-label">
+                                    <span class="option-letter">C</span>
+                                    <span class="option-text">To recognise benefits, limitations, and risks relevant to their practice</span>
+                                </label>
+                            </div>
+                            <div class="option-item">
+                                <input type="radio" id="q2d" name="q2" value="D" data-correct="false" data-explanation="AI does not reduce professional accountability; clinicians remain responsible for patient care decisions.">
+                                <label for="q2d" class="option-label">
+                                    <span class="option-letter">D</span>
+                                    <span class="option-text">To reduce the need for professional accountability</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="question-feedback" id="feedback-q2"></div>
+                    </div>
+                </fieldset>
+
+                <div class="submit-container">
+                    <button type="submit" class="submit-btn">Check Answers</button>
+                </div>
+            </form>
+        </div>
     </article>
 
-    <script>
-        // Back to Top functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const backToTopBtn = document.getElementById('backToTop');
-
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 100) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
-            });
-
-            backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <nav class="unit-navigation">
+        <a href="module1-ai-foundations-healthcare.html" class="nav-btn prev">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            <span>Previous</span>
+        </a>
+        <a href="module1-unit3-types-of-ai.html" class="nav-btn next">
+            <span>Next</span>
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+    </nav>
 
     <button id="backToTop" class="back-to-top" aria-label="Back to top">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1327,5 +676,63 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Quiz validation functionality
+        function validateForm(formId, questions) {
+            document.getElementById(formId).addEventListener('submit', function(e) {
+                e.preventDefault();
+                questions.forEach(function(qName) {
+                    var selected = document.querySelector('input[name="' + qName + '"]:checked');
+                    var feedbackEl = document.getElementById('feedback-' + qName);
+                    feedbackEl.classList.remove('correct', 'incorrect');
+
+                    if (selected) {
+                        var isCorrect = selected.getAttribute('data-correct') === 'true';
+                        var explanation = selected.getAttribute('data-explanation');
+
+                        if (isCorrect) {
+                            feedbackEl.innerHTML = '<strong>✓ Correct!</strong><br>Explanation: ' + explanation;
+                            feedbackEl.classList.add('correct');
+                        } else {
+                            // Find the correct answer
+                            var correctOption = document.querySelector('input[name="' + qName + '"][data-correct="true"]');
+                            var correctValue = correctOption.value;
+                            var correctExplanation = correctOption.getAttribute('data-explanation');
+
+                            feedbackEl.innerHTML = '<strong>✗ Incorrect.</strong><br>' +
+                                'Correct answer: ' + correctValue + '<br>' +
+                                'Explanation: ' + correctExplanation;
+                            feedbackEl.classList.add('incorrect');
+                        }
+                    } else {
+                        feedbackEl.textContent = 'Please select an answer';
+                        feedbackEl.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+        validateForm('quizForm', ['q1', 'q2']);
+
+        // Back to Top functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            var backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 100) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
