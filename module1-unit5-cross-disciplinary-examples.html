@@ -40,13 +40,36 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { font-family: var(--font-body); font-size: 17px; line-height: 1.75; color: var(--color-text); background: var(--color-bg); -webkit-font-smoothing: antialiased; }
-        .lms-container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+        .lms-container { max-width: 75%; margin: 0 auto; padding: 40px 24px 80px; }
+
+        .top-header { background: var(--color-white); border-bottom: 1px solid var(--color-border); padding: 16px 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
+        .top-header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .top-header-logo { display: flex; align-items: center; }
+        .top-header-logo img { height: 40px; width: auto; }
+        .top-header-title { position: absolute; left: 50%; transform: translateX(-50%); font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-primary); letter-spacing: -0.3px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--color-white); color: var(--color-primary); text-decoration: none; border-radius: var(--radius-sm); font-weight: 600; font-size: 15px; transition: all 0.2s ease; border: 1px solid var(--color-border); margin-bottom: 24px; }
+        .back-btn:hover { background: var(--color-secondary); border-color: var(--color-primary); transform: translateX(-4px); }
+        .back-btn svg { width: 20px; height: 20px; }
+        @media (max-width: 768px) { .top-header-title { position: static; transform: none; font-size: 16px; margin: 0 auto; } .back-btn { padding: 6px 12px; font-size: 13px; } }
+
+        /* Back to Top Button */
+        .back-to-top { position: fixed; bottom: 32px; right: 32px; width: 50px; height: 50px; background: var(--color-primary); color: var(--color-white); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 1; visibility: visible; transition: all 0.3s ease; box-shadow: var(--shadow-md); z-index: 99; }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--color-primary-light); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .back-to-top svg { width: 24px; height: 24px; }
+
+        /* Unit Navigation */
+        .unit-navigation { display: flex; justify-content: space-between; align-items: center; max-width: 75%; margin: 48px auto 0; padding: 24px 32px; gap: 20px; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 12px; padding: 16px 28px; background: var(--color-primary); color: var(--color-white); text-decoration: none; border-radius: var(--radius-md); font-weight: 600; font-size: 15px; transition: all 0.3s ease; box-shadow: var(--shadow-sm); }
+        .nav-btn:hover { background: var(--color-primary-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .nav-btn svg { width: 20px; height: 20px; }
+        @media (max-width: 768px) { .unit-navigation { flex-direction: column; padding: 20px 16px; } .nav-btn { width: 100%; justify-content: center; } }
 
         /* Header */
         .lms-header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); padding: 48px 40px; border-radius: var(--radius-lg); margin-bottom: 48px; position: relative; overflow: hidden; }
         .lms-header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); border-radius: 50%; }
         .logo-placeholder { margin-bottom: 32px; position: relative; z-index: 1; }
-        .logo-placeholder img { height: 44px; width: auto; filter: brightness(0) invert(1); opacity: 0.95; }
+        .logo-placeholder img { height: 44px; width: auto; opacity: 0.95; }
         .lms-header-content { position: relative; z-index: 1; }
         .course-label { display: inline-block; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.8); margin-bottom: 12px; }
         .module-title { font-family: var(--font-heading); font-size: 38px; font-weight: 700; color: var(--color-white); line-height: 1.2; margin-bottom: 8px; }
@@ -57,6 +80,34 @@
         .unit-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: var(--color-accent); margin-bottom: 8px; }
         .unit-title { font-family: var(--font-heading); font-size: 26px; font-weight: 600; color: var(--color-primary); margin-bottom: 16px; }
         .time-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--color-white); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500; color: var(--color-text); }
+
+        /* Video Container */
+         .video-placeholder {
+            background: #000;
+            border-radius: var(--radius-md);
+            margin: 32px auto;
+            max-width: 75%;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: pointer;
+        }
+        .video-title { font-family: var(--font-heading); font-size: 18px; font-weight: 600; color: var(--color-primary); margin-bottom: 12px; margin-top: 32px; }
 
         /* Content */
         .content-section { margin-bottom: 48px; }
@@ -187,14 +238,37 @@
             .summary-grid { grid-template-columns: 1fr; }
             .summary-details { grid-template-columns: 1fr; }
         }
+         .footer { background: var(--color-primary); padding: 40px 24px; margin-top: 40px; }
+        .footer-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-brand { color: rgba(255,255,255,0.9); font-size: 14px; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-link { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: color 0.2s ease; }
+        .footer-link:hover { color: var(--color-white); }
     </style>
 </head>
 <body>
-    <article class="lms-container">
-        <header class="lms-header">
-            <div class="logo-placeholder">
-                <img src="" alt="madashealth.ai logo">
+    <header class="top-header">
+        <div class="top-header-container">
+            <div class="top-header-logo">
+                <img src="images/madas-logo.jpg" alt="MadasHealthAI logo">
             </div>
+            <h1 class="top-header-title">MadasHealthAI</h1>
+            <!-- <a href="index.html" class="back-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <span>Back to Module</span>
+            </a> -->
+        </div>
+    </header>
+    <article class="lms-container">
+         <a href="index.html" class="back-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <span>Back to Module</span>
+            </a>
+        <header class="lms-header">
+            
+            <!-- <div class="logo-placeholder">
+                <img src="images/madas-logo.jpg" alt="madashealth.ai logo">
+            </div> -->
             <div class="lms-header-content">
                 <span class="course-label">Module 1</span>
                 <h1 class="module-title">AI Foundations for Healthcare</h1>
@@ -210,6 +284,25 @@
                 Estimated Learning Time: 10 minutes
             </span>
         </section>
+
+        <div class="video-placeholder">
+            <div class="video-container">
+                <video controls controlsList="nodownload">
+                    <source src="https://lmscontainer.blob.core.windows.net/madashealthai/module-1/Nurse.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <h3 class="video-title">Patient Journey</h3>
+        <div class="video-placeholder">
+            <div class="video-container">
+                <video controls controlsList="nodownload">
+                    <source src="https://lmscontainer.blob.core.windows.net/madashealthai/module-1/PatientJourney.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
 
         <section class="content-section">
             <h3 class="section-title">AI Across Disciplines</h3>
@@ -520,6 +613,59 @@
                 </div>
             </div>
         </div>
+
+      
     </article>
+      <nav class="unit-navigation">
+            <a href="module1-unit4-ai-adoption-drivers.html" class="nav-btn prev">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                <span>Previous</span>
+            </a>
+            <a href="index.html" class="nav-btn next">
+                <span>Back to Module Overview</span>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+        </nav>
+
+    <script>
+        // Back to Top functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 100) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+         <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                © 2025 madashealth.ai — AI Essentials for Healthcare Professionals
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Use</a>
+                <a href="#" class="footer-link">Support</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

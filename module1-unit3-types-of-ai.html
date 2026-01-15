@@ -38,12 +38,67 @@
         }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); font-size: 17px; line-height: 1.75; color: var(--color-text); background: var(--color-bg); -webkit-font-smoothing: antialiased; }
-        .lms-container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+        body { font-family: var(--font-body); font-size: 17px; line-height: 1.75; color: var(--color-text); background: var(--color-bg); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        .lms-container { max-width: 75%; margin: 0 auto; padding: 40px 24px 80px; }
+
+        .top-header { background: var(--color-white); border-bottom: 1px solid var(--color-border); padding: 16px 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
+        .top-header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .top-header-logo { display: flex; align-items: center; }
+        .top-header-logo img { height: 40px; width: auto; }
+        .top-header-title { position: absolute; left: 50%; transform: translateX(-50%); font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-primary); letter-spacing: -0.3px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--color-white); color: var(--color-primary); text-decoration: none; border-radius: var(--radius-sm); font-weight: 600; font-size: 15px; transition: all 0.2s ease; border: 1px solid var(--color-border); margin-bottom: 24px; }
+        .back-btn:hover { background: var(--color-secondary); border-color: var(--color-primary); transform: translateX(-4px); }
+        .back-btn svg { width: 20px; height: 20px; }
+        @media (max-width: 768px) { .top-header-title { position: static; transform: none; font-size: 16px; margin: 0 auto; } .back-btn { padding: 6px 12px; font-size: 13px; } }
+
+        /* Back to Top Button */
+        .back-to-top { position: fixed; bottom: 32px; right: 32px; width: 50px; height: 50px; background: var(--color-primary); color: var(--color-white); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 1; visibility: visible; transition: all 0.3s ease; box-shadow: var(--shadow-md); z-index: 99; }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--color-primary-light); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .back-to-top svg { width: 24px; height: 24px; }
+
+        /* Footer */
+        .footer {
+            background: var(--color-primary);
+            padding: 40px 24px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-brand {
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--color-white);
+        }
+
         .lms-header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); padding: 48px 40px; border-radius: var(--radius-lg); margin-bottom: 48px; position: relative; overflow: hidden; }
         .lms-header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); border-radius: 50%; }
         .logo-placeholder { margin-bottom: 32px; position: relative; z-index: 1; }
-        .logo-placeholder img { height: 44px; width: auto; filter: brightness(0) invert(1); opacity: 0.95; }
+        .logo-placeholder img { height: 44px; width: auto; opacity: 0.95; }
         .lms-header-content { position: relative; z-index: 1; }
         .course-label { display: inline-block; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.8); margin-bottom: 12px; }
         .module-title { font-family: var(--font-heading); font-size: 38px; font-weight: 700; color: var(--color-white); line-height: 1.2; margin-bottom: 8px; }
@@ -144,12 +199,86 @@
         .key-summary-title { font-weight: 600; color: var(--color-primary); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
         .key-summary ul { margin: 0; padding-left: 20px; }
         .key-summary li { margin-bottom: 8px; }
-        .video-placeholder { background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%); border-radius: var(--radius-md); padding: 48px 32px; text-align: center; margin: 28px 0; position: relative; overflow: hidden; }
+        .video-placeholder {
+            background: #000;
+            border-radius: var(--radius-md);
+            margin: 32px auto;
+            max-width: 800px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+          .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
         .video-placeholder::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 250px; height: 250px; background: radial-gradient(circle, rgba(46,139,139,0.15) 0%, transparent 70%); border-radius: 50%; }
         .video-play-btn { width: 70px; height: 70px; background: var(--color-accent); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px; position: relative; z-index: 1; box-shadow: 0 4px 20px rgba(46,139,139,0.4); cursor: pointer; transition: transform 0.2s ease; }
         .video-play-btn:hover { transform: scale(1.05); }
         .video-play-btn svg { width: 28px; height: 28px; fill: var(--color-white); margin-left: 4px; }
         .video-label { font-size: 14px; color: rgba(255,255,255,0.7); position: relative; z-index: 1; }
+        
+        /* Unit Navigation */
+        .unit-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 75%;
+            margin: 48px auto 0;
+            padding: 24px 32px;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 28px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-btn:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .unit-navigation {
+                flex-direction: column;
+                padding: 20px 16px;
+            }
+
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
         .knowledge-check { background: var(--color-white); border-radius: var(--radius-lg); padding: 32px; margin: 32px 0; box-shadow: var(--shadow-md); border: 1px solid var(--color-border); }
         .kc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border); }
         .kc-icon { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
@@ -220,11 +349,24 @@
     </style>
 </head>
 <body>
-    <article class="lms-container">
-        <header class="lms-header">
-            <div class="logo-placeholder">
-                <img src="" alt="madashealth.ai logo">
+    <header class="top-header">
+        <div class="top-header-container">
+            <div class="top-header-logo">
+                <img src="images/madas-logo.jpg" alt="MadasHealthAI logo">
             </div>
+            <h1 class="top-header-title">MadasHealthAI</h1>
+        </div>
+    </header>
+
+    <article class="lms-container">
+        <a href="index.html" class="back-btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <span>Back to Module Overview</span>
+        </a>
+        <header class="lms-header">
+            <!-- <div class="logo-placeholder">
+                <img src="images/madas-logo.jpg" alt="madashealth.ai logo">
+            </div> -->
             <div class="lms-header-content">
                 <span class="course-label">Module 1</span>
                 <h1 class="module-title">AI Foundations for Healthcare</h1>
@@ -267,6 +409,14 @@
                     <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Safely interpret ML-generated risk scores</span></li>
                     <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Apply ML outputs in clinical decision-making without automation bias</span></li>
                 </ul>
+            </div>
+             <div class="video-placeholder">
+            <div class="video-container">
+                <video controls>
+                    <source src="https://lmscontainer.blob.core.windows.net/madashealthai/module-1/ML.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                </div>
             </div>
             <div class="content-block">
                 <h3 class="content-title">What Is Machine Learning in Healthcare?</h3>
@@ -321,7 +471,8 @@
             </div>
             <div class="reflect-box"><div class="reflect-header"><span class="reflect-icon">🧠</span><span class="reflect-label">Mini Reflection</span></div><p>If strong family support and daily home visits were present, would your management change? This highlights the ongoing need for human judgement.</p></div>
             <div class="key-summary"><div class="key-summary-title"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Key Learning Summary</div><ul><li>ML provides risk estimates, not outcome predictions</li><li>Supervised ML is the most common type</li><li>Risk scores guide attention rather than dictate decisions</li><li>Clinicians remain accountable for the final decision</li></ul></div>
-            <div class="video-placeholder"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="video-label">2-minute explainer video</p></div>
+
+          
             <div class="knowledge-check">
                 <div class="kc-header"><div class="kc-icon ml"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="kc-title">Knowledge Check — ML</span></div>
                 <form class="mcq-form" id="mlForm">
@@ -348,6 +499,14 @@
                     <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Apply DL insights judiciously, avoiding over-reliance</span></li>
                 </ul>
             </div>
+             <div class="video-placeholder">
+                <div class="video-container">
+                <video controls>
+                    <source src="https://lmscontainer.blob.core.windows.net/madashealthai/module-1/DeepLearning.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                </div>
+            </div>
             <div class="content-block">
                 <h3 class="content-title">What Is Deep Learning in Healthcare?</h3>
                 <p>Deep Learning employs multi-layered neural networks to analyse complex data, such as:</p>
@@ -371,7 +530,7 @@
             </div>
             <div class="reflect-box"><div class="reflect-header"><span class="reflect-icon">🧠</span><span class="reflect-label">Mini Reflection</span></div><p>If image quality is poor or presentation is atypical, should you rely more or less on AI? This reinforces the need for clinical oversight.</p></div>
             <div class="key-summary"><div class="key-summary-title">Key Learning Summary</div><ul><li>DL excels with images and complex data</li><li>Provides outputs as confidence scores and visual cues</li><li>Clinicians remain responsible for decisions</li></ul></div>
-            <div class="video-placeholder"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="video-label">2-minute explainer video</p></div>
+           
             <div class="knowledge-check">
                 <div class="kc-header"><div class="kc-icon dl"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="kc-title">Knowledge Check — DL</span></div>
                 <form class="mcq-form" id="dlForm">
@@ -397,6 +556,14 @@
                     <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Identify safe and unsafe practices using NLP</span></li>
                     <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Apply NLP outputs responsibly, retaining clinical accountability</span></li>
                 </ul>
+            </div>
+              <div class="video-placeholder">
+                <div class="video-container">
+                <video controls>
+                    <source src="https://lmscontainer.blob.core.windows.net/madashealthai/module-1/NLP.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                </div>
             </div>
             <div class="content-block">
                 <h3 class="content-title">What Is NLP in Healthcare?</h3>
@@ -437,7 +604,8 @@
                 <div class="bl-card limitations"><div class="bl-title"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>Limitations/Safety</div><ul><li>Misinterpretation due to accents or unclear speech</li><li>Missed negations such as "no chest pain"</li><li>Reliance on clinician clarity</li><li>Requires human review and correction</li><li><strong>Automation Bias:</strong> Risk of signing notes without sufficient review</li></ul></div>
             </div>
             <div class="key-summary"><div class="key-summary-title">Key Learning Summary</div><ul><li>NLP understands clinical language and context</li><li>Converts conversation into structured documentation</li><li>Saves time but does not replace clinician responsibility</li><li>Review, editing, and sign-off are essential steps</li></ul></div>
-            <div class="video-placeholder"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="video-label">Video content placeholder</p></div>
+            
+       
             <div class="reflect-box"><div class="reflect-header"><span class="reflect-icon">🧠</span><span class="reflect-label">Mini Reflection</span></div><p>If NLP drafted 90% of your notes, how would you ensure accuracy, maintain accountability, and protect safety/confidentiality?</p></div>
             <div class="knowledge-check">
                 <div class="kc-header"><div class="kc-icon nlp"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="kc-title">Knowledge Check — NLP</span></div>
@@ -465,6 +633,14 @@
                     <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Apply CV insights appropriately, retaining accountability</span></li>
                 </ul>
             </div>
+             <div class="video-placeholder">  
+            <div class="video-container">
+                <video controls>
+                    <source src="https://lmscontainer.blob.core.windows.net/madashealthai/module-1/ComputerVision.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                </div>
+            </div>
             <div class="content-block">
                 <h3 class="content-title">What Is CV in Healthcare?</h3>
                 <p>Computer Vision enables computers to interpret and analyse visual information, such as images and videos. Common applications include:</p>
@@ -488,6 +664,8 @@
                 <div class="bl-card limitations"><div class="bl-title">Limitations/Safety</div><ul><li>Performance depends on image quality</li><li>Can be affected by camera and lighting conditions</li><li>May underperform in rare or atypical cases</li><li>Requires human validation</li><li><strong>Automation Bias:</strong> Assuming referral decisions are definitive</li></ul></div>
             </div>
             <div class="key-summary"><div class="key-summary-title">Key Learning Summary</div><ul><li>CV excels at image-based screening</li><li>Detects subtle visual changes at scale</li><li>Outputs guide triage and prioritisation</li><li>Clinicians retain responsibility for diagnosis and management</li></ul></div>
+            
+        
             <div class="knowledge-check">
                 <div class="kc-header"><div class="kc-icon cv"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="kc-title">Knowledge Check — CV</span></div>
                 <form class="mcq-form" id="cvForm">
@@ -514,6 +692,14 @@
                     <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Safely apply rule-based alerts</span></li>
                     <li><span class="lo-check"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span><span>Recognise the value of combining rule-based systems with AI</span></li>
                 </ul>
+            </div>
+            <div class="video-placeholder">
+                <div class="video-container">
+                <video controls>
+                    <source src="https://lmscontainer.blob.core.windows.net/madashealthai/module-1/OtherAIApproches.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                </div>
             </div>
             <div class="content-block">
                 <h3 class="content-title">What Are Rule-Based Clinical Systems?</h3>
@@ -545,6 +731,7 @@
                 <p><em>Improves usability without compromising safety.</em></p>
             </div>
             <div class="key-summary"><div class="key-summary-title">Key Learning Summary</div><ul><li>Fixed IF–THEN logic; predictable, transparent, and reliable</li><li>No learning or personalisation is involved</li><li>Best used in combination with AI to reduce alert fatigue</li><li>Clinicians retain accountability for decisions</li></ul></div>
+             
             <div class="knowledge-check">
                 <div class="kc-header"><div class="kc-icon rule"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="kc-title">Knowledge Check — Rule-Based</span></div>
                 <form class="mcq-form" id="ruleForm">
@@ -577,6 +764,56 @@
         validateForm('nlpForm', ['nlp1', 'nlp2']);
         validateForm('cvForm', ['cv1', 'cv2']);
         validateForm('ruleForm', ['rule1']);
+
+        // Back to Top functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 100) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <nav class="unit-navigation">
+        <a href="module1-unit2-ai-vs-traditional-software.html" class="nav-btn prev">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            <span>Previous</span>
+        </a>
+        <a href="module1-unit4-ai-adoption-drivers.html" class="nav-btn next">
+            <span>Next</span>
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </a>
+    </nav>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                © 2025 madashealth.ai — AI Essentials for Healthcare Professionals
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Use</a>
+                <a href="#" class="footer-link">Support</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
