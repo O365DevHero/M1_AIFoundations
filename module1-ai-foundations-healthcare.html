@@ -959,6 +959,13 @@
         .top-header-logo {
             display: flex;
             align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .top-header-logo:hover {
+            opacity: 0.8;
         }
 
         .top-header-logo img {
@@ -1156,9 +1163,9 @@
 <body>
     <header class="top-header">
         <div class="top-header-container">
-            <div class="top-header-logo">
+            <a href="index.html" class="top-header-logo">
                 <img src="images/madas-logo.jpg" alt="MadasHealthAI logo">
-            </div>
+            </a>
             <h1 class="top-header-title">AI Essentials for Healthcare Professionals</h1>
         </div>
     </header>
